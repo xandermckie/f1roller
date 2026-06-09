@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { ProgressBar } from "@/components/ProgressBar";
@@ -11,6 +11,8 @@ import {
   getAssignedEntity,
   getAvailablePool,
   getCurrentSlot,
+  hasActiveRound,
+  isRoundRolled,
 } from "@/lib/rollSession";
 import {
   ROSTER_GROUP_LABELS,
@@ -44,10 +46,13 @@ export function RollPage(): React.ReactElement {
   const [simulating, setSimulating] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
+  const poolRef = useRef<HTMLElement>(null);
 
   const currentSlot = getCurrentSlot(session);
-  const roundActive = Boolean(session.rolledTeam && session.rolledDecade) && !session.assignments[currentSlot];
+  const roundActive = hasActiveRound(session);
   const showRollButton = !roundActive && !isAssignmentComplete;
+  const showPool = isRoundRolled(session) && !isAssignmentComplete;
+  const poolLoading = showPool && loading && session.rosterPool.length === 0;
 
   const availablePool = useMemo(() => getAvailablePool(session), [session]);
 
@@ -77,7 +82,7 @@ export function RollPage(): React.ReactElement {
     }
   }, [session.rolledTeam, session.rolledDecade]);
 
-  if (session.phase === "complete") {
+  if (session.phase === "complete" && session.simResult) {
     return <Navigate to="/season" replace />;
   }
 
@@ -87,8 +92,13 @@ export function RollPage(): React.ReactElement {
     setDecadeRevealed(false);
     setSelectedEntityId(null);
     setLocalError(null);
-    await rollRound();
+    const ok = await rollRound();
     setIsRolling(false);
+    if (ok) {
+      requestAnimationFrame(() => {
+        poolRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   };
 
   const handleSlotClick = (slotId: SlotId): void => {
@@ -213,8 +223,8 @@ export function RollPage(): React.ReactElement {
       )}
 
       <div className="roll-layout">
-        <section>
-          {roundActive && (
+        <section ref={poolRef}>
+          {showPool && (
             <>
               <h2 style={{ fontSize: "1.125rem" }}>
                 Roster Pool
@@ -231,9 +241,13 @@ export function RollPage(): React.ReactElement {
                   ? "Click a matching slot on the right to assign your selection."
                   : "Select a roster member below."}
               </p>
-              {availablePool.length === 0 ? (
+              {poolLoading ? (
+                <p style={{ color: "var(--color-text-muted)" }}>Loading roster…</p>
+              ) : availablePool.length === 0 ? (
                 <p style={{ color: "var(--color-text-muted)" }}>
-                  No roster loaded. Try rerolling team or decade, or roll again.
+                  {error
+                    ? "Roster failed to load — see error below. Try rerolling or restart the backend."
+                    : "No picks available for this team and era. Try rerolling team or decade."}
                 </p>
               ) : (
                 ROSTER_GROUP_ORDER.map((groupKey) => {

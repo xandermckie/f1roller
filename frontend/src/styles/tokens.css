@@ -104,6 +104,10 @@ button:focus-visible {
   border: 1px solid var(--color-border);
 }
 
+dialog:not([open]) {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

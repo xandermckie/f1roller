@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
 import type { RollSession, SlotId } from "@/types";
-import { SLOT_ORDER } from "@/types";
 import {
   buildTeamPayload,
   canAssign,
@@ -9,13 +8,13 @@ import {
   clearSession,
   createSession,
   getCurrentSlot,
-  getNextEmptySlotIndex,
   getPoolEntity,
   isAssignmentComplete,
   isRoundReady,
   isSetupComplete,
   loadSession,
   saveSession,
+  syncCurrentSlotIndex,
 } from "@/lib/rollSession";
 import {
   fetchRoster,
@@ -48,8 +47,7 @@ export function useRollSession(): {
   const [session, setSession] = useState<RollSession>(() => {
     const loaded = loadSession();
     if (loaded) {
-      const nextIndex = getNextEmptySlotIndex(loaded) ?? loaded.currentSlotIndex;
-      return { ...clearPerRoundState(loaded), currentSlotIndex: nextIndex };
+      return syncCurrentSlotIndex(loaded);
     }
     return createSession();
   });
@@ -117,11 +115,14 @@ export function useRollSession(): {
 
       try {
         const roster = await fetchRoster(team.slug, decade);
-        setSession((current) => ({
-          ...current,
-          rosterPool: roster.entities,
-          poolWarnings: roster.pool_warnings,
-        }));
+        setSession((current) =>
+          syncCurrentSlotIndex({
+            ...current,
+            rosterPool: roster.entities,
+            poolWarnings: roster.pool_warnings,
+            phase: "assigning",
+          }),
+        );
         return roster.entities.length > 0;
       } catch (rosterErr) {
         setError(rosterErr instanceof Error ? rosterErr.message : "Roster load failed");
@@ -192,46 +193,47 @@ export function useRollSession(): {
 
   const assignToSlot = useCallback(
     (entityId: string, slotId: SlotId): string | null => {
-      const entity = getPoolEntity(session, entityId);
-      if (!entity) return "Entity not found in roster";
-      if (!canAssign(entity, slotId)) {
-        return `${entity.role_label ?? entity.display_name} cannot fill ${slotId.replaceAll("_", " ")}`;
-      }
-      const assignedIds = new Set(
-        Object.entries(session.assignments)
-          .filter(([slot, id]) => slot !== slotId && id)
-          .map(([, id]) => id),
-      );
-      if (assignedIds.has(entityId)) {
-        return "This person is already on your team";
-      }
-
-      const currentSlot = getCurrentSlot(session);
-      const nextIndex = session.currentSlotIndex + 1;
-      const filledCurrentSlot = slotId === currentSlot;
-      const withAssignment: RollSession = {
-        ...session,
-        assignments: { ...session.assignments, [slotId]: entityId },
-        assignedEntities: {
-          ...session.assignedEntities,
-          [entityId]: entity,
-        },
-        phase: "assigning",
-      };
-
-      if (filledCurrentSlot) {
-        const cleared = clearPerRoundState(withAssignment);
-        if (nextIndex >= SLOT_ORDER.length) {
-          setSession({ ...cleared, currentSlotIndex: SLOT_ORDER.length - 1 });
-        } else {
-          setSession({ ...cleared, currentSlotIndex: nextIndex });
+      let assignError: string | null = null;
+      setSession((current) => {
+        const entity = getPoolEntity(current, entityId);
+        if (!entity) {
+          assignError = "Entity not found in roster";
+          return current;
         }
-      } else {
-        setSession(withAssignment);
-      }
-      return null;
+        if (!canAssign(entity, slotId)) {
+          assignError = `${entity.role_label ?? entity.display_name} cannot fill ${slotId.replaceAll("_", " ")}`;
+          return current;
+        }
+        const assignedIds = new Set(
+          Object.entries(current.assignments)
+            .filter(([slot, id]) => slot !== slotId && id)
+            .map(([, id]) => id),
+        );
+        if (assignedIds.has(entityId)) {
+          assignError = "This person is already on your team";
+          return current;
+        }
+
+        const currentSlot = getCurrentSlot(current);
+        const filledCurrentSlot = slotId === currentSlot;
+        const withAssignment: RollSession = {
+          ...current,
+          assignments: { ...current.assignments, [slotId]: entityId },
+          assignedEntities: {
+            ...current.assignedEntities,
+            [entityId]: entity,
+          },
+          phase: "assigning",
+        };
+
+        if (filledCurrentSlot) {
+          return syncCurrentSlotIndex(clearPerRoundState(withAssignment));
+        }
+        return withAssignment;
+      });
+      return assignError;
     },
-    [session],
+    [],
   );
 
   const clearSlot = useCallback((slotId: SlotId): void => {
@@ -243,13 +245,11 @@ export function useRollSession(): {
       if (entityId) {
         delete assignedEntities[entityId];
       }
-      const slotIndex = SLOT_ORDER.indexOf(slotId);
-      return {
+      return syncCurrentSlotIndex({
         ...clearPerRoundState(s),
         assignments,
         assignedEntities,
-        currentSlotIndex: slotIndex,
-      };
+      });
     });
   }, []);
 

@@ -81,7 +81,7 @@ export function RosterEntityCard({
             </span>
           )}
         </div>
-        {entity.computed_rating !== undefined && entity.computed_rating !== null && (
+        {typeof entity.computed_rating === "number" && (
           <span style={{ fontSize: "0.875rem", whiteSpace: "nowrap" }}>
             {(entity.computed_rating * 100).toFixed(0)}
           </span>

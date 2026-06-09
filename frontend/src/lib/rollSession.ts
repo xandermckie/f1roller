@@ -19,13 +19,25 @@ export function createSession(): RollSession {
   };
 }
 
+export function normalizeSession(session: RollSession): RollSession {
+  return {
+    ...session,
+    rosterPool: session.rosterPool ?? [],
+    assignedEntities: session.assignedEntities ?? {},
+    assignments: session.assignments ?? {},
+    rerollsRemaining: session.rerollsRemaining ?? { team: 1, decade: 1 },
+    currentSlotIndex:
+      typeof session.currentSlotIndex === "number" ? session.currentSlotIndex : 0,
+  };
+}
+
 export function loadSession(): RollSession | null {
   const raw = sessionStorage.getItem(STORAGE_KEY);
   if (!raw) return null;
   try {
     const session = JSON.parse(raw) as RollSession;
     if (session.sessionVersion !== SESSION_VERSION) return null;
-    return session;
+    return normalizeSession(session);
   } catch {
     return null;
   }
@@ -56,6 +68,24 @@ export function getNextEmptySlotIndex(session: RollSession): number | null {
 
 export function isRoundRolled(session: RollSession): boolean {
   return Boolean(session.rolledTeam && session.rolledDecade);
+}
+
+export function syncCurrentSlotIndex(session: RollSession): RollSession {
+  const next = getNextEmptySlotIndex(session);
+  if (next === null) {
+    return { ...session, currentSlotIndex: SLOT_ORDER.length - 1 };
+  }
+  return { ...session, currentSlotIndex: next };
+}
+
+export function hasActiveRound(session: RollSession): boolean {
+  const synced = syncCurrentSlotIndex(session);
+  const slot = getCurrentSlot(synced);
+  return (
+    isRoundRolled(synced) &&
+    !synced.assignments[slot] &&
+    !isAssignmentComplete(synced)
+  );
 }
 
 export function isRoundReady(session: RollSession): boolean {

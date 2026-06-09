@@ -9,10 +9,12 @@ import {
   getAssignedEntity,
   getCurrentSlot,
   getEligibleForSlot,
+  hasActiveRound,
   isAssignmentComplete,
   isRoundReady,
   isRoundRolled,
   isSetupComplete,
+  syncCurrentSlotIndex,
 } from "@/lib/rollSession";
 import type { RosterEntity, SlotId } from "@/types";
 import { SLOT_ORDER } from "@/types";
@@ -147,6 +149,23 @@ describe("rollSession", () => {
     expect(payload?.constructor_id).toBe("constructor");
     expect(payload?.livery_style).toBe("livery_style");
     expect(payload?.team_motto).toBe("team_motto");
+  });
+
+  it("syncs current slot index to first empty slot", () => {
+    const session = createSession();
+    session.assignments.driver_1 = "senna";
+    session.currentSlotIndex = 0;
+    const synced = syncCurrentSlotIndex(session);
+    expect(getCurrentSlot(synced)).toBe("driver_2");
+  });
+
+  it("detects active round when rolled and current slot empty", () => {
+    const session = createSession();
+    session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
+    session.rolledDecade = "1980s";
+    session.rosterPool = [mockRosterEntity("senna", ["driver_1"])];
+    expect(hasActiveRound(session)).toBe(true);
+    expect(hasActiveRound(clearPerRoundState(session))).toBe(false);
   });
 
   it("reads assigned entities from assignedEntities cache", () => {
