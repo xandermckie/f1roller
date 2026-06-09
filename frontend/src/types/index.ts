@@ -12,7 +12,7 @@ export type SlotId =
   | "livery_style"
   | "team_motto";
 
-export type SessionPhase = "rolling" | "assigning" | "simulating" | "complete";
+export type SessionPhase = "setup" | "assigning" | "simulating" | "complete";
 
 export interface RolledEntity {
   id: string;
@@ -25,6 +25,16 @@ export interface RolledEntity {
   computed_rating?: number;
   portrait_path?: string;
   accent_color?: string;
+}
+
+export interface RosterEntity extends RolledEntity {
+  assignable_slots: SlotId[];
+  role_label?: string;
+}
+
+export interface RolledTeam {
+  slug: string;
+  display_name: string;
 }
 
 export interface TeamPayload {
@@ -45,12 +55,17 @@ export interface TeamPayload {
 export interface RollSession {
   sessionId: string;
   startedAt: string;
-  rolls: Partial<Record<SlotId, RolledEntity>>;
-  currentSlotIndex: number;
-  driverOrderSwapped: boolean;
   phase: SessionPhase;
   sessionSeed: string;
   sessionVersion?: number;
+  currentSlotIndex: number;
+  rolledTeam?: RolledTeam;
+  rolledDecade?: string;
+  rosterPool: RosterEntity[];
+  assignedEntities?: Record<string, RosterEntity>;
+  assignments: Partial<Record<SlotId, string>>;
+  rerollsRemaining: { team: number; decade: number };
+  poolWarnings?: string[];
   teamPayload?: TeamPayload;
   simResult?: SimResult;
 }
@@ -121,6 +136,14 @@ export interface BenchmarkResponse {
   computed_at: string | null;
 }
 
+export interface RosterResponse {
+  team_slug: string;
+  team_display_name: string;
+  decade: string;
+  entities: RosterEntity[];
+  pool_warnings: string[];
+}
+
 export const SLOT_ORDER: SlotId[] = [
   "driver_1",
   "driver_2",
@@ -140,7 +163,7 @@ export const SLOT_LABELS: Record<SlotId, string> = {
   driver_1: "Driver 1",
   driver_2: "Driver 2",
   reserve_driver: "Reserve Driver",
-  constructor: "Constructor",
+  constructor: "Chassis",
   engine: "Engine Supplier",
   team_principal: "Team Principal",
   technical_director: "Technical Director",
@@ -161,3 +184,23 @@ export const STAT_SLOTS: SlotId[] = [
   "technical_director",
   "lead_engineer",
 ];
+
+export const ROSTER_GROUP_LABELS: Record<string, string> = {
+  driver: "Drivers",
+  constructor: "Chassis",
+  engine: "Engines",
+  personnel: "Staff",
+  sponsor: "Sponsors",
+  livery: "Livery",
+  motto: "Motto",
+};
+
+export const ROSTER_GROUP_ORDER = [
+  "driver",
+  "constructor",
+  "engine",
+  "personnel",
+  "sponsor",
+  "livery",
+  "motto",
+] as const;

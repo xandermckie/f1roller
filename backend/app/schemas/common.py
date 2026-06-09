@@ -171,3 +171,36 @@ class EntityDetail(BaseModel):
     era_factor: float
     stats_json: dict
     rating_breakdown: dict
+
+
+class RosterEntity(RolledEntity):
+    assignable_slots: list[str]
+    role_label: str | None = None
+
+
+class RosterResponse(BaseModel):
+    team_slug: str
+    team_display_name: str
+    decade: str
+    entities: list[RosterEntity]
+    pool_warnings: list[str] = Field(default_factory=list)
+
+
+class RolledTeamResponse(BaseModel):
+    slug: str
+    display_name: str
+
+
+class RolledDecadeResponse(BaseModel):
+    decade: str
+
+
+class RollTeamRequest(BaseModel):
+    session_seed: str
+    excluded_team_slugs: list[str] = Field(default_factory=list)
+    reroll_salt: str | None = None
+
+
+class RollDecadeRequest(BaseModel):
+    session_seed: str
+    reroll_salt: str | None = None

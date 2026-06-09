@@ -1,19 +1,19 @@
 import { Navigate } from "react-router-dom";
 
 import { useRollSession } from "@/hooks/useRollSession";
-import { getRoll, isRollComplete } from "@/lib/rollSession";
+import { getAssignedEntity, isAssignmentComplete, isSetupComplete } from "@/lib/rollSession";
 import { SLOT_LABELS } from "@/types";
 
 export function TeamPage(): React.ReactElement {
   const { session } = useRollSession();
 
-  if (!session.teamPayload && !isRollComplete(session)) {
+  if (!session.teamPayload && !isAssignmentComplete(session) && !isSetupComplete(session)) {
     return <Navigate to="/roll" replace />;
   }
 
-  const titleSponsor = getRoll(session, "title_sponsor");
-  const constructor = getRoll(session, "constructor");
-  const teamMotto = getRoll(session, "team_motto");
+  const titleSponsor = getAssignedEntity(session, "title_sponsor");
+  const constructor = getAssignedEntity(session, "constructor");
+  const teamMotto = getAssignedEntity(session, "team_motto");
 
   return (
     <div className="container" style={{ maxWidth: 900 }}>
@@ -35,23 +35,28 @@ export function TeamPage(): React.ReactElement {
         <p style={{ color: "rgba(255,255,255,0.8)", margin: "8px 0 0" }}>
           {teamMotto?.display_name}
         </p>
+        {session.rolledDecade && (
+          <p style={{ color: "rgba(255,255,255,0.65)", margin: "8px 0 0", fontSize: "0.875rem" }}>
+            {session.rolledTeam?.display_name} · {session.rolledDecade}
+          </p>
+        )}
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
         {(["driver_1", "driver_2", "reserve_driver"] as const).map((slot) => {
-          const entity = getRoll(session, slot);
+          const entity = getAssignedEntity(session, slot);
           return (
-          <div key={slot} className="card">
-            <p style={{ margin: "0 0 4px", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
-              {SLOT_LABELS[slot]}
-            </p>
-            <h3 style={{ margin: 0 }}>{entity?.display_name ?? "—"}</h3>
-            {entity?.computed_rating !== undefined && (
-              <p style={{ margin: "8px 0 0", fontSize: "0.875rem" }}>
-                Rating {(entity.computed_rating * 100).toFixed(0)}
+            <div key={slot} className="card">
+              <p style={{ margin: "0 0 4px", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+                {SLOT_LABELS[slot]}
               </p>
-            )}
-          </div>
+              <h3 style={{ margin: 0 }}>{entity?.display_name ?? "—"}</h3>
+              {entity?.computed_rating !== undefined && (
+                <p style={{ margin: "8px 0 0", fontSize: "0.875rem" }}>
+                  Rating {(entity.computed_rating * 100).toFixed(0)}
+                </p>
+              )}
+            </div>
           );
         })}
       </div>

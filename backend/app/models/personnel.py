@@ -15,6 +15,7 @@ class Personnel(Base):
     slug: Mapped[str] = mapped_column(String(128), unique=True, nullable=False)
     display_name: Mapped[str] = mapped_column(String(256), nullable=False)
     role: Mapped[str] = mapped_column(String(64), nullable=False)
+    peak_year: Mapped[int | None] = mapped_column(nullable=True)
     stats_json: Mapped[dict] = mapped_column(JSON().with_variant(JSONB, "postgresql"), default=dict)
     computed_rating: Mapped[float] = mapped_column(Float, default=0.5)
     era_factor: Mapped[float] = mapped_column(Float, default=1.0)

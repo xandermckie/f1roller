@@ -1,91 +1,156 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  advancePhase,
   buildTeamPayload,
+  canAssign,
+  canAdvanceRound,
+  clearPerRoundState,
   createSession,
-  getExcludedIds,
-  getRoll,
-  isRollComplete,
+  getAssignedEntity,
+  getCurrentSlot,
+  getEligibleForSlot,
+  isAssignmentComplete,
+  isRoundReady,
+  isSetupComplete,
 } from "@/lib/rollSession";
-import type { RolledEntity, SlotId } from "@/types";
+import type { RosterEntity, SlotId } from "@/types";
+import { SLOT_ORDER } from "@/types";
 
-const mockEntity = (id: string): RolledEntity => ({
+const mockRosterEntity = (
+  id: string,
+  slots: SlotId[],
+  entityType = "driver",
+): RosterEntity => ({
   id,
   slug: id,
   display_name: id,
-  entity_type: "driver",
+  entity_type: entityType,
+  assignable_slots: slots,
+  role_label: "Driver",
 });
 
-const ALL_SLOTS: SlotId[] = [
-  "driver_1",
-  "driver_2",
-  "reserve_driver",
-  "constructor",
-  "engine",
-  "team_principal",
-  "technical_director",
-  "lead_engineer",
-  "title_sponsor",
-  "secondary_sponsor",
-  "livery_style",
-  "team_motto",
-];
-
 describe("rollSession", () => {
-  it("creates session with rolling phase", () => {
-    const s = createSession();
-    expect(s.phase).toBe("rolling");
-    expect(s.currentSlotIndex).toBe(0);
+  it("creates session with setup phase and slot index 0", () => {
+    const session = createSession();
+    expect(session.phase).toBe("setup");
+    expect(session.currentSlotIndex).toBe(0);
+    expect(session.rerollsRemaining).toEqual({ team: 1, decade: 1 });
+    expect(getCurrentSlot(session)).toBe("driver_1");
   });
 
-  it("tracks excluded ids", () => {
-    const s = createSession();
-    s.rolls.driver_1 = mockEntity("a");
-    expect(getExcludedIds(s)).toContain("a");
+  it("detects round ready when team, decade, and roster exist", () => {
+    const session = createSession();
+    expect(isRoundReady(session)).toBe(false);
+    session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
+    session.rolledDecade = "1980s";
+    session.rosterPool = [mockRosterEntity("senna", ["driver_1", "driver_2", "reserve_driver"])];
+    expect(isRoundReady(session)).toBe(true);
   });
 
-  it("advances slot index", () => {
-    const s = createSession();
-    const next = advancePhase(s);
-    expect(next.currentSlotIndex).toBe(1);
-  });
-
-  it("detects incomplete rolls", () => {
-    const s = createSession();
-    expect(isRollComplete(s)).toBe(false);
-  });
-
-  it("does not treat Object.prototype.constructor as a rolled constructor", () => {
-    const s = createSession();
-    for (const slot of ALL_SLOTS) {
-      if (slot === "constructor") continue;
-      s.rolls[slot] = mockEntity(slot);
+  it("setup complete means all assignments filled", () => {
+    const session = createSession();
+    expect(isSetupComplete(session)).toBe(false);
+    for (const slot of SLOT_ORDER) {
+      session.assignments[slot] = slot;
     }
-
-    expect(getRoll(s, "constructor")).toBeUndefined();
-    expect(isRollComplete(s)).toBe(false);
-    expect(buildTeamPayload(s)).toBeNull();
+    expect(isSetupComplete(session)).toBe(true);
   });
 
-  it("reads constructor roll when own property is set", () => {
-    const s = createSession();
-    for (const slot of ALL_SLOTS) {
-      s.rolls[slot] = mockEntity(slot);
-    }
-
-    expect(getRoll(s, "constructor")?.id).toBe("constructor");
-    expect(isRollComplete(s)).toBe(true);
+  it("filters eligible entities for current slot", () => {
+    const session = createSession();
+    session.rosterPool = [
+      mockRosterEntity("senna", ["driver_1", "driver_2"]),
+      mockRosterEntity("tp", ["team_principal"], "personnel"),
+    ];
+    const eligible = getEligibleForSlot(session, "driver_1");
+    expect(eligible).toHaveLength(1);
+    expect(eligible[0]?.id).toBe("senna");
   });
 
-  it("builds team payload when complete", () => {
-    const s = createSession();
-    for (const slot of ALL_SLOTS) {
-      s.rolls[slot] = mockEntity(slot);
+  it("excludes already assigned entities from eligible pool", () => {
+    const session = createSession();
+    session.rosterPool = [
+      mockRosterEntity("senna", ["driver_1", "driver_2"]),
+      mockRosterEntity("prost", ["driver_1", "driver_2"]),
+    ];
+    session.assignments.driver_1 = "senna";
+    const eligible = getEligibleForSlot(session, "driver_2");
+    expect(eligible).toHaveLength(1);
+    expect(eligible[0]?.id).toBe("prost");
+  });
+
+  it("clears per-round state after assignment", () => {
+    const session = createSession();
+    session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
+    session.rolledDecade = "1980s";
+    session.rosterPool = [mockRosterEntity("senna", ["driver_1"])];
+    session.assignments.driver_1 = "senna";
+    const cleared = clearPerRoundState(session);
+    expect(cleared.rolledTeam).toBeUndefined();
+    expect(cleared.rolledDecade).toBeUndefined();
+    expect(cleared.rosterPool).toEqual([]);
+    expect(cleared.assignments.driver_1).toBe("senna");
+  });
+
+  it("detects when current round can advance", () => {
+    const session = createSession();
+    expect(canAdvanceRound(session)).toBe(false);
+    session.assignments.driver_1 = "senna";
+    expect(canAdvanceRound(session)).toBe(true);
+  });
+
+  it("validates role assignment", () => {
+    const driver = mockRosterEntity("d1", ["driver_1", "driver_2", "reserve_driver"]);
+    const tp = mockRosterEntity("tp", ["team_principal"], "personnel");
+    expect(canAssign(driver, "driver_1")).toBe(true);
+    expect(canAssign(driver, "team_principal")).toBe(false);
+    expect(canAssign(tp, "team_principal")).toBe(true);
+  });
+
+  it("detects incomplete assignments", () => {
+    const session = createSession();
+    session.rosterPool = SLOT_ORDER.map((slot) =>
+      mockRosterEntity(slot, [slot], slot.includes("driver") ? "driver" : slot),
+    );
+    expect(isAssignmentComplete(session)).toBe(false);
+  });
+
+  it("builds team payload when all slots assigned", () => {
+    const session = createSession();
+    const entities = SLOT_ORDER.map((slot) => {
+      const entityType = slot.includes("driver")
+        ? "driver"
+        : slot === "constructor"
+          ? "constructor"
+          : slot === "engine"
+            ? "engine"
+            : slot.includes("sponsor")
+              ? "sponsor"
+              : slot === "livery_style"
+                ? "livery"
+                : slot === "team_motto"
+                  ? "motto"
+                  : "personnel";
+      return mockRosterEntity(slot, [slot], entityType);
+    });
+    session.rosterPool = entities;
+    session.assignedEntities = Object.fromEntries(entities.map((e) => [e.id, e]));
+    for (const slot of SLOT_ORDER) {
+      session.assignments[slot] = slot;
     }
-    const payload = buildTeamPayload(s);
+    const payload = buildTeamPayload(session);
     expect(payload).not.toBeNull();
     expect(payload?.driver_1_id).toBe("driver_1");
     expect(payload?.constructor_id).toBe("constructor");
+    expect(payload?.livery_style).toBe("livery_style");
+    expect(payload?.team_motto).toBe("team_motto");
+  });
+
+  it("reads assigned entities from assignedEntities cache", () => {
+    const session = createSession();
+    const entity = mockRosterEntity("senna", ["driver_1"]);
+    session.assignedEntities = { senna: entity };
+    session.assignments.driver_1 = "senna";
+    expect(getAssignedEntity(session, "driver_1")?.display_name).toBe("senna");
   });
 });

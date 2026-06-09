@@ -1,24 +1,21 @@
-import type { RollSession, RolledEntity, SlotId, TeamPayload } from "@/types";
+import type { RollSession, RosterEntity, SlotId, TeamPayload } from "@/types";
 import { SLOT_ORDER } from "@/types";
 
 const STORAGE_KEY = "f1roller_roll_session";
-export const SESSION_VERSION = 2;
-
-export function getRoll(session: RollSession, slot: SlotId): RolledEntity | undefined {
-  if (!Object.hasOwn(session.rolls, slot)) return undefined;
-  return session.rolls[slot];
-}
+export const SESSION_VERSION = 4;
 
 export function createSession(): RollSession {
   return {
     sessionId: crypto.randomUUID(),
     startedAt: new Date().toISOString(),
-    rolls: {},
-    currentSlotIndex: 0,
-    driverOrderSwapped: false,
-    phase: "rolling",
+    phase: "setup",
     sessionSeed: crypto.randomUUID(),
     sessionVersion: SESSION_VERSION,
+    currentSlotIndex: 0,
+    rosterPool: [],
+    assignedEntities: {},
+    assignments: {},
+    rerollsRemaining: { team: 1, decade: 1 },
   };
 }
 
@@ -42,70 +39,148 @@ export function clearSession(): void {
   sessionStorage.removeItem(STORAGE_KEY);
 }
 
-export function getExcludedIds(session: RollSession): string[] {
-  return SLOT_ORDER.filter((slot) => Object.hasOwn(session.rolls, slot))
-    .map((slot) => session.rolls[slot]!.id);
+export function getCurrentSlot(session: RollSession): SlotId {
+  const slot = SLOT_ORDER[session.currentSlotIndex];
+  return slot ?? "driver_1";
 }
 
-export function currentSlot(session: RollSession): SlotId | null {
-  if (session.currentSlotIndex >= SLOT_ORDER.length) return null;
-  return SLOT_ORDER[session.currentSlotIndex] ?? null;
+export function getNextEmptySlotIndex(session: RollSession): number | null {
+  for (let i = 0; i < SLOT_ORDER.length; i++) {
+    const slotId = SLOT_ORDER[i];
+    if (slotId && !session.assignments[slotId]) {
+      return i;
+    }
+  }
+  return null;
 }
 
-export function isRollComplete(session: RollSession): boolean {
-  return SLOT_ORDER.every((slot) => Object.hasOwn(session.rolls, slot));
+export function isRoundReady(session: RollSession): boolean {
+  return Boolean(
+    session.rolledTeam &&
+      session.rolledDecade &&
+      session.rosterPool.length > 0,
+  );
+}
+
+export function canAdvanceRound(session: RollSession): boolean {
+  const slot = getCurrentSlot(session);
+  return Boolean(session.assignments[slot]);
+}
+
+export function isSetupComplete(session: RollSession): boolean {
+  return isAssignmentComplete(session);
+}
+
+export function isAssignmentComplete(session: RollSession): boolean {
+  return SLOT_ORDER.every((slot) => Boolean(session.assignments[slot]));
+}
+
+export function getPoolEntity(
+  session: RollSession,
+  entityId: string,
+): RosterEntity | undefined {
+  return session.rosterPool.find((entity) => entity.id === entityId);
+}
+
+export function getAssignedEntity(
+  session: RollSession,
+  slotId: SlotId,
+): RosterEntity | undefined {
+  const entityId = session.assignments[slotId];
+  if (!entityId) return undefined;
+  return (
+    session.rosterPool.find((entity) => entity.id === entityId) ??
+    session.assignedEntities?.[entityId]
+  );
+}
+
+export function getAssignedEntityIds(session: RollSession): Set<string> {
+  return new Set(
+    SLOT_ORDER.map((slot) => session.assignments[slot]).filter(Boolean) as string[],
+  );
+}
+
+export function getEligibleForSlot(session: RollSession, slotId: SlotId): RosterEntity[] {
+  const assignedIds = getAssignedEntityIds(session);
+  return session.rosterPool.filter(
+    (entity) =>
+      entity.assignable_slots.includes(slotId) && !assignedIds.has(entity.id),
+  );
+}
+
+export function getAvailablePool(session: RollSession): RosterEntity[] {
+  const assignedIds = getAssignedEntityIds(session);
+  return session.rosterPool.filter((entity) => !assignedIds.has(entity.id));
+}
+
+export function canAssign(entity: RosterEntity, slotId: SlotId): boolean {
+  return entity.assignable_slots.includes(slotId);
+}
+
+export function countFilledSlots(session: RollSession): number {
+  return SLOT_ORDER.filter((slot) => Boolean(session.assignments[slot])).length;
+}
+
+export function clearPerRoundState(session: RollSession): RollSession {
+  return {
+    ...session,
+    rolledTeam: undefined,
+    rolledDecade: undefined,
+    rosterPool: [],
+    poolWarnings: undefined,
+  };
 }
 
 export function buildTeamPayload(session: RollSession): TeamPayload | null {
-  const d1 = session.driverOrderSwapped ? getRoll(session, "driver_2") : getRoll(session, "driver_1");
-  const d2 = session.driverOrderSwapped ? getRoll(session, "driver_1") : getRoll(session, "driver_2");
-  const reserveDriver = getRoll(session, "reserve_driver");
-  const constructor = getRoll(session, "constructor");
-  const engine = getRoll(session, "engine");
-  const teamPrincipal = getRoll(session, "team_principal");
-  const technicalDirector = getRoll(session, "technical_director");
-  const leadEngineer = getRoll(session, "lead_engineer");
-  const titleSponsor = getRoll(session, "title_sponsor");
-  const secondarySponsor = getRoll(session, "secondary_sponsor");
-  const liveryStyle = getRoll(session, "livery_style");
-  const teamMotto = getRoll(session, "team_motto");
+  if (!isAssignmentComplete(session)) {
+    return null;
+  }
+
+  const getId = (slot: SlotId): string | null => session.assignments[slot] ?? null;
+  const getEntity = (slot: SlotId): RosterEntity | undefined => getAssignedEntity(session, slot);
+
+  const driver1Id = getId("driver_1");
+  const driver2Id = getId("driver_2");
+  const reserveId = getId("reserve_driver");
+  const constructorId = getId("constructor");
+  const engineId = getId("engine");
+  const tpId = getId("team_principal");
+  const tdId = getId("technical_director");
+  const engineerId = getId("lead_engineer");
+  const titleId = getId("title_sponsor");
+  const secondaryId = getId("secondary_sponsor");
+  const livery = getEntity("livery_style");
+  const motto = getEntity("team_motto");
 
   if (
-    !d1 ||
-    !d2 ||
-    !reserveDriver ||
-    !constructor ||
-    !engine ||
-    !teamPrincipal ||
-    !technicalDirector ||
-    !leadEngineer ||
-    !titleSponsor ||
-    !secondarySponsor ||
-    !liveryStyle ||
-    !teamMotto
+    !driver1Id ||
+    !driver2Id ||
+    !reserveId ||
+    !constructorId ||
+    !engineId ||
+    !tpId ||
+    !tdId ||
+    !engineerId ||
+    !titleId ||
+    !secondaryId ||
+    !livery ||
+    !motto
   ) {
     return null;
   }
 
   return {
-    driver_1_id: d1.id,
-    driver_2_id: d2.id,
-    reserve_driver_id: reserveDriver.id,
-    constructor_id: constructor.id,
-    engine_id: engine.id,
-    team_principal_id: teamPrincipal.id,
-    technical_director_id: technicalDirector.id,
-    lead_engineer_id: leadEngineer.id,
-    title_sponsor_id: titleSponsor.id,
-    secondary_sponsor_id: secondarySponsor.id,
-    livery_style: liveryStyle.slug,
-    team_motto: teamMotto.display_name,
+    driver_1_id: driver1Id,
+    driver_2_id: driver2Id,
+    reserve_driver_id: reserveId,
+    constructor_id: constructorId,
+    engine_id: engineId,
+    team_principal_id: tpId,
+    technical_director_id: tdId,
+    lead_engineer_id: engineerId,
+    title_sponsor_id: titleId,
+    secondary_sponsor_id: secondaryId,
+    livery_style: livery.slug,
+    team_motto: motto.display_name,
   };
-}
-
-export function advancePhase(session: RollSession): RollSession {
-  if (session.currentSlotIndex < SLOT_ORDER.length - 1) {
-    return { ...session, currentSlotIndex: session.currentSlotIndex + 1 };
-  }
-  return { ...session, phase: "assigning" };
 }

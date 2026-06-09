@@ -5,25 +5,63 @@ interface RollCardProps {
   revealed: boolean;
   rolling?: boolean;
   slotLabel: string;
+  onReroll?: () => void;
+  rerollsLeft?: number;
+  rerollDisabled?: boolean;
 }
 
-export function RollCard({ entity, revealed, rolling = false, slotLabel }: RollCardProps): React.ReactElement {
+export function RollCard({
+  entity,
+  revealed,
+  rolling = false,
+  slotLabel,
+  onReroll,
+  rerollsLeft,
+  rerollDisabled = false,
+}: RollCardProps): React.ReactElement {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const showReroll = revealed && onReroll !== undefined;
 
   return (
     <div
       className="card"
       aria-live="polite"
       style={{
-        minHeight: 320,
+        minHeight: 280,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         perspective: "1000px",
+        position: "relative",
       }}
     >
+      {showReroll && (
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={onReroll}
+          disabled={rerollDisabled || (rerollsLeft ?? 0) <= 0}
+          title={
+            (rerollsLeft ?? 0) > 0
+              ? `Reroll (${rerollsLeft} left this game)`
+              : "No rerolls left"
+          }
+          aria-label={`Reroll ${slotLabel}`}
+          style={{
+            position: "absolute",
+            top: 12,
+            right: 12,
+            padding: "4px 8px",
+            fontSize: "0.75rem",
+            minWidth: "auto",
+            lineHeight: 1,
+          }}
+        >
+          ↻
+        </button>
+      )}
       <p style={{ color: "var(--color-text-muted)", margin: "0 0 16px", fontSize: "0.875rem" }}>
         {slotLabel}
       </p>
@@ -77,7 +115,7 @@ export function RollCard({ entity, revealed, rolling = false, slotLabel }: RollC
         <div
           style={{
             width: 200,
-            height: 280,
+            height: 200,
             border: "2px dashed var(--color-border)",
             borderRadius: "var(--radius-card)",
             display: "flex",

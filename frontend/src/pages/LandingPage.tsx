@@ -41,11 +41,11 @@ export function LandingPage(): React.ReactElement {
         />
         <div style={{ position: "relative", padding: 48, maxWidth: 640 }}>
           <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#fff", margin: "0 0 16px" }}>
-            Roll your dream F1 team. Any era. One shot.
+            Roll your team. Pick your era. Build the garage.
           </h1>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.125rem", margin: "0 0 28px" }}>
-            Build a cross-era fantasy squad, simulate the full 2026 season, and see if you&apos;d win
-            the championship.
+            Roll a constructor and decade, assign your roster to every role, simulate the full 2026
+            season, and chase the championship.
           </p>
           <Link to="/roll" className="btn" style={{ textDecoration: "none", display: "inline-block" }}>
             Build Your Team
@@ -55,9 +55,9 @@ export function LandingPage(): React.ReactElement {
 
       <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
         {[
-          { title: "12 rolls", desc: "One roll per slot. No re-rolls, no edits." },
+          { title: "Team + decade", desc: "Roll your constructor and era. One reroll each per run." },
+          { title: "Build your roster", desc: "Assign drivers, staff, engine, chassis, and sponsors to matching slots." },
           { title: "2026 season", desc: "Full calendar from OpenF1. Realistic low-randomness sim." },
-          { title: "Any era", desc: "Legends and modern stars in the same garage." },
         ].map((item) => (
           <div key={item.title} className="card">
             <h3 style={{ margin: "0 0 8px", color: "var(--color-accent)" }}>{item.title}</h3>

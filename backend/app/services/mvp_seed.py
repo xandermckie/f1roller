@@ -106,6 +106,7 @@ def seed_mvp_roster(db: Session, data: dict | None = None) -> None:
                 slug=item["slug"],
                 display_name=item["display_name"],
                 role=item["role"],
+                peak_year=item["peak_year"],
                 stats_json=item["stats"],
                 computed_rating=rating,
                 era_factor=era_factor_personnel(item["peak_year"]),

@@ -1,13 +1,14 @@
 import type {
   BenchmarkResponse,
   CalendarEvent,
+  RosterResponse,
   RolledEntity,
   SimResult,
   SlotId,
   TeamPayload,
 } from "@/types";
 
-const API_BASE = import.meta.env.VITE_API_URL ?? "/api";
+const API_BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
 
 interface ValidationDetail {
   msg?: string;
@@ -15,6 +16,10 @@ interface ValidationDetail {
 }
 
 function formatApiError(status: number, text: string): string {
+  if (status === 405) {
+    return "Method not allowed — is the backend running on port 8000 and is VITE_API_URL set to /api?";
+  }
+
   if (!text) {
     if (status === 502 || status === 503 || status === 500) {
       return "Cannot reach the API. Start the backend with: cd backend && uvicorn app.main:app --reload --port 8000";
@@ -110,4 +115,69 @@ export function getBenchmark(): Promise<BenchmarkResponse> {
 
 export function getSources(): Promise<SourceMeta[]> {
   return request("/sources");
+}
+
+export interface HealthResponse {
+  status: string;
+  db: string;
+}
+
+export function getHealth(): Promise<HealthResponse> {
+  return request("/health");
+}
+
+export interface RolledTeamResponse {
+  slug: string;
+  display_name: string;
+}
+
+export interface RolledDecadeResponse {
+  decade: string;
+}
+
+export function rollTeam(
+  sessionSeed: string,
+  options?: { excludedTeamSlugs?: string[]; rerollSalt?: string },
+): Promise<RolledTeamResponse> {
+  return request("/roster/roll-team", {
+    method: "POST",
+    body: JSON.stringify({
+      session_seed: sessionSeed,
+      excluded_team_slugs: options?.excludedTeamSlugs ?? [],
+      reroll_salt: options?.rerollSalt ?? null,
+    }),
+  });
+}
+
+export function rollDecade(
+  sessionSeed: string,
+  rerollSalt?: string,
+): Promise<RolledDecadeResponse> {
+  return request("/roster/roll-decade", {
+    method: "POST",
+    body: JSON.stringify({
+      session_seed: sessionSeed,
+      reroll_salt: rerollSalt ?? null,
+    }),
+  });
+}
+
+export function fetchRoster(teamSlug: string, decade: string): Promise<RosterResponse> {
+  const params = new URLSearchParams({ team_slug: teamSlug, decade });
+  return request(`/roster?${params.toString()}`);
+}
+
+export interface EntityDetail {
+  id: string;
+  slug: string;
+  display_name: string;
+  entity_type: string;
+  computed_rating: number;
+  era_factor: number;
+  stats_json: Record<string, number>;
+  rating_breakdown: Record<string, number>;
+}
+
+export function getEntityDetail(entityId: string): Promise<EntityDetail> {
+  return request(`/entities/${entityId}`);
 }

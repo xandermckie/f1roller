@@ -1,6 +1,6 @@
 # F1 Roller
 
-Unofficial fan F1 fantasy team builder and 2026 season simulator. Roll a cross-era team once per visit, simulate the full season, and compare against the theoretical best squad and the real 2026 grid.
+Unofficial fan F1 fantasy team builder and 2026 season simulator. Roll a constructor and decade, assign your era roster to every team slot, simulate the full season, and compare against the theoretical best squad and the real 2026 grid.
 
 **Created by [Xander McKie](https://github.com/xandermckie)**
 
