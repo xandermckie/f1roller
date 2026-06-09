@@ -14,7 +14,11 @@ router = APIRouter()
 @router.get("/health", response_model=HealthResponse)
 def health(db: Session = Depends(get_db)) -> HealthResponse:
     cache_age_hours: float | None = None
-    latest = db.query(func.max(ScrapeCache.fetched_at)).scalar()
+    latest = None
+    try:
+        latest = db.query(func.max(ScrapeCache.fetched_at)).scalar()
+    except Exception:
+        latest = None
     if latest:
         if latest.tzinfo is None:
             latest = latest.replace(tzinfo=timezone.utc)

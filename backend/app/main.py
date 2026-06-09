@@ -7,12 +7,18 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import api_router
 from app.config import settings
-from app.db import init_db
+from app.db import SessionLocal, init_db
+from app.services.mvp_seed import ensure_mvp_seeded
 
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
+    db = SessionLocal()
+    try:
+        ensure_mvp_seeded(db)
+    finally:
+        db.close()
     yield
 
 

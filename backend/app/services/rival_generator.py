@@ -46,6 +46,9 @@ def generate_rivals(
     )
     personnel = db.query(Personnel).all()
 
+    if not constructors or not engines or not drivers or not personnel:
+        raise ValueError("Roster data is missing. Restart the API to auto-seed the database.")
+
     tps = [p for p in personnel if p.role == "team_principal"]
     tds = [p for p in personnel if p.role == "technical_director"]
     engineers = [p for p in personnel if p.role == "lead_engineer"]
@@ -67,7 +70,12 @@ def generate_rivals(
             used_drivers -= excluded
             available = [d for d in drivers if str(d.id) not in used_drivers]
 
+        if not available:
+            raise ValueError("Not enough drivers available to build rival teams.")
+
         selected = rng.sample(available, min(3, len(available)))
+        while len(selected) < 3:
+            selected.append(rng.choice(available))
         for d in selected:
             used_drivers.add(str(d.id))
 

@@ -52,19 +52,27 @@ def _apply_efficiency(db: Session, result: SimResult) -> SimResult:
 def _run_simulation(db: Session, team_payload: TeamPayload, session_seed: str) -> SimResult:
     try:
         user_team = build_user_team(db, team_payload)
-    except (ValueError, Exception) as exc:
+    except Exception as exc:
         raise HTTPException(status_code=422, detail="Invalid team payload") from exc
-    rivals = generate_rivals(
-        db,
-        [
-            UUID(team_payload.driver_1_id),
-            UUID(team_payload.driver_2_id),
-            UUID(team_payload.reserve_driver_id),
-        ],
-    )
-    calendar = _get_calendar_races(db)
-    result = simulate_season(user_team, rivals, calendar, session_seed)
-    return _apply_efficiency(db, result)
+
+    try:
+        rivals = generate_rivals(
+            db,
+            [
+                UUID(team_payload.driver_1_id),
+                UUID(team_payload.driver_2_id),
+                UUID(team_payload.reserve_driver_id),
+            ],
+        )
+        calendar = _get_calendar_races(db)
+        result = simulate_season(user_team, rivals, calendar, session_seed)
+        return _apply_efficiency(db, result)
+    except HTTPException:
+        raise
+    except ValueError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail="Simulation failed") from exc
 
 
 @router.post("/simulate", response_model=SimResult)

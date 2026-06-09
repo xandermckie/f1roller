@@ -9,14 +9,52 @@ import type {
 
 const API_BASE = import.meta.env.VITE_API_URL ?? "/api";
 
+interface ValidationDetail {
+  msg?: string;
+  loc?: unknown[];
+}
+
+function formatApiError(status: number, text: string): string {
+  if (!text) {
+    if (status === 502 || status === 503 || status === 500) {
+      return "Cannot reach the API. Start the backend with: cd backend && uvicorn app.main:app --reload --port 8000";
+    }
+    return `API error ${status}`;
+  }
+
+  try {
+    const parsed = JSON.parse(text) as { detail?: string | ValidationDetail[] };
+    if (typeof parsed.detail === "string") {
+      return parsed.detail;
+    }
+    if (Array.isArray(parsed.detail)) {
+      return parsed.detail
+        .map((item) => item.msg ?? JSON.stringify(item))
+        .join("; ");
+    }
+  } catch {
+    // Non-JSON error bodies fall through.
+  }
+
+  return text;
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
-    headers: { "Content-Type": "application/json", ...options?.headers },
-    ...options,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      headers: { "Content-Type": "application/json", ...options?.headers },
+      ...options,
+    });
+  } catch {
+    throw new Error(
+      "Cannot reach the API. Start the backend with: cd backend && uvicorn app.main:app --reload --port 8000",
+    );
+  }
+
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(text || `API error ${response.status}`);
+    throw new Error(formatApiError(response.status, text));
   }
   return response.json() as Promise<T>;
 }
