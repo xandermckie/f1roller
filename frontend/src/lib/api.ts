@@ -21,8 +21,11 @@ function formatApiError(status: number, text: string): string {
   }
 
   if (!text) {
-    if (status === 502 || status === 503 || status === 500) {
-      return "Cannot reach the API. Start the backend with: cd backend && uvicorn app.main:app --reload --port 8000";
+    if (status === 503) {
+      return "Database schema outdated. Restart the backend or delete backend/f1roller.db and re-seed.";
+    }
+    if (status === 502 || status === 500) {
+      return "Server error loading roster. Restart the backend with: cd backend && uvicorn app.main:app --reload --port 8000";
     }
     return `API error ${status}`;
   }

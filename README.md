@@ -42,6 +42,8 @@ Open http://localhost:5173 — API proxied to port 8000.
 
 Copy `backend/.env.example` to `backend/.env` if you need custom env vars.
 
+If roster rolls fail with a database error, delete `backend/f1roller.db` and restart the API (migrations run automatically on startup).
+
 ### Hero Images
 
 ```bash

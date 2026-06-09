@@ -294,6 +294,7 @@ def _filter_engines(
 
 def _filter_personnel(
     db: Session,
+    team_slug: str,
     decade_start: int,
     decade_end: int,
     year_padding: int,
@@ -303,7 +304,9 @@ def _filter_personnel(
     return [
         _personnel_entity(p)
         for p in db.query(Personnel).all()
-        if p.role in ROLE_SLOTS and _year_in_range(p.peak_year, start, end)
+        if p.role in ROLE_SLOTS
+        and team_slug in (p.teams_history or [])
+        and _year_in_range(p.peak_year, start, end)
     ]
 
 
@@ -382,11 +385,11 @@ def build_roster(db: Session, team_slug: str, decade: str) -> RosterResponse:
         engines = _filter_engines(db, decade_start, decade_end, engine_pad)
         warnings.append("Thin engine pool — era window widened by 5 years")
 
-    personnel = _filter_personnel(db, decade_start, decade_end, personnel_pad)
+    personnel = _filter_personnel(db, team_slug, decade_start, decade_end, personnel_pad)
     roles_present = {p.role_label for p in personnel if p.role_label}
     if len(roles_present) < len(ROLE_LABELS):
         personnel_pad = 8
-        personnel = _filter_personnel(db, decade_start, decade_end, personnel_pad)
+        personnel = _filter_personnel(db, team_slug, decade_start, decade_end, personnel_pad)
         warnings.append("Thin staff pool — era window widened by 8 years")
 
     title_sponsors = _filter_sponsors(

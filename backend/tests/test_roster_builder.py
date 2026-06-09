@@ -70,6 +70,7 @@ def full_seed(db_session):
                 display_name=item["display_name"],
                 role=item["role"],
                 peak_year=item["peak_year"],
+                teams_history=item.get("teams", []),
                 stats_json=item["stats"],
                 computed_rating=0.7,
             )
@@ -95,6 +96,13 @@ def test_mclaren_1980s_includes_senna_prost(full_seed):
     assert "ayrton-senna" in driver_slugs
     assert "alain-prost" in driver_slugs
     assert roster.team_display_name == "McLaren"
+
+
+def test_personnel_filtered_by_team(full_seed):
+    roster = build_roster(full_seed, "mclaren", "1980s")
+    personnel_slugs = {e.slug for e in roster.entities if e.entity_type == "personnel"}
+    assert "ron-dennis" in personnel_slugs
+    assert "toto-wolff" not in personnel_slugs
 
 
 def test_personnel_assignable_slots_match_role(full_seed):

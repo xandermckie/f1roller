@@ -11,6 +11,7 @@ import {
   getEligibleForSlot,
   isAssignmentComplete,
   isRoundReady,
+  isRoundRolled,
   isSetupComplete,
 } from "@/lib/rollSession";
 import type { RosterEntity, SlotId } from "@/types";
@@ -38,11 +39,13 @@ describe("rollSession", () => {
     expect(getCurrentSlot(session)).toBe("driver_1");
   });
 
-  it("detects round ready when team, decade, and roster exist", () => {
+  it("detects round rolled when team and decade exist", () => {
     const session = createSession();
-    expect(isRoundReady(session)).toBe(false);
+    expect(isRoundRolled(session)).toBe(false);
     session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
     session.rolledDecade = "1980s";
+    expect(isRoundRolled(session)).toBe(true);
+    expect(isRoundReady(session)).toBe(false);
     session.rosterPool = [mockRosterEntity("senna", ["driver_1", "driver_2", "reserve_driver"])];
     expect(isRoundReady(session)).toBe(true);
   });

@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session
 
 from app.db import get_db
@@ -41,3 +42,11 @@ def api_get_roster(
         return build_roster(db, team_slug, decade)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except OperationalError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Database schema outdated. Restart the backend to run migrations, "
+                "or delete backend/f1roller.db and re-seed."
+            ),
+        ) from exc

@@ -54,12 +54,12 @@ export function getNextEmptySlotIndex(session: RollSession): number | null {
   return null;
 }
 
+export function isRoundRolled(session: RollSession): boolean {
+  return Boolean(session.rolledTeam && session.rolledDecade);
+}
+
 export function isRoundReady(session: RollSession): boolean {
-  return Boolean(
-    session.rolledTeam &&
-      session.rolledDecade &&
-      session.rosterPool.length > 0,
-  );
+  return isRoundRolled(session) && session.rosterPool.length > 0;
 }
 
 export function canAdvanceRound(session: RollSession): boolean {

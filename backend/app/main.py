@@ -7,16 +7,19 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import api_router
 from app.config import settings
-from app.db import SessionLocal, init_db
-from app.services.mvp_seed import ensure_mvp_seeded
+from app.db import SessionLocal, engine, init_db
+from app.db_migrate import upgrade_schema
+from app.services.mvp_seed import backfill_personnel_from_seed, ensure_mvp_seeded
 
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     init_db()
+    upgrade_schema(engine)
     db = SessionLocal()
     try:
         ensure_mvp_seeded(db)
+        backfill_personnel_from_seed(db)
     finally:
         db.close()
     yield

@@ -78,12 +78,26 @@ export function useRollSession(): {
   );
 
   const rollRound = useCallback(async (): Promise<boolean> => {
-    if (isAssignmentComplete(session)) return false;
     setLoading(true);
     setError(null);
     const startedAt = Date.now();
+
+    let seed = "";
+    let skip = false;
+    setSession((current) => {
+      if (isAssignmentComplete(current)) {
+        skip = true;
+        return current;
+      }
+      seed = current.sessionSeed;
+      return current;
+    });
+    if (skip) {
+      setLoading(false);
+      return false;
+    }
+
     try {
-      const seed = session.sessionSeed;
       const [team, { decade }] = await Promise.all([
         apiRollTeam(seed),
         apiRollDecade(seed),
@@ -92,23 +106,34 @@ export function useRollSession(): {
       if (elapsed < MIN_ROLL_ANIMATION_MS) {
         await delay(MIN_ROLL_ANIMATION_MS - elapsed);
       }
-      const next: RollSession = {
-        ...session,
+
+      setSession((current) => ({
+        ...current,
         rolledTeam: { slug: team.slug, display_name: team.display_name },
         rolledDecade: decade,
         rosterPool: [],
         poolWarnings: undefined,
-      };
-      const withRoster = await loadRosterForRound(next);
-      setSession(withRoster);
-      return true;
+      }));
+
+      try {
+        const roster = await fetchRoster(team.slug, decade);
+        setSession((current) => ({
+          ...current,
+          rosterPool: roster.entities,
+          poolWarnings: roster.pool_warnings,
+        }));
+        return roster.entities.length > 0;
+      } catch (rosterErr) {
+        setError(rosterErr instanceof Error ? rosterErr.message : "Roster load failed");
+        return false;
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Roll failed");
       return false;
     } finally {
       setLoading(false);
     }
-  }, [session, loadRosterForRound]);
+  }, []);
 
   const rerollTeam = useCallback(async (): Promise<void> => {
     if (session.rerollsRemaining.team <= 0 || !session.rolledTeam) return;

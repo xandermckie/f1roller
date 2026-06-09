@@ -87,12 +87,8 @@ export function RollPage(): React.ReactElement {
     setDecadeRevealed(false);
     setSelectedEntityId(null);
     setLocalError(null);
-    const ok = await rollRound();
+    await rollRound();
     setIsRolling(false);
-    if (ok) {
-      setTeamRevealed(true);
-      setDecadeRevealed(true);
-    }
   };
 
   const handleSlotClick = (slotId: SlotId): void => {
@@ -226,6 +222,7 @@ export function RollPage(): React.ReactElement {
                   <span style={{ fontWeight: 400, color: "var(--color-text-muted)", fontSize: "0.875rem" }}>
                     {" "}
                     — {session.rolledTeam.display_name} · {session.rolledDecade}
+                    {availablePool.length > 0 ? ` · ${availablePool.length} available picks` : ""}
                   </span>
                 )}
               </h2>

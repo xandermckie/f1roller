@@ -107,6 +107,7 @@ def seed_mvp_roster(db: Session, data: dict | None = None) -> None:
                 display_name=item["display_name"],
                 role=item["role"],
                 peak_year=item["peak_year"],
+                teams_history=item.get("teams", []),
                 stats_json=item["stats"],
                 computed_rating=rating,
                 era_factor=era_factor_personnel(item["peak_year"]),
@@ -132,6 +133,29 @@ def seed_mvp_roster(db: Session, data: dict | None = None) -> None:
     sync_real_grid(db)
     team_payload, pace, _ = compute_benchmark(db)
     save_benchmark(db, team_payload, pace)
+
+
+def backfill_personnel_from_seed(db: Session, data: dict | None = None) -> int:
+    """Update existing personnel rows with peak_year and teams_history from seed."""
+    payload = data or load_seed_data()
+    updated = 0
+    for item in payload.get("personnel", []):
+        person = db.query(Personnel).filter(Personnel.slug == item["slug"]).first()
+        if not person:
+            continue
+        changed = False
+        if person.peak_year is None and item.get("peak_year") is not None:
+            person.peak_year = item["peak_year"]
+            changed = True
+        seed_teams = item.get("teams", [])
+        if seed_teams and not (person.teams_history or []):
+            person.teams_history = seed_teams
+            changed = True
+        if changed:
+            updated += 1
+    if updated:
+        db.commit()
+    return updated
 
 
 def ensure_mvp_seeded(db: Session) -> bool:
