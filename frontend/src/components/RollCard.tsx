@@ -33,7 +33,6 @@ export function RollCard({
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        perspective: "1000px",
         position: "relative",
       }}
     >
@@ -85,7 +84,7 @@ export function RollCard({
               fontFamily: "var(--font-display)",
             }}
           >
-            {entity.display_name.charAt(0)}
+            {(entity.display_name || "?").charAt(0)}
           </div>
           <h2 style={{ margin: "0 0 8px" }}>{entity.display_name}</h2>
           {entity.peak_year && (

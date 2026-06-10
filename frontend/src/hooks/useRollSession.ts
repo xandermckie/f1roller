@@ -129,27 +129,23 @@ export function useRollSession(): {
     try {
       const team = await apiRollTeam(seed);
       const { decade } = await apiRollDecade(seed, team.slug);
+      const roster = await fetchRoster(team.slug, decade);
       const elapsed = Date.now() - startedAt;
       if (elapsed < MIN_ROLL_ANIMATION_MS) {
         await delay(MIN_ROLL_ANIMATION_MS - elapsed);
       }
 
-      setSession((current) => ({
-        ...current,
-        rolledTeam: { slug: team.slug, display_name: team.display_name },
-        rolledDecade: decade,
-        rosterPool: [],
-        poolWarnings: undefined,
-      }));
-
-      try {
-        const roster = await fetchRoster(team.slug, decade);
-        setSession((current) => applyRosterResponse(current, roster));
-        return roster.entities.length > 0;
-      } catch (rosterErr) {
-        setError(rosterErr instanceof Error ? rosterErr.message : "Roster load failed");
-        return false;
-      }
+      setSession((current) =>
+        applyRosterResponse(
+          {
+            ...current,
+            rolledTeam: { slug: team.slug, display_name: team.display_name },
+            rolledDecade: decade,
+          },
+          roster,
+        ),
+      );
+      return roster.entities.length > 0;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Roll failed");
       return false;
@@ -188,16 +184,15 @@ export function useRollSession(): {
   }, [session, loadRosterForRound]);
 
   const rerollDecade = useCallback(async (): Promise<void> => {
-    if (session.rerollsRemaining.decade <= 0 || !session.rolledDecade) return;
+    if (session.rerollsRemaining.decade <= 0 || !session.rolledDecade || !session.rolledTeam) {
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
       const salt = crypto.randomUUID();
-      const { decade } = await apiRollDecade(
-        session.sessionSeed,
-        session.rolledTeam.slug,
-        salt,
-      );
+      const teamSlug = session.rolledTeam.slug;
+      const { decade } = await apiRollDecade(session.sessionSeed, teamSlug, salt);
       const next: RollSession = {
         ...session,
         rolledDecade: decade,

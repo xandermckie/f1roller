@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ProgressBar } from "@/components/ProgressBar";
 import { RollCard } from "@/components/RollCard";
@@ -11,7 +11,7 @@ import {
   canAssignEntityToSlot,
   countFilledSlots,
   getAssignedEntity,
-  getAssignablePool,
+  getAvailablePool,
   getPoolEntity,
   hasActiveRound,
   isRoundRolled,
@@ -39,27 +39,28 @@ export function RollPage(): React.ReactElement {
     assignToSlot,
     clearSlot,
     lockTeam,
+    resetSession,
     updateSession,
     loading,
     error,
   } = useRollSession();
 
-  const [teamRevealed, setTeamRevealed] = useState(false);
-  const [decadeRevealed, setDecadeRevealed] = useState(false);
   const [isRolling, setIsRolling] = useState(false);
   const [selectedEntityId, setSelectedEntityId] = useState<string | null>(null);
   const [simulating, setSimulating] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
-  const poolRef = useRef<HTMLElement>(null);
 
   const rosterRecovery = needsRosterRecovery(session, loading);
   const roundActive = hasActiveRound(session) || (loading && isRoundRolled(session));
   const showRollButton = !roundActive && !isAssignmentComplete;
   const showPool = isRoundRolled(session) && !isAssignmentComplete;
-  const poolLoading = showPool && loading && session.rosterPool.length === 0;
+  const cardsRevealed = Boolean(
+    session.rolledTeam && session.rolledDecade && !isRolling && !loading,
+  );
+  const cardsRolling = isRolling || loading;
 
-  const availablePool = useMemo(() => getAssignablePool(session), [session]);
+  const availablePool = useMemo(() => getAvailablePool(session), [session]);
   const selectedEntity = useMemo(
     () => (selectedEntityId ? getPoolEntity(session, selectedEntityId) : undefined),
     [session, selectedEntityId],
@@ -81,28 +82,15 @@ export function RollPage(): React.ReactElement {
       .catch(() => setBackendOk(false));
   }, []);
 
-  useEffect(() => {
-    if (session.rolledTeam && session.rolledDecade && !isRolling && !loading) {
-      setTeamRevealed(true);
-      setDecadeRevealed(true);
-    } else if (!session.rolledTeam && !session.rolledDecade) {
-      setTeamRevealed(false);
-      setDecadeRevealed(false);
-    }
-  }, [session.rolledTeam, session.rolledDecade, isRolling, loading]);
-
-  if (session.phase === "complete" && session.simResult) {
-    return <Navigate to="/season" replace />;
-  }
-
   const handleRollRound = async (): Promise<void> => {
     setIsRolling(true);
-    setTeamRevealed(false);
-    setDecadeRevealed(false);
     setSelectedEntityId(null);
     setLocalError(null);
-    await rollRound();
-    setIsRolling(false);
+    try {
+      await rollRound();
+    } finally {
+      setIsRolling(false);
+    }
   };
 
   const handleSlotClick = (slotId: SlotId): void => {
@@ -119,8 +107,6 @@ export function RollPage(): React.ReactElement {
     }
     setLocalError(null);
     setSelectedEntityId(null);
-    setTeamRevealed(false);
-    setDecadeRevealed(false);
   };
 
   const handleRerollTeam = async (): Promise<void> => {
@@ -156,7 +142,21 @@ export function RollPage(): React.ReactElement {
 
   return (
     <div className="container" style={{ maxWidth: 1200 }}>
-      <h1 style={{ marginTop: 0 }}>Roll Your Team</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16 }}>
+        <h1 style={{ marginTop: 0 }}>Roll Your Team</h1>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => {
+            resetSession();
+            setSelectedEntityId(null);
+            setLocalError(null);
+          }}
+          style={{ flexShrink: 0, marginTop: 4 }}
+        >
+          Start New Team
+        </button>
+      </div>
       <p style={{ color: "var(--color-text-muted)" }}>
         Roll a constructor and era to open a roster pool — these rolls are not your final team.
         Pick one person or part from the pool, assign them to any matching open slot on the right,
@@ -185,8 +185,8 @@ export function RollPage(): React.ReactElement {
                 }
               : null
           }
-          revealed={teamRevealed}
-          rolling={isRolling || (loading && !session.rolledTeam)}
+          revealed={cardsRevealed}
+          rolling={cardsRolling && !session.rolledTeam}
           slotLabel="Rolled Constructor"
           onReroll={roundActive ? () => void handleRerollTeam() : undefined}
           rerollsLeft={session.rerollsRemaining.team}
@@ -203,8 +203,8 @@ export function RollPage(): React.ReactElement {
                 }
               : null
           }
-          revealed={decadeRevealed}
-          rolling={isRolling || (loading && !session.rolledDecade)}
+          revealed={cardsRevealed}
+          rolling={cardsRolling && !session.rolledDecade}
           slotLabel="Rolled Era"
           onReroll={roundActive ? () => void handleRerollDecade() : undefined}
           rerollsLeft={session.rerollsRemaining.decade}
@@ -236,7 +236,7 @@ export function RollPage(): React.ReactElement {
       )}
 
       <div className="roll-layout">
-        <section ref={poolRef}>
+        <section>
           {showPool && (
             <>
               <h2 style={{ fontSize: "1.125rem" }}>
@@ -254,7 +254,7 @@ export function RollPage(): React.ReactElement {
                   ? "Click a matching open slot on the right to add this pick to your team."
                   : "Choose one from this roll's roster — you are not stuck with the rolled constructor or era."}
               </p>
-              {poolLoading ? (
+              {loading && session.rosterPool.length === 0 ? (
                 <p style={{ color: "var(--color-text-muted)" }}>Loading roster…</p>
               ) : availablePool.length === 0 ? (
                 <p style={{ color: "var(--color-text-muted)" }}>

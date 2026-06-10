@@ -148,7 +148,9 @@ export function getAssignedEntity(
 
 export function getAssignedEntityIds(session: RollSession): Set<string> {
   return new Set(
-    SLOT_ORDER.map((slot) => session.assignments[slot]).filter(Boolean) as string[],
+    SLOT_ORDER.filter((slot) => isSlotFilled(session, slot))
+      .map((slot) => session.assignments[slot])
+      .filter(Boolean) as string[],
   );
 }
 
