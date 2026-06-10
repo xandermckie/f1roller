@@ -8,7 +8,7 @@ export function TeamPage(): React.ReactElement {
   const { session } = useRollSession();
 
   if (!session.teamPayload && !isAssignmentComplete(session) && !isSetupComplete(session)) {
-    return <Navigate to="/roll" replace />;
+    return <Navigate to="/play" replace />;
   }
 
   const titleSponsor = getAssignedEntity(session, "title_sponsor");

@@ -1,28 +1,25 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import type { RollSession, SlotId } from "@/types";
+import type { GameMode, RollSession, SlotId } from "@/types";
 import {
-  applyRosterResponse,
+  applyDrawResponse,
   buildTeamPayload,
   canAssignEntityToSlot,
-  isSlotFilled,
   clearPerRoundState,
   clearSession,
   createSession,
+  getEmptySlots,
   getPoolEntity,
   isAssignmentComplete,
   isRoundReady,
   isSetupComplete,
   loadSession,
+  mergeSimResult,
   needsRosterRecovery,
   saveSession,
   syncCurrentSlotIndex,
 } from "@/lib/rollSession";
-import {
-  fetchRoster,
-  rollDecade as apiRollDecade,
-  rollTeam as apiRollTeam,
-} from "@/lib/api";
+import { drawTeam, simulateRound } from "@/lib/api";
 
 const MIN_ROLL_ANIMATION_MS = 1200;
 
@@ -30,18 +27,18 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export function useRollSession(): {
+export function useRollSession(initialGameMode?: GameMode): {
   session: RollSession;
   isSetupComplete: boolean;
   isAssignmentComplete: boolean;
   isRoundReady: boolean;
-  rollRound: () => Promise<boolean>;
-  rerollTeam: () => Promise<void>;
-  rerollDecade: () => Promise<void>;
-  refetchCurrentRoster: () => Promise<void>;
+  drawRound: () => Promise<boolean>;
+  rerollDraw: () => Promise<void>;
   assignToSlot: (entityId: string, slotId: SlotId) => string | null;
   clearSlot: (slotId: SlotId) => void;
   lockTeam: () => TeamPayloadResult;
+  startSimulation: () => TeamPayloadResult;
+  simulateNextRound: () => Promise<{ ok: boolean; isComplete: boolean }>;
   resetSession: () => void;
   updateSession: (s: RollSession) => void;
   loading: boolean;
@@ -52,7 +49,7 @@ export function useRollSession(): {
     if (loaded) {
       return syncCurrentSlotIndex(loaded);
     }
-    return createSession();
+    return createSession(initialGameMode ?? "historical");
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -63,154 +60,80 @@ export function useRollSession(): {
 
   const updateSession = useCallback((s: RollSession) => setSession(s), []);
 
-  const loadRosterForRound = useCallback(
-    async (base: RollSession): Promise<RollSession> => {
-      if (!base.rolledTeam || !base.rolledDecade) {
-        return { ...base, rosterPool: [] };
-      }
-      const roster = await fetchRoster(base.rolledTeam.slug, base.rolledDecade);
-      return applyRosterResponse(base, roster);
-    },
-    [],
-  );
-
-  const refetchCurrentRoster = useCallback(async (): Promise<void> => {
-    let teamSlug: string | undefined;
-    let decade: string | undefined;
-    setSession((current) => {
-      if (!current.rolledTeam || !current.rolledDecade) {
-        return current;
-      }
-      teamSlug = current.rolledTeam.slug;
-      decade = current.rolledDecade;
-      return current;
-    });
-    if (!teamSlug || !decade) return;
-
-    setLoading(true);
-    setError(null);
-    try {
-      const roster = await fetchRoster(teamSlug, decade);
-      setSession((current) => applyRosterResponse(current, roster));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Roster load failed");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  const recoveryAttempted = useRef(false);
+  const sessionRef = useRef(session);
   useEffect(() => {
-    if (recoveryAttempted.current || !needsRosterRecovery(session, loading)) return;
-    recoveryAttempted.current = true;
-    void refetchCurrentRoster();
-  }, [session, loading, refetchCurrentRoster]);
+    sessionRef.current = session;
+  }, [session]);
 
-  const rollRound = useCallback(async (): Promise<boolean> => {
+  const drawRound = useCallback(async (): Promise<boolean> => {
     setLoading(true);
     setError(null);
     const startedAt = Date.now();
 
-    let seed = "";
-    let skip = false;
-    setSession((current) => {
-      if (isAssignmentComplete(current)) {
-        skip = true;
-        return current;
-      }
-      seed = current.sessionSeed;
-      return current;
-    });
-    if (skip) {
+    const current = sessionRef.current;
+    if (isAssignmentComplete(current)) {
       setLoading(false);
       return false;
     }
 
     try {
-      const team = await apiRollTeam(seed);
-      const { decade } = await apiRollDecade(seed, team.slug);
-      const roster = await fetchRoster(team.slug, decade);
+      const emptySlots = getEmptySlots(current);
+      const draw = await drawTeam(
+        current.sessionSeed,
+        current.gameMode,
+        emptySlots,
+        emptySlots.length === 12 ? 0 : 12 - emptySlots.length,
+      );
       const elapsed = Date.now() - startedAt;
       if (elapsed < MIN_ROLL_ANIMATION_MS) {
         await delay(MIN_ROLL_ANIMATION_MS - elapsed);
       }
 
-      setSession((current) =>
-        applyRosterResponse(
-          {
-            ...current,
-            rolledTeam: { slug: team.slug, display_name: team.display_name },
-            rolledDecade: decade,
-          },
-          roster,
-        ),
-      );
-      return roster.entities.length > 0;
+      setSession((value) => applyDrawResponse(value, draw));
+      return draw.draw_packet.length > 0;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Roll failed");
+      setError(err instanceof Error ? err.message : "Draw failed");
       return false;
     } finally {
       setLoading(false);
     }
   }, []);
 
-  const rerollTeam = useCallback(async (): Promise<void> => {
-    if (session.rerollsRemaining.team <= 0 || !session.rolledTeam) return;
-    setLoading(true);
-    setError(null);
-    try {
-      const salt = crypto.randomUUID();
-      const team = await apiRollTeam(session.sessionSeed, {
-        excludedTeamSlugs: [session.rolledTeam.slug],
-        rerollSalt: salt,
-      });
-      const next: RollSession = {
-        ...session,
-        rolledTeam: { slug: team.slug, display_name: team.display_name },
-        rerollsRemaining: {
-          ...session.rerollsRemaining,
-          team: session.rerollsRemaining.team - 1,
-        },
-      };
-      const withRoster = session.rolledDecade
-        ? await loadRosterForRound(next)
-        : next;
-      setSession(withRoster);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Team reroll failed");
-    } finally {
-      setLoading(false);
-    }
-  }, [session, loadRosterForRound]);
-
-  const rerollDecade = useCallback(async (): Promise<void> => {
-    if (session.rerollsRemaining.decade <= 0 || !session.rolledDecade || !session.rolledTeam) {
+  const rerollDraw = useCallback(async (): Promise<void> => {
+    const current = sessionRef.current;
+    if (current.drawRerollRemaining <= 0 || !current.rolledTeam) {
       return;
     }
+
     setLoading(true);
     setError(null);
     try {
-      const salt = crypto.randomUUID();
-      const teamSlug = session.rolledTeam.slug;
-      const { decade } = await apiRollDecade(session.sessionSeed, teamSlug, salt);
-      const next: RollSession = {
-        ...session,
-        rolledDecade: decade,
-        rerollsRemaining: {
-          ...session.rerollsRemaining,
-          decade: session.rerollsRemaining.decade - 1,
+      const emptySlots = getEmptySlots(current);
+      const draw = await drawTeam(
+        current.sessionSeed,
+        current.gameMode,
+        emptySlots,
+        12 - emptySlots.length,
+        {
+          excludedTeamSlugs: [current.rolledTeam.slug],
+          rerollSalt: crypto.randomUUID(),
         },
-      };
-      const withRoster = session.rolledTeam
-        ? await loadRosterForRound(next)
-        : next;
-      setSession(withRoster);
+      );
+      setSession((value) =>
+        applyDrawResponse(
+          {
+            ...value,
+            drawRerollRemaining: value.drawRerollRemaining - 1,
+          },
+          draw,
+        ),
+      );
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Decade reroll failed");
+      setError(err instanceof Error ? err.message : "Reroll failed");
     } finally {
       setLoading(false);
     }
-  }, [session, loadRosterForRound]);
+  }, []);
 
   const assignToSlot = useCallback(
     (entityId: string, slotId: SlotId): string | null => {
@@ -218,13 +141,11 @@ export function useRollSession(): {
       setSession((current) => {
         const entity = getPoolEntity(current, entityId);
         if (!entity) {
-          assignError = "Entity not found in roster";
+          assignError = "Entity not found in draw packet";
           return current;
         }
         if (!canAssignEntityToSlot(current, entity, slotId)) {
-          assignError = isSlotFilled(current, slotId)
-            ? "That slot is already filled"
-            : `${entity.role_label ?? entity.display_name} cannot fill ${slotId.replaceAll("_", " ")}`;
+          assignError = "Cannot assign to that slot";
           return current;
         }
         const assignedIds = new Set(
@@ -255,16 +176,16 @@ export function useRollSession(): {
   );
 
   const clearSlot = useCallback((slotId: SlotId): void => {
-    setSession((s) => {
-      const assignments = { ...s.assignments };
+    setSession((current) => {
+      const assignments = { ...current.assignments };
       const entityId = assignments[slotId];
       delete assignments[slotId];
-      const assignedEntities = { ...s.assignedEntities };
+      const assignedEntities = { ...current.assignedEntities };
       if (entityId) {
         delete assignedEntities[entityId];
       }
       return syncCurrentSlotIndex({
-        ...clearPerRoundState(s),
+        ...clearPerRoundState(current),
         assignments,
         assignedEntities,
       });
@@ -274,28 +195,93 @@ export function useRollSession(): {
   const lockTeam = useCallback((): TeamPayloadResult => {
     const payload = buildTeamPayload(session);
     if (!payload) return { ok: false, error: "Fill all 12 slots before simulating" };
-    const updated = { ...session, phase: "simulating" as const, teamPayload: payload };
+    const updated: RollSession = {
+      ...session,
+      phase: "simulating",
+      teamPayload: payload,
+      simProgress: {
+        ...session.simProgress,
+        phase: "ready",
+      },
+    };
     setSession(updated);
     return { ok: true, payload };
   }, [session]);
 
+  const startSimulation = lockTeam;
+
+  const simulateNextRound = useCallback(async (): Promise<{ ok: boolean; isComplete: boolean }> => {
+    const payload = buildTeamPayload(session);
+    if (!payload) {
+      setError("Fill all 12 slots before simulating");
+      return { ok: false, isComplete: false };
+    }
+
+    const nextRound = session.simProgress.currentRound + 1;
+    if (nextRound > session.simProgress.maxRounds) {
+      return { ok: false, isComplete: false };
+    }
+
+    setLoading(true);
+    setError(null);
+    try {
+      const result = await simulateRound(
+        payload,
+        session.sessionSeed,
+        nextRound,
+        session.gameMode,
+      );
+      setSession((current) => {
+        const revealedRaces = [...current.simProgress.revealedRaces, result.race];
+        const next: RollSession = {
+          ...current,
+          teamPayload: payload,
+          phase: result.is_complete ? "complete" : "simulating",
+          simProgress: {
+            phase: result.is_complete ? "complete" : "racing",
+            currentRound: nextRound,
+            revealedRaces,
+            maxRounds: result.max_wins,
+          },
+        };
+        if (result.season_result) {
+          return mergeSimResult(next, result.season_result);
+        }
+        return next;
+      });
+      return { ok: true, isComplete: result.is_complete };
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Simulation failed");
+      return { ok: false, isComplete: false };
+    } finally {
+      setLoading(false);
+    }
+  }, [session]);
+
   const resetSession = useCallback(() => {
     clearSession();
-    setSession(createSession());
-  }, []);
+    setSession(createSession(session.gameMode));
+  }, [session.gameMode]);
+
+  const recoveryAttempted = useRef(false);
+  useEffect(() => {
+    if (recoveryAttempted.current || !needsRosterRecovery(session, loading)) return;
+    recoveryAttempted.current = true;
+    void drawRound();
+  }, [session, loading, drawRound]);
 
   return {
     session,
     isSetupComplete: isSetupComplete(session),
     isAssignmentComplete: isAssignmentComplete(session),
     isRoundReady: isRoundReady(session),
-    rollRound,
-    rerollTeam,
-    rerollDecade,
-    refetchCurrentRoster,
+    drawRound,
+    rerollDraw,
     assignToSlot,
     clearSlot,
     lockTeam,
+    startSimulation,
+    simulateNextRound,
     resetSession,
     updateSession,
     loading,

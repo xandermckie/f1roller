@@ -14,6 +14,17 @@ export type SlotId =
 
 export type SessionPhase = "setup" | "assigning" | "simulating" | "complete";
 
+export type GameMode = "historical" | "2026";
+
+export type SimProgressPhase = "building" | "ready" | "racing" | "complete";
+
+export interface SimProgress {
+  phase: SimProgressPhase;
+  currentRound: number;
+  revealedRaces: RaceResult[];
+  maxRounds: number;
+}
+
 export interface RolledEntity {
   id: string;
   slug: string;
@@ -58,16 +69,40 @@ export interface RollSession {
   phase: SessionPhase;
   sessionSeed: string;
   sessionVersion?: number;
+  gameMode: GameMode;
   currentSlotIndex: number;
   rolledTeam?: RolledTeam;
   rolledDecade?: string;
+  drawPacket: RosterEntity[];
   rosterPool: RosterEntity[];
   assignedEntities?: Record<string, RosterEntity>;
   assignments: Partial<Record<SlotId, string>>;
-  rerollsRemaining: { team: number; decade: number };
+  drawRerollRemaining: number;
   poolWarnings?: string[];
   teamPayload?: TeamPayload;
+  simProgress: SimProgress;
   simResult?: SimResult;
+}
+
+export interface DrawResponse {
+  team_slug: string;
+  team_display_name: string;
+  decade: string;
+  draw_packet: RosterEntity[];
+  pool_warnings: string[];
+}
+
+export interface SimInitializeResponse {
+  max_rounds: number;
+  calendar: CalendarEvent[];
+}
+
+export interface RoundSimResult {
+  race: RaceResult;
+  wins_so_far: number;
+  max_wins: number;
+  is_complete: boolean;
+  season_result: SimResult | null;
 }
 
 export interface RacePosition {

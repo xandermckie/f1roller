@@ -1,8 +1,12 @@
 import type {
   BenchmarkResponse,
   CalendarEvent,
+  DrawResponse,
+  GameMode,
   RosterResponse,
   RolledEntity,
+  RoundSimResult,
+  SimInitializeResponse,
   SimResult,
   SlotId,
   TeamPayload,
@@ -170,6 +174,50 @@ export function rollDecade(
 export function fetchRoster(teamSlug: string, decade: string): Promise<RosterResponse> {
   const params = new URLSearchParams({ team_slug: teamSlug, decade });
   return request(`/roster?${params.toString()}`);
+}
+
+export function drawTeam(
+  sessionSeed: string,
+  gameMode: GameMode,
+  emptySlots: SlotId[],
+  roundIndex: number,
+  options?: { excludedTeamSlugs?: string[]; rerollSalt?: string },
+): Promise<DrawResponse> {
+  return request("/roster/draw", {
+    method: "POST",
+    body: JSON.stringify({
+      session_seed: sessionSeed,
+      game_mode: gameMode,
+      empty_slots: emptySlots,
+      round_index: roundIndex,
+      excluded_team_slugs: options?.excludedTeamSlugs ?? [],
+      reroll_salt: options?.rerollSalt ?? null,
+    }),
+  });
+}
+
+export function simulateInitialize(team: TeamPayload): Promise<SimInitializeResponse> {
+  return request("/simulate/initialize", {
+    method: "POST",
+    body: JSON.stringify({ team }),
+  });
+}
+
+export function simulateRound(
+  team: TeamPayload,
+  sessionSeed: string,
+  roundNumber: number,
+  gameMode: GameMode,
+): Promise<RoundSimResult> {
+  return request("/simulate/round", {
+    method: "POST",
+    body: JSON.stringify({
+      team,
+      session_seed: sessionSeed,
+      round_number: roundNumber,
+      game_mode: gameMode,
+    }),
+  });
 }
 
 export interface EntityDetail {

@@ -41,7 +41,9 @@ describe("rollSession", () => {
     const session = createSession();
     expect(session.phase).toBe("setup");
     expect(session.currentSlotIndex).toBe(0);
-    expect(session.rerollsRemaining).toEqual({ team: 1, decade: 1 });
+    expect(session.drawRerollRemaining).toBe(1);
+    expect(session.gameMode).toBe("historical");
+    expect(session.simProgress.phase).toBe("building");
     expect(getCurrentSlot(session)).toBe("driver_1");
   });
 
@@ -50,9 +52,11 @@ describe("rollSession", () => {
     expect(isRoundRolled(session)).toBe(false);
     session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
     session.rolledDecade = "1980s";
+    expect(isRoundRolled(session)).toBe(false);
+    const entity = mockRosterEntity("senna", ["driver_1", "driver_2", "reserve_driver"]);
+    session.drawPacket = [entity];
+    session.rosterPool = [entity];
     expect(isRoundRolled(session)).toBe(true);
-    expect(isRoundReady(session)).toBe(false);
-    session.rosterPool = [mockRosterEntity("senna", ["driver_1", "driver_2", "reserve_driver"])];
     expect(isRoundReady(session)).toBe(true);
   });
 

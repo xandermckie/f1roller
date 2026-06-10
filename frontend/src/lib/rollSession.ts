@@ -1,33 +1,59 @@
-import type { RosterResponse, RollSession, RosterEntity, SlotId, TeamPayload } from "@/types";
+import type {
+  DrawResponse,
+  GameMode,
+  RollSession,
+  RosterEntity,
+  SimResult,
+  SlotId,
+  TeamPayload,
+} from "@/types";
 import { SLOT_ORDER } from "@/types";
 
 const STORAGE_KEY = "f1roller_roll_session";
-export const SESSION_VERSION = 6;
+export const SESSION_VERSION = 7;
+export const MAX_SEASON_ROUNDS = 16;
 
-export function createSession(): RollSession {
+export function createDefaultSimProgress(): RollSession["simProgress"] {
+  return {
+    phase: "building",
+    currentRound: 0,
+    revealedRaces: [],
+    maxRounds: MAX_SEASON_ROUNDS,
+  };
+}
+
+export function createSession(gameMode: GameMode = "historical"): RollSession {
   return {
     sessionId: crypto.randomUUID(),
     startedAt: new Date().toISOString(),
     phase: "setup",
     sessionSeed: crypto.randomUUID(),
     sessionVersion: SESSION_VERSION,
+    gameMode,
     currentSlotIndex: 0,
+    drawPacket: [],
     rosterPool: [],
     assignedEntities: {},
     assignments: {},
-    rerollsRemaining: { team: 1, decade: 1 },
+    drawRerollRemaining: 1,
+    simProgress: createDefaultSimProgress(),
   };
 }
 
 export function normalizeSession(session: RollSession): RollSession {
+  const drawPacket = session.drawPacket ?? session.rosterPool ?? [];
   return {
     ...session,
-    rosterPool: session.rosterPool ?? [],
+    gameMode: session.gameMode ?? "historical",
+    drawPacket,
+    rosterPool: drawPacket,
     assignedEntities: session.assignedEntities ?? {},
     assignments: session.assignments ?? {},
-    rerollsRemaining: session.rerollsRemaining ?? { team: 1, decade: 1 },
+    drawRerollRemaining:
+      typeof session.drawRerollRemaining === "number" ? session.drawRerollRemaining : 1,
     currentSlotIndex:
       typeof session.currentSlotIndex === "number" ? session.currentSlotIndex : 0,
+    simProgress: session.simProgress ?? createDefaultSimProgress(),
   };
 }
 
@@ -51,6 +77,10 @@ export function clearSession(): void {
   sessionStorage.removeItem(STORAGE_KEY);
 }
 
+export function getActivePool(session: RollSession): RosterEntity[] {
+  return session.drawPacket.length > 0 ? session.drawPacket : session.rosterPool;
+}
+
 export function getCurrentSlot(session: RollSession): SlotId {
   const slot = SLOT_ORDER[session.currentSlotIndex];
   return slot ?? "driver_1";
@@ -71,7 +101,7 @@ export function getNextEmptySlotIndex(session: RollSession): number | null {
 }
 
 export function isRoundRolled(session: RollSession): boolean {
-  return Boolean(session.rolledTeam && session.rolledDecade);
+  return Boolean(session.rolledTeam && session.rolledDecade && getActivePool(session).length > 0);
 }
 
 export function syncCurrentSlotIndex(session: RollSession): RollSession {
@@ -85,8 +115,8 @@ export function syncCurrentSlotIndex(session: RollSession): RollSession {
 export function needsRosterRecovery(session: RollSession, isLoading = false): boolean {
   return (
     !isLoading &&
-    isRoundRolled(session) &&
-    session.rosterPool.length === 0 &&
+    Boolean(session.rolledTeam && session.rolledDecade) &&
+    getActivePool(session).length === 0 &&
     !isAssignmentComplete(session)
   );
 }
@@ -98,20 +128,21 @@ export function hasActiveRound(session: RollSession): boolean {
   return isRoundRolled(session) && !isAssignmentComplete(session);
 }
 
-export function applyRosterResponse(
-  session: RollSession,
-  roster: RosterResponse,
-): RollSession {
+export function applyDrawResponse(session: RollSession, draw: DrawResponse): RollSession {
   return syncCurrentSlotIndex({
     ...session,
-    rosterPool: roster.entities,
-    poolWarnings: roster.pool_warnings,
+    rolledTeam: { slug: draw.team_slug, display_name: draw.team_display_name },
+    rolledDecade: draw.decade,
+    drawPacket: draw.draw_packet,
+    rosterPool: draw.draw_packet,
+    poolWarnings: draw.pool_warnings,
+    drawRerollRemaining: 1,
     phase: "assigning",
   });
 }
 
 export function isRoundReady(session: RollSession): boolean {
-  return isRoundRolled(session) && session.rosterPool.length > 0;
+  return isRoundRolled(session);
 }
 
 export function canAdvanceRound(session: RollSession): boolean {
@@ -131,7 +162,11 @@ export function getPoolEntity(
   session: RollSession,
   entityId: string,
 ): RosterEntity | undefined {
-  return session.rosterPool.find((entity) => entity.id === entityId);
+  const pool = getActivePool(session);
+  return (
+    pool.find((entity) => entity.id === entityId) ??
+    session.assignedEntities?.[entityId]
+  );
 }
 
 export function getAssignedEntity(
@@ -140,10 +175,7 @@ export function getAssignedEntity(
 ): RosterEntity | undefined {
   const entityId = session.assignments[slotId];
   if (!entityId) return undefined;
-  return (
-    session.rosterPool.find((entity) => entity.id === entityId) ??
-    session.assignedEntities?.[entityId]
-  );
+  return getPoolEntity(session, entityId);
 }
 
 export function getAssignedEntityIds(session: RollSession): Set<string> {
@@ -156,7 +188,7 @@ export function getAssignedEntityIds(session: RollSession): Set<string> {
 
 export function getEligibleForSlot(session: RollSession, slotId: SlotId): RosterEntity[] {
   const assignedIds = getAssignedEntityIds(session);
-  return session.rosterPool.filter(
+  return getActivePool(session).filter(
     (entity) =>
       entity.assignable_slots.includes(slotId) && !assignedIds.has(entity.id),
   );
@@ -164,7 +196,7 @@ export function getEligibleForSlot(session: RollSession, slotId: SlotId): Roster
 
 export function getAvailablePool(session: RollSession): RosterEntity[] {
   const assignedIds = getAssignedEntityIds(session);
-  return session.rosterPool.filter((entity) => !assignedIds.has(entity.id));
+  return getActivePool(session).filter((entity) => !assignedIds.has(entity.id));
 }
 
 export function getEmptySlots(session: RollSession): SlotId[] {
@@ -174,11 +206,16 @@ export function getEmptySlots(session: RollSession): SlotId[] {
 export function getAssignablePool(session: RollSession): RosterEntity[] {
   const emptySlots = getEmptySlots(session);
   const assignedIds = getAssignedEntityIds(session);
-  return session.rosterPool.filter(
+  return getActivePool(session).filter(
     (entity) =>
       !assignedIds.has(entity.id) &&
       entity.assignable_slots.some((slot) => emptySlots.includes(slot)),
   );
+}
+
+export function isEntityAssignable(session: RollSession, entity: RosterEntity): boolean {
+  const emptySlots = getEmptySlots(session);
+  return entity.assignable_slots.some((slot) => emptySlots.includes(slot));
 }
 
 export function canAssignEntityToSlot(
@@ -202,6 +239,7 @@ export function clearPerRoundState(session: RollSession): RollSession {
     ...session,
     rolledTeam: undefined,
     rolledDecade: undefined,
+    drawPacket: [],
     rosterPool: [],
     poolWarnings: undefined,
   };
@@ -258,5 +296,49 @@ export function buildTeamPayload(session: RollSession): TeamPayload | null {
     secondary_sponsor_id: secondaryId,
     livery_style: livery.slug,
     team_motto: motto.display_name,
+  };
+}
+
+export function mergeSimResult(session: RollSession, result: SimResult): RollSession {
+  return {
+    ...session,
+    simResult: result,
+    simProgress: {
+      phase: "complete",
+      currentRound: result.races.length,
+      revealedRaces: result.races,
+      maxRounds: MAX_SEASON_ROUNDS,
+    },
+    phase: "complete",
+  };
+}
+
+export function appendRaceResult(session: RollSession, race: SimResult["races"][number]): RollSession {
+  const revealedRaces = [...session.simProgress.revealedRaces, race];
+  const wins = revealedRaces.filter((item) => item.user_race_points >= 25).length;
+  const isComplete = revealedRaces.length >= session.simProgress.maxRounds;
+  return {
+    ...session,
+    simProgress: {
+      ...session.simProgress,
+      phase: isComplete ? "complete" : "racing",
+      currentRound: revealedRaces.length,
+      revealedRaces,
+    },
+    simResult: isComplete
+      ? {
+          races: revealedRaces,
+          final_wdc: session.simResult?.final_wdc ?? [],
+          final_wcc: session.simResult?.final_wcc ?? [],
+          user_summary: {
+            wdc_position: session.simResult?.user_summary.wdc_position ?? 0,
+            wcc_position: session.simResult?.user_summary.wcc_position ?? 0,
+            wins,
+            poles: 0,
+            team_efficiency_pct: session.simResult?.user_summary.team_efficiency_pct,
+          },
+          session_seed: session.sessionSeed,
+        }
+      : session.simResult,
   };
 }

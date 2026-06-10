@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { AssignPage } from "@/pages/AssignPage";
 import { LandingPage } from "@/pages/LandingPage";
+import { PlayPage } from "@/pages/PlayPage";
 import { RaceDetailPage } from "@/pages/RaceDetailPage";
 import { ResultsPage } from "@/pages/ResultsPage";
 import { RollPage } from "@/pages/RollPage";
@@ -20,6 +21,7 @@ export function App(): React.ReactElement {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/play" element={<PlayPage />} />
             <Route path="/roll" element={<RollPage />} />
             <Route path="/assign" element={<AssignPage />} />
             <Route path="/team" element={<TeamPage />} />

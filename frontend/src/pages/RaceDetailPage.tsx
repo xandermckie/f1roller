@@ -13,11 +13,12 @@ export function RaceDetailPage(): React.ReactElement {
   const { round } = useParams<{ round: string }>();
   const { session } = useRollSession();
 
-  if (!session.simResult) {
-    return <Navigate to="/roll" replace />;
+  const races = session.simResult?.races ?? session.simProgress.revealedRaces;
+  if (races.length === 0) {
+    return <Navigate to="/play" replace />;
   }
 
-  const race = session.simResult.races.find((r) => r.round === Number(round));
+  const race = races.find((r) => r.round === Number(round));
   if (!race) {
     return (
       <div className="container">

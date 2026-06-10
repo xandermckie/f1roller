@@ -26,16 +26,22 @@ export function ResultsPage(): React.ReactElement {
       .finally(() => setLoading(false));
   }, [compareReal, session.teamPayload, session.sessionSeed]);
 
-  if (!session.simResult) {
+  if (!session.simResult && session.simProgress.revealedRaces.length === 0) {
     return (
       <div className="container">
         <p>No results yet.</p>
-        <Link to="/roll">Start rolling</Link>
+        <Link to="/play">Start playing</Link>
       </div>
     );
   }
 
-  const summary = session.simResult.user_summary;
+  const summary =
+    session.simResult?.user_summary ?? {
+      wdc_position: 0,
+      wcc_position: 0,
+      wins: session.simProgress.revealedRaces.filter((race) => race.user_race_points >= 25).length,
+      poles: 0,
+    };
   const activeResult = compareReal && realResult ? realResult : session.simResult;
 
   const copyRecap = (): void => {
@@ -58,25 +64,29 @@ export function ResultsPage(): React.ReactElement {
         }}
       >
         <h1 style={{ margin: "0 0 16px" }}>Season Complete</h1>
-        <div style={{ display: "flex", gap: 32 }}>
-          <div>
-            <p style={{ margin: 0, opacity: 0.8 }}>WDC</p>
-            <p style={{ margin: 0, fontSize: "2rem", fontFamily: "var(--font-display)" }}>
-              P{summary.wdc_position}
-            </p>
-          </div>
-          <div>
-            <p style={{ margin: 0, opacity: 0.8 }}>WCC</p>
-            <p style={{ margin: 0, fontSize: "2rem", fontFamily: "var(--font-display)" }}>
-              P{summary.wcc_position}
-            </p>
-          </div>
+        <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
           <div>
             <p style={{ margin: 0, opacity: 0.8 }}>Wins</p>
             <p style={{ margin: 0, fontSize: "2rem", fontFamily: "var(--font-display)" }}>
-              {summary.wins}
+              {summary.wins} / 16
             </p>
           </div>
+          {session.simResult && (
+            <>
+              <div>
+                <p style={{ margin: 0, opacity: 0.8 }}>WDC</p>
+                <p style={{ margin: 0, fontSize: "2rem", fontFamily: "var(--font-display)" }}>
+                  P{summary.wdc_position}
+                </p>
+              </div>
+              <div>
+                <p style={{ margin: 0, opacity: 0.8 }}>WCC</p>
+                <p style={{ margin: 0, fontSize: "2rem", fontFamily: "var(--font-display)" }}>
+                  P{summary.wcc_position}
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
@@ -122,18 +132,20 @@ export function ResultsPage(): React.ReactElement {
         {loading && <p style={{ color: "var(--color-text-muted)" }}>Loading comparison…</p>}
       </div>
 
-      <div className="card" style={{ marginBottom: 24 }}>
-        <h3 style={{ marginTop: 0 }}>
-          {compareReal ? "Real 2026 Grid WDC" : "Your Team WDC"}
-        </h3>
-        <ol style={{ paddingLeft: 20, margin: 0 }}>
-          {activeResult.final_wdc.slice(0, 10).map((entry) => (
-            <li key={entry.name} style={{ padding: "4px 0", fontWeight: entry.is_user ? 600 : 400 }}>
-              {entry.name} — {entry.points} pts
-            </li>
-          ))}
-        </ol>
-      </div>
+      {activeResult && (
+        <div className="card" style={{ marginBottom: 24 }}>
+          <h3 style={{ marginTop: 0 }}>
+            {compareReal ? "Real 2026 Grid WDC" : "Your Team WDC"}
+          </h3>
+          <ol style={{ paddingLeft: 20, margin: 0 }}>
+            {activeResult.final_wdc.slice(0, 10).map((entry) => (
+              <li key={entry.name} style={{ padding: "4px 0", fontWeight: entry.is_user ? 600 : 400 }}>
+                {entry.name} — {entry.points} pts
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
 
       <div style={{ display: "flex", gap: 12 }}>
         <button type="button" className="btn btn-secondary" onClick={copyRecap}>

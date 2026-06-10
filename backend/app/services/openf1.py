@@ -148,19 +148,55 @@ REAL_GRID_2026 = [
 ]
 
 
-def sync_real_grid(db: Session) -> int:
-    from app.models.constructor import Constructor
-    from app.models.driver import Driver
+def _find_roster_driver(db: Session, driver_name: str, constructor_slug: str) -> RosterEntry | None:
+    from app.models.roster_entry import RosterEntry
 
+    last_name = driver_name.split()[-1]
+    candidates = (
+        db.query(RosterEntry)
+        .filter(
+            RosterEntry.entity_type == "driver",
+            RosterEntry.team_slug == constructor_slug,
+            RosterEntry.decade == "2020s",
+            RosterEntry.display_name.ilike(f"%{last_name}%"),
+        )
+        .order_by(RosterEntry.computed_rating.desc())
+        .all()
+    )
+    if candidates:
+        return candidates[0]
+    return (
+        db.query(RosterEntry)
+        .filter(
+            RosterEntry.entity_type == "driver",
+            RosterEntry.display_name.ilike(f"%{last_name}%"),
+        )
+        .order_by(RosterEntry.computed_rating.desc())
+        .first()
+    )
+
+
+def _find_roster_constructor(db: Session, constructor_slug: str) -> RosterEntry | None:
+    from app.models.roster_entry import RosterEntry
+
+    return (
+        db.query(RosterEntry)
+        .filter(
+            RosterEntry.entity_type == "chassis",
+            RosterEntry.team_slug == constructor_slug,
+            RosterEntry.decade == "2020s",
+        )
+        .order_by(RosterEntry.computed_rating.desc())
+        .first()
+    )
+
+
+def sync_real_grid(db: Session) -> int:
     db.query(RealGridEntry).delete()
 
     for team_name, number, driver_name, constructor_slug in REAL_GRID_2026:
-        driver = (
-            db.query(Driver)
-            .filter(Driver.display_name.ilike(f"%{driver_name.split()[-1]}%"))
-            .first()
-        )
-        constructor = db.query(Constructor).filter(Constructor.slug == constructor_slug).first()
+        driver = _find_roster_driver(db, driver_name, constructor_slug)
+        constructor = _find_roster_constructor(db, constructor_slug)
         db.add(
             RealGridEntry(
                 team_name=team_name,

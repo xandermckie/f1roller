@@ -205,3 +205,47 @@ class RollDecadeRequest(BaseModel):
     session_seed: str
     team_slug: str
     reroll_salt: str | None = None
+
+
+GameMode = Literal["historical", "2026"]
+
+
+class DrawRequest(BaseModel):
+    session_seed: str
+    game_mode: GameMode = "historical"
+    empty_slots: list[SlotId] = Field(default_factory=list)
+    round_index: int = 0
+    excluded_team_slugs: list[str] = Field(default_factory=list)
+    reroll_salt: str | None = None
+
+
+class DrawResponse(BaseModel):
+    team_slug: str
+    team_display_name: str
+    decade: str
+    draw_packet: list[RosterEntity]
+    pool_warnings: list[str] = Field(default_factory=list)
+
+
+class SimInitializeRequest(BaseModel):
+    team: TeamPayload
+
+
+class SimInitializeResponse(BaseModel):
+    max_rounds: int
+    calendar: list[CalendarEventOut]
+
+
+class SimulateRoundRequest(BaseModel):
+    team: TeamPayload
+    session_seed: str
+    round_number: int
+    game_mode: GameMode = "historical"
+
+
+class RoundSimResult(BaseModel):
+    race: RaceResult
+    wins_so_far: int
+    max_wins: int
+    is_complete: bool
+    season_result: SimResult | None = None

@@ -4,12 +4,15 @@ from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.schemas.common import (
+    DrawRequest,
+    DrawResponse,
     RollDecadeRequest,
     RollTeamRequest,
     RolledDecadeResponse,
     RolledTeamResponse,
     RosterResponse,
 )
+from app.services.draw_packet import build_draw_packet
 from app.services.roster_builder import build_roster, roll_decade, roll_team
 
 router = APIRouter()
@@ -36,6 +39,30 @@ def api_roll_decade(
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     return RolledDecadeResponse(decade=decade)
+
+
+@router.post("/roster/draw", response_model=DrawResponse)
+def api_draw_roster(request: DrawRequest, db: Session = Depends(get_db)) -> DrawResponse:
+    try:
+        return build_draw_packet(
+            db,
+            session_seed=request.session_seed,
+            game_mode=request.game_mode,
+            empty_slots=request.empty_slots,
+            round_index=request.round_index,
+            excluded_team_slugs=request.excluded_team_slugs,
+            reroll_salt=request.reroll_salt,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except OperationalError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Database schema outdated. Restart the backend to run migrations, "
+                "or delete backend/f1roller.db and re-seed."
+            ),
+        ) from exc
 
 
 @router.get("/roster", response_model=RosterResponse)

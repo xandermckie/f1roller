@@ -6,11 +6,12 @@ import { buildSeasonRows } from "@/lib/pointsTable";
 export function SeasonPage(): React.ReactElement {
   const { session } = useRollSession();
 
-  if (!session.simResult) {
-    return <Navigate to="/roll" replace />;
+  const races = session.simResult?.races ?? session.simProgress.revealedRaces;
+  if (races.length === 0) {
+    return <Navigate to="/play" replace />;
   }
 
-  const rows = buildSeasonRows(session.simResult.races);
+  const rows = buildSeasonRows(races);
 
   return (
     <div className="container">
@@ -28,10 +29,11 @@ export function SeasonPage(): React.ReactElement {
         }}
       >
         <div>
-          <h1 style={{ margin: 0, color: "#fff" }}>2026 Season Results</h1>
+          <h1 style={{ margin: 0, color: "#fff" }}>Season Results</h1>
           <p style={{ margin: "8px 0 0", color: "rgba(255,255,255,0.8)" }}>
-            WDC P{session.simResult.user_summary.wdc_position} · WCC P
-            {session.simResult.user_summary.wcc_position} · {session.simResult.user_summary.wins} wins
+            {session.simResult
+              ? `WDC P${session.simResult.user_summary.wdc_position} · WCC P${session.simResult.user_summary.wcc_position} · ${session.simResult.user_summary.wins} / 16 wins`
+              : `${races.filter((race) => race.user_race_points >= 25).length} / 16 wins so far`}
           </p>
         </div>
       </div>

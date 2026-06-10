@@ -7,6 +7,8 @@ export interface RosterEntityCardProps {
   entity: RosterEntity;
   selected?: boolean;
   assigned?: boolean;
+  disabled?: boolean;
+  displayRating?: number;
   onSelect?: () => void;
   compact?: boolean;
 }
@@ -15,9 +17,17 @@ export function RosterEntityCard({
   entity,
   selected = false,
   assigned = false,
+  disabled = false,
+  displayRating,
   onSelect,
   compact = false,
 }: RosterEntityCardProps): React.ReactElement {
+  const ratingLabel =
+    displayRating ??
+    (typeof entity.computed_rating === "number"
+      ? Math.round(entity.computed_rating * 100)
+      : undefined);
+  const interactive = Boolean(onSelect && !assigned && !disabled);
   const [expanded, setExpanded] = useState(false);
   const [detail, setDetail] = useState<EntityDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
@@ -46,25 +56,25 @@ export function RosterEntityCard({
     <div
       className="card"
       style={{
-        opacity: assigned ? 0.45 : 1,
+        opacity: assigned || disabled ? 0.45 : 1,
         border: selected ? "2px solid var(--color-accent)" : undefined,
-        cursor: onSelect && !assigned ? "pointer" : "default",
+        cursor: interactive ? "pointer" : "default",
         padding: compact ? 12 : 16,
         marginBottom: 8,
       }}
-      onClick={onSelect && !assigned ? onSelect : undefined}
+      onClick={interactive ? onSelect : undefined}
       onKeyDown={
-        onSelect && !assigned
+        interactive
           ? (event) => {
               if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                onSelect();
+                onSelect?.();
               }
             }
           : undefined
       }
-      role={onSelect && !assigned ? "button" : undefined}
-      tabIndex={onSelect && !assigned ? 0 : undefined}
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
     >
       <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
         <div>
@@ -81,10 +91,8 @@ export function RosterEntityCard({
             </span>
           )}
         </div>
-        {typeof entity.computed_rating === "number" && (
-          <span style={{ fontSize: "0.875rem", whiteSpace: "nowrap" }}>
-            {(entity.computed_rating * 100).toFixed(0)}
-          </span>
+        {ratingLabel !== undefined && (
+          <span style={{ fontSize: "0.875rem", whiteSpace: "nowrap" }}>{ratingLabel}</span>
         )}
       </div>
       {!compact && (

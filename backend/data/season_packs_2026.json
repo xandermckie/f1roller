@@ -1,0 +1,123 @@
+{
+  "alpine": {
+    "decade": "2020s",
+    "driver_1": "pierre-gasly-alpine",
+    "driver_2": "franco-colapinto",
+    "reserve_driver": "franco-colapinto",
+    "constructor": "alpine-a525",
+    "engine": "renault-e-tech-re25",
+    "team_principal": "oliver-oakes-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "aston-martin": {
+    "decade": "2020s",
+    "driver_1": "fernando-alonso-20s",
+    "driver_2": "lance-stroll",
+    "reserve_driver": "lance-stroll",
+    "constructor": "aston-martin-amr25",
+    "engine": "mercedes-m16-hybrid",
+    "team_principal": "andy-stevens-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "cadillac": {
+    "decade": "2020s",
+    "driver_1": "sergio-perez-cadillac",
+    "driver_2": "valtteri-bottas-cadillac",
+    "reserve_driver": "valtteri-bottas-cadillac",
+    "constructor": "cadillac-mac-26",
+    "engine": "ferrari-066-hybrid",
+    "team_principal": "graeme-lowdon-tp",
+    "technical_director": "nick-chester-td",
+    "lead_engineer": "nick-chester-td"
+  },
+  "ferrari": {
+    "decade": "2020s",
+    "driver_1": "charles-leclerc",
+    "driver_2": "lewis-hamilton-20s",
+    "reserve_driver": "carlos-sainz",
+    "constructor": "ferrari-sf-25",
+    "engine": "ferrari-066-hybrid",
+    "team_principal": "fred-vasseur-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "haas": {
+    "decade": "2020s",
+    "driver_1": "esteban-ocon-haas",
+    "driver_2": "oliver-bearman",
+    "reserve_driver": "oliver-bearman",
+    "constructor": "haas-vf-25",
+    "engine": "ferrari-066-hybrid",
+    "team_principal": "ayao-komatsu-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "mclaren": {
+    "decade": "2020s",
+    "driver_1": "lando-norris-20s",
+    "driver_2": "oscar-piastri",
+    "reserve_driver": "daniel-ricciardo-mc",
+    "constructor": "mclaren-mcl39",
+    "engine": "mercedes-m16-hybrid",
+    "team_principal": "andrea-stella-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "mercedes": {
+    "decade": "2020s",
+    "driver_1": "george-russell-20s",
+    "driver_2": "andrea-kimi-antonelli",
+    "reserve_driver": "andrea-kimi-antonelli",
+    "constructor": "mercedes-w16",
+    "engine": "mercedes-m16-hybrid",
+    "team_principal": "toto-wolff-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "rb": {
+    "decade": "2020s",
+    "driver_1": "isack-hadjar",
+    "driver_2": "liam-lawson",
+    "reserve_driver": "liam-lawson",
+    "constructor": "rb-vcarb-03",
+    "engine": "honda-ra623h",
+    "team_principal": "laurent-mekies-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "red-bull": {
+    "decade": "2020s",
+    "driver_1": "max-verstappen-20s",
+    "driver_2": "yuki-tsunoda",
+    "reserve_driver": "yuki-tsunoda",
+    "constructor": "red-bull-rb21",
+    "engine": "honda-ra623h",
+    "team_principal": "christian-horner-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "sauber": {
+    "decade": "2020s",
+    "driver_1": "gabriel-bortoleto",
+    "driver_2": "nico-hulkenberg-sauber",
+    "reserve_driver": "nico-hulkenberg-sauber",
+    "constructor": "sauber-c45",
+    "engine": "ferrari-066-hybrid",
+    "team_principal": "andreas-seidl-tp",
+    "technical_director": "enrico-cardile-td",
+    "lead_engineer": "enrico-cardile-td"
+  },
+  "williams": {
+    "decade": "2020s",
+    "driver_1": "alex-albon-20s",
+    "driver_2": "carlos-sainz",
+    "reserve_driver": "carlos-sainz",
+    "constructor": "williams-fw47",
+    "engine": "mercedes-m16-hybrid",
+    "team_principal": "james-vowles-tp",
+    "technical_director": "pat-fry-td",
+    "lead_engineer": "pat-fry-td"
+  }
+}
