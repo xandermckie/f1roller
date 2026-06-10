@@ -1,0 +1,665 @@
+team_slug,decade,entity_type,slug,display_name,nationality,career_start_year,career_end_year,peak_year,personnel_role,sponsor_tier,accent_color,gp_starts,wins,poles,podiums,avg_finish,championships,starts,team_success,livery_slug,motto_text,teams_history,source_url,data_quality,notes
+ferrari,1950s,driver,alberto-ascari,Alberto Ascari,Italian,1950,1955,1952,,,,32,13,14,17,2.1,2,,,,,ferrari,https://en.wikipedia.org/wiki/Alberto_Ascari,verified,Back-to-back champion 1952-53 with Ferrari
+ferrari,1950s,driver,juan-fangio,Juan Manuel Fangio,Argentine,1950,1958,1956,,,,51,24,29,35,1.8,1,,,,,ferrari|maserati|mercedes,https://en.wikipedia.org/wiki/Juan_Manuel_Fangio,verified,Won 1956 WDC with Ferrari; career total across all teams listed
+ferrari,1950s,driver,mike-hawthorn,Mike Hawthorn,British,1952,1958,1958,,,,45,3,4,18,4.2,1,,,,,ferrari,https://en.wikipedia.org/wiki/Mike_Hawthorn,verified,1958 WDC; only full season as champion with Ferrari
+ferrari,1950s,driver,jose-gonzalez,José Froilán González,Argentine,1950,1957,1951,,,,26,2,6,17,3.9,0,,,,,ferrari,https://en.wikipedia.org/wiki/José_Froilán_González,verified,First Ferrari GP winner at Silverstone 1951
+ferrari,1950s,driver,luigi-villoresi,Luigi Villoresi,Italian,1950,1956,1952,,,,23,0,0,7,5.1,0,,,,,ferrari,https://en.wikipedia.org/wiki/Luigi_Villoresi,verified,Pre-championship era veteran
+ferrari,1950s,engine,ferrari-375,Ferrari 375 F1,Italian,1950,1951,1951,,,,,2,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_375_F1,verified,First Ferrari F1 engine to win a championship race
+ferrari,1950s,engine,ferrari-500,Ferrari 500 F2,Italian,1952,1953,1952,,,,,13,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_500,verified,F2 regs era; won virtually every 1952-53 race
+ferrari,1950s,engine,ferrari-553,Ferrari 553 Squalo,Italian,1953,1954,1953,,,,,2,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_553,verified,Transitional engine into 2.5L formula
+ferrari,1950s,chassis,ferrari-625,Ferrari 625 F1,,1954,1955,1955,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_625_F1,verified,Mid-decade chassis bridging 375 and 801 eras
+ferrari,1950s,chassis,ferrari-246,Ferrari 246 Dino,,1958,1960,1958,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_246_F1,verified,Late-50s V6 chassis; Hawthorn championship car
+ferrari,1950s,personnel,enzo-ferrari-tp,Enzo Ferrari,Italian,1950,1988,1952,team_principal,,,,,,,,,,0.82,,,ferrari,https://en.wikipedia.org/wiki/Enzo_Ferrari,verified,Founder and TP throughout 1950s
+ferrari,1950s,personnel,luigi-bazzi,Luigi Bazzi,Italian,1950,1960,1952,technical_director,,,,,,,,,,0.82,,,ferrari,https://www.ferrari.com/en-EN/formula1/history,estimated,Long-serving Ferrari technical chief 1950s
+ferrari,1950s,sponsor,shell-50s,Shell,British,1950,1965,1952,,title,#FFCF00,,,,,,,,,,,,https://www.ferrari.com/en-EN/formula1/history,verified,Primary fuel/oil sponsor throughout 1950s
+ferrari,1950s,livery,rosso-corsa-50s,Rosso Corsa Classic,,,,,,,,,,,,,,,,,rosso-corsa-50s,ferrari,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Classic Italian racing red with minimal graphics
+ferrari,1950s,motto,prancing-horse-50s,Forza Ferrari,,,,,,,,,,,,,,,,,La Ferrari è la Ferrari,ferrari,https://www.ferrari.com,verified,The prancing horse ethos
+ferrari,1960s,driver,phil-hill,Phil Hill,American,1958,1966,1961,,,,48,3,6,16,4.5,1,,,,,ferrari,https://en.wikipedia.org/wiki/Phil_Hill,verified,1961 WDC; first American F1 champion
+ferrari,1960s,driver,john-surtees,John Surtees,British,1960,1972,1964,,,,111,6,8,24,5.1,1,,,,,ferrari|honda|brabham,https://en.wikipedia.org/wiki/John_Surtees,verified,1964 WDC; only man to win on 2 and 4 wheels
+ferrari,1960s,driver,lorenzo-bandini,Lorenzo Bandini,Italian,1961,1967,1964,,,,42,1,1,10,6.3,0,,,,,ferrari,https://en.wikipedia.org/wiki/Lorenzo_Bandini,verified,Died at 1967 Monaco; key Ferrari 1960s driver
+ferrari,1960s,driver,ludovico-scarfiotti,Ludovico Scarfiotti,Italian,1963,1968,1966,,,,10,1,0,3,7.2,0,,,,,ferrari,https://en.wikipedia.org/wiki/Ludovico_Scarfiotti,verified,Won 1966 Italian GP
+ferrari,1960s,engine,ferrari-156-v6,Ferrari 156 V6,Italian,1961,1962,1961,,,,,5,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_156,verified,Sharknose era engine; dominant 1961
+ferrari,1960s,engine,ferrari-158-v8,Ferrari 158 V8,Italian,1964,1965,1964,,,,,3,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_158,verified,1964 championship-winning engine
+ferrari,1960s,chassis,ferrari-156,Ferrari 156 Sharknose,,1961,1963,1961,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_156,verified,Iconic sharknose design; dominant 1961
+ferrari,1960s,chassis,ferrari-312,Ferrari 312,,1966,1969,1966,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_312,verified,3-litre formula era chassis
+ferrari,1960s,personnel,enzo-ferrari-tp60s,Enzo Ferrari,Italian,1950,1988,1961,team_principal,,,,,,,,,,0.72,,,ferrari,https://en.wikipedia.org/wiki/Enzo_Ferrari,verified,
+ferrari,1960s,personnel,mauro-forghieri,Mauro Forghieri,Italian,1962,1984,1975,technical_director,,,,,,,,,,0.72,,,ferrari,https://en.wikipedia.org/wiki/Mauro_Forghieri,verified,Prolific Ferrari TD across multiple decades
+ferrari,1960s,sponsor,shell-60s,Shell,British,1960,1965,1961,,title,#FFCF00,,,,,,,,,,,,https://www.ferrari.com/en-EN/formula1/history,verified,
+ferrari,1960s,sponsor,agip-60s,AGIP,Italian,1966,1995,1966,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Italian state oil company
+ferrari,1960s,livery,rosso-corsa-60s,Rosso Corsa 1960s,,,,,,,,,,,,,,,,,rosso-corsa-60s,ferrari,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,1970s,driver,niki-lauda,Niki Lauda,Austrian,1971,1979,1975,,,,171,25,24,54,3.8,2,,,,,ferrari|brabham|mclaren,https://en.wikipedia.org/wiki/Niki_Lauda,verified,Won 1975 and 1977 WDC; survived 1976 Nürburgring fire
+ferrari,1970s,driver,clay-regazzoni,Clay Regazzoni,Swiss,1970,1980,1974,,,,132,5,5,28,5.5,0,,,,,ferrari|williams,https://en.wikipedia.org/wiki/Clay_Regazzoni,verified,Ferrari reliable number two through the 1970s
+ferrari,1970s,driver,jody-scheckter,Jody Scheckter,South African,1972,1980,1979,,,,112,10,7,33,4.6,1,,,,,ferrari|tyrrell|wolf,https://en.wikipedia.org/wiki/Jody_Scheckter,verified,1979 WDC; Ferrari's last champion for 21 years
+ferrari,1970s,driver,gilles-villeneuve,Gilles Villeneuve,Canadian,1977,1982,1979,,,,67,6,2,13,5.1,0,,,,,ferrari,https://en.wikipedia.org/wiki/Gilles_Villeneuve,verified,Ferrari icon; died 1982 qualifying; never won WDC
+ferrari,1970s,engine,ferrari-312t,Ferrari 312T Flat-12,Italian,1975,1980,1977,,,,,15,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_312T,verified,Dominant transversale gearbox era engine
+ferrari,1970s,engine,ferrari-312b,Ferrari 312B Flat-12,Italian,1970,1974,1971,,,,,3,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_312B,verified,Earlier flat-12 iteration
+ferrari,1970s,chassis,ferrari-312t-car,Ferrari 312T,,1975,1976,1975,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_312T,verified,Lauda title-winning chassis
+ferrari,1970s,chassis,ferrari-312t4,Ferrari 312T4,,1979,1980,1979,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_312T4,verified,Scheckter title car
+ferrari,1970s,personnel,enzo-ferrari-tp70s,Enzo Ferrari,Italian,1950,1988,1975,team_principal,,,,,,,,,,0.88,,,ferrari,https://en.wikipedia.org/wiki/Enzo_Ferrari,verified,
+ferrari,1970s,personnel,mauro-forghieri-70s,Mauro Forghieri,Italian,1962,1984,1975,technical_director,,,,,,,,,,0.88,,,ferrari,https://en.wikipedia.org/wiki/Mauro_Forghieri,verified,
+ferrari,1970s,sponsor,agip-70s,AGIP,Italian,1966,1995,1975,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,1970s,sponsor,fiat-70s,FIAT,Italian,1970,1990,1975,,secondary,#003399,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,FIAT acquired Ferrari 1969
+ferrari,1970s,livery,rosso-corsa-70s,Rosso Corsa 1970s,,,,,,,,,,,,,,,,,rosso-corsa-70s,ferrari,https://en.wikipedia.org/wiki/Ferrari_312T,verified,Classic bright red with large AGIP branding
+ferrari,1980s,driver,gilles-villeneuve-80s,Gilles Villeneuve,Canadian,1977,1982,1981,,,,67,6,2,13,5.1,0,,,,,ferrari,https://en.wikipedia.org/wiki/Gilles_Villeneuve,verified,Killed qualifying at Zolder 1982
+ferrari,1980s,driver,didier-pironi,Didier Pironi,French,1978,1982,1982,,,,70,3,4,9,6.5,0,,,,,ferrari|ligier|tyrrell,https://en.wikipedia.org/wiki/Didier_Pironi,verified,1982 WDC contender before Hockenheim crash
+ferrari,1980s,driver,alain-prost-80s,Alain Prost,French,1980,1993,1990,,,,199,51,33,106,3.2,4,,,,,ferrari|mclaren|williams,https://en.wikipedia.org/wiki/Alain_Prost,verified,Won WDC with McLaren; drove Ferrari 1990-1991
+ferrari,1980s,driver,nigel-mansell-fer,Nigel Mansell,British,1980,1995,1992,,,,187,31,32,59,4.6,1,,,,,ferrari|williams|mclaren,https://en.wikipedia.org/wiki/Nigel_Mansell,verified,Ferrari 1989-1990
+ferrari,1980s,driver,michele-alboreto,Michele Alboreto,Italian,1981,1994,1985,,,,194,5,2,23,6.4,0,,,,,ferrari|tyrrell,https://en.wikipedia.org/wiki/Michele_Alboreto,verified,Ferrari 1984-88; 1985 WDC runner-up
+ferrari,1980s,engine,ferrari-126c-turbo,Ferrari 126C Turbo V6,Italian,1981,1988,1985,,,,,3,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_126C,verified,Turbo era engine
+ferrari,1980s,engine,ferrari-640-nat,Ferrari 640 V12 NA,Italian,1989,1994,1990,,,,,6,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_640,verified,Naturally aspirated return; controversial semi-auto gearbox
+ferrari,1980s,chassis,ferrari-126c2,Ferrari 126C2,,1982,1983,1982,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_126C,verified,Turbo era chassis with twin chimneys
+ferrari,1980s,chassis,ferrari-640-car,Ferrari 640,,1989,1989,1989,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_640,verified,First Ferrari semi-automatic gearbox
+ferrari,1980s,personnel,enzo-ferrari-tp80s,Enzo Ferrari,Italian,1950,1988,1985,team_principal,,,,,,,,,,0.65,,,ferrari,https://en.wikipedia.org/wiki/Enzo_Ferrari,verified,Died 1988
+ferrari,1980s,personnel,mauro-forghieri-80s,Mauro Forghieri,Italian,1962,1984,1984,technical_director,,,,,,,,,,0.65,,,ferrari,https://en.wikipedia.org/wiki/Mauro_Forghieri,verified,Left after 1984
+ferrari,1980s,sponsor,agip-80s,AGIP,Italian,1966,1995,1985,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,1980s,sponsor,marlboro-fer-80s,Marlboro,American,1984,2007,1988,,secondary,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Joined 1984; white nose panels
+ferrari,1980s,livery,rosso-corsa-80s,Rosso Corsa 1980s Turbo,,,,,,,,,,,,,,,,,rosso-corsa-80s,ferrari,https://en.wikipedia.org/wiki/Ferrari_126C,verified,Wider sidepods; white Marlboro panels from 1984
+ferrari,1990s,driver,michael-schumacher-90s,Michael Schumacher,German,1991,2012,2004,,,,307,91,68,155,2.1,7,,,,,ferrari|benetton|mercedes,https://en.wikipedia.org/wiki/Michael_Schumacher,verified,Joined Ferrari 1996; 5 titles 2000-2004
+ferrari,1990s,driver,alain-prost-90s,Alain Prost,French,1980,1993,1990,,,,199,51,33,106,3.2,4,,,,,ferrari|mclaren|williams,https://en.wikipedia.org/wiki/Alain_Prost,verified,Ferrari 1990-1991; fired after calling car a truck
+ferrari,1990s,driver,jean-alesi,Jean Alesi,French,1989,2001,1995,,,,201,1,2,32,6.8,0,,,,,ferrari|tyrrell|benetton,https://en.wikipedia.org/wiki/Jean_Alesi,verified,Ferrari 1991-1995; only win Canadian GP 1995
+ferrari,1990s,driver,gerhard-berger-fer,Gerhard Berger,Austrian,1984,1997,1994,,,,210,10,12,48,5.3,0,,,,,ferrari|mclaren|benetton,https://en.wikipedia.org/wiki/Gerhard_Berger,verified,Ferrari 1987-1989 then 1993-1995
+ferrari,1990s,driver,eddie-irvine,Eddie Irvine,British,1993,2002,1999,,,,146,4,0,26,6.5,0,,,,,ferrari|jordan,https://en.wikipedia.org/wiki/Eddie_Irvine,verified,Ferrari 1996-1999; 1999 WDC runner-up
+ferrari,1990s,engine,ferrari-v12-90s,Ferrari 041 V12,Italian,1990,1995,1994,,,,,7,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,verified,Naturally aspirated V12 era
+ferrari,1990s,engine,ferrari-v10-90s,Ferrari 047 V10,Italian,1996,1999,1999,,,,,3,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,verified,Transition to V10 rules
+ferrari,1990s,chassis,ferrari-f310,Ferrari F310,,1996,1997,1996,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F310,verified,Schumacher arrival car
+ferrari,1990s,chassis,ferrari-f399,Ferrari F399,,1999,1999,1999,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F399,verified,1999 constructors champion
+ferrari,1990s,personnel,jean-todt-tp,Jean Todt,French,1993,2007,2004,team_principal,,,,,,,,,,0.9,,,ferrari,https://en.wikipedia.org/wiki/Jean_Todt,verified,Hired by Montezemolo to rebuild Ferrari
+ferrari,1990s,personnel,ross-brawn-td,Ross Brawn,British,1996,2006,2004,technical_director,,,,,,,,,,0.9,,,ferrari,https://en.wikipedia.org/wiki/Ross_Brawn,verified,Followed Schumacher from Benetton
+ferrari,1990s,personnel,rory-byrne-le,Rory Byrne,South African,1996,2006,2004,lead_engineer,,,,,,,,,,0.9,,,ferrari,https://en.wikipedia.org/wiki/Rory_Byrne,verified,Chief designer; also from Benetton
+ferrari,1990s,sponsor,marlboro-90s,Marlboro,American,1984,2007,1999,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Title sponsor from 1984
+ferrari,1990s,sponsor,shell-90s,Shell,British,1995,2012,2000,,secondary,#FFCF00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Returned as engine fuel partner
+ferrari,1990s,livery,ferrari-marlboro-90s,Ferrari Marlboro 1990s,,,,,,,,,,,,,,,,,ferrari-marlboro-90s,ferrari,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Red with white Marlboro chevron nose
+ferrari,2000s,driver,michael-schumacher-00s,Michael Schumacher,German,1991,2012,2004,,,,307,91,68,155,2.1,7,,,,,ferrari|benetton|mercedes,https://en.wikipedia.org/wiki/Michael_Schumacher,verified,Dominant 2000-2004; 5 consecutive WDC
+ferrari,2000s,driver,rubens-barrichello,Rubens Barrichello,Brazilian,1993,2011,2004,,,,323,11,13,68,6.1,0,,,,,ferrari|jordan|williams|brawn,https://en.wikipedia.org/wiki/Rubens_Barrichello,verified,Ferrari 2000-2005; loyal Schumi wingman
+ferrari,2000s,driver,kimi-raikkonen-00s,Kimi Räikkönen,Finnish,2001,2018,2007,,,,349,21,18,103,4.9,1,,,,,ferrari|mclaren|lotus,https://en.wikipedia.org/wiki/Kimi_Räikkönen,verified,2007 WDC with Ferrari in final race
+ferrari,2000s,driver,felipe-massa,Felipe Massa,Brazilian,2002,2017,2008,,,,269,11,15,41,5.7,0,,,,,ferrari|williams|sauber,https://en.wikipedia.org/wiki/Felipe_Massa,verified,Lost 2008 WDC by one point
+ferrari,2000s,engine,ferrari-050-v10,Ferrari 050 V10,Italian,2000,2005,2004,,,,,39,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,verified,Dominant early 2000s V10
+ferrari,2000s,engine,ferrari-056-v8,Ferrari 056 V8,Italian,2006,2013,2007,,,,,9,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,verified,V8 regulation era; Räikkönen title engine
+ferrari,2000s,chassis,ferrari-f2004,Ferrari F2004,,2004,2004,2004,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F2004,verified,Widely considered one of greatest F1 cars ever; 15 wins
+ferrari,2000s,chassis,ferrari-f2007,Ferrari F2007,,2007,2007,2007,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F2007,verified,Räikkönen title car
+ferrari,2000s,personnel,jean-todt-tp00s,Jean Todt,French,1993,2007,2004,team_principal,,,,,,,,,,0.95,,,ferrari,https://en.wikipedia.org/wiki/Jean_Todt,verified,Dynasty era TP
+ferrari,2000s,personnel,ross-brawn-td00s,Ross Brawn,British,1996,2006,2004,technical_director,,,,,,,,,,0.95,,,ferrari,https://en.wikipedia.org/wiki/Ross_Brawn,verified,
+ferrari,2000s,personnel,rory-byrne-le00s,Rory Byrne,South African,1996,2006,2004,lead_engineer,,,,,,,,,,0.95,,,ferrari,https://en.wikipedia.org/wiki/Rory_Byrne,verified,
+ferrari,2000s,sponsor,marlboro-00s,Marlboro,American,1984,2007,2004,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Post-tobacco display ban barcode livery from 2007
+ferrari,2000s,sponsor,shell-00s,Shell,British,1995,2012,2004,,secondary,#FFCF00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,2000s,livery,ferrari-f2004-livery,Ferrari F2004 Scuderia Red,,,,,,,,,,,,,,,,,ferrari-scuderia-red,ferrari,https://en.wikipedia.org/wiki/Ferrari_F2004,verified,Deep Scuderia red; white barcode nosecone from 2007
+ferrari,2010s,driver,fernando-alonso,Fernando Alonso,Spanish,2001,2024,2012,,,,371,32,22,98,4.8,2,,,,,ferrari|renault|mclaren,https://en.wikipedia.org/wiki/Fernando_Alonso,verified,Ferrari 2010-2014; two near-misses at WDC
+ferrari,2010s,driver,kimi-raikkonen-10s,Kimi Räikkönen,Finnish,2001,2018,2007,,,,349,21,18,103,4.9,1,,,,,ferrari|mclaren|lotus,https://en.wikipedia.org/wiki/Kimi_Räikkönen,verified,Ferrari second stint 2014-2018
+ferrari,2010s,driver,sebastian-vettel-10s,Sebastian Vettel,German,2007,2022,2013,,,,299,53,57,122,3.5,4,,,,,ferrari|red-bull|aston-martin,https://en.wikipedia.org/wiki/Sebastian_Vettel,verified,Ferrari 2015-2020; multiple near-misses
+ferrari,2010s,driver,felipe-massa-10s,Felipe Massa,Brazilian,2002,2017,2008,,,,269,11,15,41,5.7,0,,,,,ferrari|williams|sauber,https://en.wikipedia.org/wiki/Felipe_Massa,verified,Ferrari to 2013
+ferrari,2010s,engine,ferrari-059-hybrid,Ferrari 059/3 V6 Turbo,Italian,2014,2017,2017,,,,,5,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,verified,Hybrid power unit era introduction
+ferrari,2010s,chassis,ferrari-f138,Ferrari F138,,2013,2013,2013,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F138,verified,Alonso/Räikkönen transition car
+ferrari,2010s,chassis,ferrari-sf70h,Ferrari SF70H,,2017,2017,2017,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_SF70H,verified,Best 2010s challenger to Mercedes
+ferrari,2010s,personnel,stefano-domenicali-tp,Stefano Domenicali,Italian,2008,2014,2008,team_principal,,,,,,,,,,0.6,,,ferrari,https://en.wikipedia.org/wiki/Stefano_Domenicali,verified,Resigned 2014; now F1 CEO
+ferrari,2010s,personnel,mattia-binotto-td,Mattia Binotto,Italian,2014,2022,2017,technical_director,,,,,,,,,,0.6,,,ferrari,https://en.wikipedia.org/wiki/Mattia_Binotto,verified,Later became TP in 2019
+ferrari,2010s,sponsor,mission-winnow-10s,Mission Winnow,American,2018,2022,2019,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Philip Morris post-tobacco branding
+ferrari,2010s,sponsor,shell-10s,Shell,British,1995,2026,2015,,secondary,#FFCF00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,2010s,livery,ferrari-sf90-livery,Ferrari SF90 Red/Black,,,,,,,,,,,,,,,,,ferrari-sf90,ferrari,https://en.wikipedia.org/wiki/Ferrari_SF90,verified,Darker red introduced mid-decade
+ferrari,2020s,driver,charles-leclerc,Charles Leclerc,Monégasque,2018,2026,2022,,,,166,8,24,37,5.2,0,,,,,ferrari|sauber,https://en.wikipedia.org/wiki/Charles_Leclerc,verified,Ferrari cornerstone; multiple pole record holder
+ferrari,2020s,driver,lewis-hamilton-20s,Lewis Hamilton,British,2007,2026,2020,,,,375,104,104,201,2.9,7,,,,,ferrari|mercedes|mclaren,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,Joined Ferrari 2025
+ferrari,2020s,driver,carlos-sainz,Carlos Sainz Jr.,Spanish,2015,2026,2022,,,,215,4,5,24,6.3,0,,,,,ferrari|williams|renault|mclaren,https://en.wikipedia.org/wiki/Carlos_Sainz_Jr.,verified,Ferrari 2021-2024; left for Williams 2025
+ferrari,2020s,driver,sebastian-vettel-20s,Sebastian Vettel,German,2007,2022,2013,,,,299,53,57,122,3.5,4,,,,,ferrari|red-bull|aston-martin,https://en.wikipedia.org/wiki/Sebastian_Vettel,verified,Final Ferrari season 2020 then Aston Martin
+ferrari,2020s,engine,ferrari-066-hybrid,Ferrari 066/12 V6,Italian,2022,2026,2022,,,,,4,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_in_Formula_One,estimated,Ground-effect era power unit
+ferrari,2020s,chassis,ferrari-f1-75,Ferrari F1-75,,2022,2022,2022,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_F1-75,verified,Strong contender at 2022 regulation reset
+ferrari,2020s,chassis,ferrari-sf-23,Ferrari SF-23,,2023,2023,2023,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/Ferrari_SF-23,verified,Improved development car
+ferrari,2020s,personnel,fred-vasseur-tp,Frédéric Vasseur,French,2023,2026,2024,team_principal,,,,,,,,,,0.65,,,ferrari,https://en.wikipedia.org/wiki/Fred_Vasseur,verified,Former Renault TP; joined 2023
+ferrari,2020s,personnel,enrico-cardile-td,Enrico Cardile,Italian,2020,2024,2022,technical_director,,,,,,,,,,0.65,,,ferrari,https://en.wikipedia.org/wiki/Scuderia_Ferrari,estimated,Head of Chassis/Aero before departure 2024
+ferrari,2020s,sponsor,hp-ferrari-20s,HP,American,2024,2026,2024,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,HP title partnership from 2024
+ferrari,2020s,sponsor,shell-20s,Shell,British,1995,2026,2022,,secondary,#FFCF00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,
+ferrari,2020s,livery,ferrari-hp-livery,Ferrari HP Red 2024,,,,,,,,,,,,,,,,,ferrari-hp-livery,ferrari,https://en.wikipedia.org/wiki/Scuderia_Ferrari,verified,Darker red base; Hamilton arrival speculation livery
+mclaren,1960s,driver,bruce-mclaren,Bruce McLaren,New Zealand,1959,1970,1968,,,,104,4,0,27,4.8,0,,,,,mclaren|cooper,https://en.wikipedia.org/wiki/Bruce_McLaren,verified,Founder; died testing at Goodwood 1970
+mclaren,1960s,driver,denny-hulme,Denny Hulme,New Zealand,1965,1974,1968,,,,112,8,1,33,4.7,1,,,,,mclaren|brabham,https://en.wikipedia.org/wiki/Denny_Hulme,verified,1967 WDC with Brabham; joined McLaren 1968
+mclaren,1960s,driver,jochen-rindt,Jochen Rindt,Austrian,1964,1970,1969,,,,60,6,10,13,5.8,1,,,,,mclaren|lotus|cooper,https://en.wikipedia.org/wiki/Jochen_Rindt,verified,Brief McLaren stint 1969
+mclaren,1960s,engine,ford-dfv-60s,Ford Cosworth DFV,British,1967,1983,1968,,,,,4,,,,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,McLaren used DFV from 1968
+mclaren,1960s,chassis,mclaren-m7a,McLaren M7A,,1968,1969,1968,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_M7,verified,First race winner for McLaren factory team
+mclaren,1960s,personnel,bruce-mclaren-tp,Bruce McLaren,New Zealand,1966,1970,1968,team_principal,,,,,,,,,,0.5,,,mclaren,https://en.wikipedia.org/wiki/Bruce_McLaren,verified,Founder-driver TP
+mclaren,1960s,sponsor,gulf-60s,Gulf Oil,American,1967,1971,1968,,title,#FF8200,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,estimated,Orange Gulf livery early years
+mclaren,1960s,livery,papaya-orange-60s,Papaya Orange 1960s,,,,,,,,,,,,,,,,,papaya-orange-60s,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Bruce's original papaya orange; iconic retro livery
+mclaren,1970s,driver,emerson-fittipaldi,Emerson Fittipaldi,Brazilian,1970,1980,1974,,,,144,14,6,35,4.2,2,,,,,mclaren|lotus|fittipaldi,https://en.wikipedia.org/wiki/Emerson_Fittipaldi,verified,1974 WDC with McLaren M23
+mclaren,1970s,driver,james-hunt,James Hunt,British,1973,1979,1976,,,,92,10,14,23,4.8,1,,,,,mclaren|hesketh|wolf,https://en.wikipedia.org/wiki/James_Hunt,verified,1976 WDC in legendary Lauda duel
+mclaren,1970s,driver,jochen-mass,Jochen Mass,German,1973,1982,1975,,,,105,1,0,7,7.3,0,,,,,mclaren|surtees,https://en.wikipedia.org/wiki/Jochen_Mass,verified,McLaren 1975-1977
+mclaren,1970s,engine,ford-dfv-70s,Ford Cosworth DFV,British,1967,1983,1974,,,,,16,,,,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,McLaren M23 won title with DFV
+mclaren,1970s,chassis,mclaren-m23,McLaren M23,,1973,1977,1974,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_M23,verified,16 victories; Hunt and Fittipaldi titles
+mclaren,1970s,chassis,mclaren-m26,McLaren M26,,1976,1978,1977,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_M26,verified,Post-M23 follow-up; less successful
+mclaren,1970s,personnel,teddy-mayer-tp,Teddy Mayer,American,1970,1981,1976,team_principal,,,,,,,,,,0.75,,,mclaren,https://en.wikipedia.org/wiki/Teddy_Mayer,verified,Ran team after Bruce's death
+mclaren,1970s,sponsor,marlboro-70s,Marlboro,American,1974,1996,1976,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Marlboro Red and White livery from 1974
+mclaren,1970s,sponsor,texaco-70s,Texaco,American,1974,1978,1974,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Co-branding with Marlboro
+mclaren,1970s,livery,marlboro-white-70s,Marlboro Red & White 1970s,,,,,,,,,,,,,,,,,marlboro-white-70s,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Iconic white-red Marlboro M23
+mclaren,1980s,driver,alain-prost-80s,Alain Prost,French,1980,1993,1988,,,,199,51,33,106,3.2,4,,,,,ferrari|mclaren|williams,https://en.wikipedia.org/wiki/Alain_Prost,verified,McLaren 1984-1989; 3 WDC
+mclaren,1980s,driver,niki-lauda-80s,Niki Lauda,Austrian,1971,1985,1984,,,,171,25,24,54,3.8,3,,,,,ferrari|brabham|mclaren,https://en.wikipedia.org/wiki/Niki_Lauda,verified,Won 1984 WDC by half a point over Prost
+mclaren,1980s,driver,ayrton-senna-80s,Ayrton Senna,Brazilian,1984,1994,1988,,,,161,41,65,80,3.0,3,,,,,mclaren|lotus|williams|toleman,https://en.wikipedia.org/wiki/Ayrton_Senna,verified,McLaren 1988-1993; 1988 pinnacle 15/16 wins
+mclaren,1980s,driver,andrea-cesaris,Andrea de Cesaris,Italian,1980,1994,1983,,,,214,0,1,5,9.6,0,,,,,mclaren|alfa-romeo|jordan,https://en.wikipedia.org/wiki/Andrea_de_Cesaris,estimated,McLaren 1981; later Jordan debut driver
+mclaren,1980s,engine,tag-porsche,TAG Porsche TTE PO1,German,1983,1987,1984,,,,,25,,,,,,,,,,https://en.wikipedia.org/wiki/TAG_Porsche_TTE_P01,verified,Custom turbo V6; financed by Mansour Ojjeh/TAG
+mclaren,1980s,engine,honda-ra168e,Honda RA168E,Japanese,1988,1992,1988,,,,,15,,,,,,,,,,https://en.wikipedia.org/wiki/Honda_RA168E,verified,1988 virtually perfect season engine
+mclaren,1980s,chassis,mclaren-mp4-2,McLaren MP4/2,,1984,1986,1984,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4/2,verified,Lauda and Prost title cars
+mclaren,1980s,chassis,mclaren-mp4-4,McLaren MP4/4,,1988,1988,1988,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4/4,verified,15 wins from 16 races; arguably greatest F1 car
+mclaren,1980s,personnel,ron-dennis-tp,Ron Dennis,British,1981,2009,1988,team_principal,,,,,,,,,,0.95,,,mclaren,https://en.wikipedia.org/wiki/Ron_Dennis,verified,Took over 1981 TAG-McLaren deal
+mclaren,1980s,personnel,john-barnard-le,John Barnard,British,1981,1986,1984,lead_engineer,,,,,,,,,,0.95,,,mclaren,https://en.wikipedia.org/wiki/John_Barnard,verified,Designed MP4/1 first carbon fibre monocoque
+mclaren,1980s,personnel,gordon-murray-td,Gordon Murray,South African,1987,1990,1988,technical_director,,,,,,,,,,0.95,,,mclaren,https://en.wikipedia.org/wiki/Gordon_Murray,verified,Joined from Brabham; designed MP4/4
+mclaren,1980s,sponsor,marlboro-80s,Marlboro,American,1974,1996,1988,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,
+mclaren,1980s,sponsor,shell-mclaren-80s,Shell,British,1984,1995,1988,,secondary,#FFCF00,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Shell fuel partnership
+mclaren,1980s,livery,marlboro-mp4-livery,Marlboro Red & White MP4 Era,,,,,,,,,,,,,,,,,marlboro-mp4-livery,mclaren,https://en.wikipedia.org/wiki/McLaren_MP4/4,verified,Classic white Marlboro chevron on red; Senna and Prost era
+mclaren,1980s,motto,mclaren-80s-motto,The Standard Is Excellence,,,,,,,,,,,,,,,,,We don't come to lose.,mclaren,https://en.wikipedia.org/wiki/McLaren,estimated,Ron Dennis era internal ethos
+mclaren,1990s,driver,ayrton-senna-90s,Ayrton Senna,Brazilian,1984,1994,1991,,,,161,41,65,80,3.0,3,,,,,mclaren|lotus|williams,https://en.wikipedia.org/wiki/Ayrton_Senna,verified,McLaren 1988-1993; left for Williams 1994
+mclaren,1990s,driver,mika-hakkinen,Mika Häkkinen,Finnish,1991,2001,1998,,,,165,20,26,51,4.1,2,,,,,mclaren,https://en.wikipedia.org/wiki/Mika_Häkkinen,verified,Back-to-back WDC 1998-1999
+mclaren,1990s,driver,david-coulthard,David Coulthard,British,1994,2008,2001,,,,246,13,12,62,5.2,0,,,,,mclaren|williams|red-bull,https://en.wikipedia.org/wiki/David_Coulthard,verified,McLaren 1996-2004; Häkkinen wingman
+mclaren,1990s,driver,martin-brundle,Martin Brundle,British,1984,1996,1994,,,,158,0,0,9,7.8,0,,,,,mclaren|brabham|benetton,https://en.wikipedia.org/wiki/Martin_Brundle,verified,McLaren 1994; now F1 pundit
+mclaren,1990s,engine,mercedes-fo110,Mercedes FO110 V10,German,1995,2014,1998,,,,,20,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_FO110,verified,Mercedes partnership from 1995; two titles
+mclaren,1990s,chassis,mclaren-mp4-8,McLaren MP4/8,,1993,1993,1993,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4/8,verified,Final Senna season; Ford customer engine
+mclaren,1990s,chassis,mclaren-mp4-13,McLaren MP4/13,,1998,1998,1998,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4/13,verified,Häkkinen title car; 8 wins
+mclaren,1990s,personnel,ron-dennis-tp90s,Ron Dennis,British,1981,2009,1998,team_principal,,,,,,,,,,0.85,,,mclaren,https://en.wikipedia.org/wiki/Ron_Dennis,verified,
+mclaren,1990s,personnel,adrian-newey-td,Adrian Newey,British,1997,2005,1998,technical_director,,,,,,,,,,0.85,,,mclaren|williams|red-bull,https://en.wikipedia.org/wiki/Adrian_Newey,verified,Joined from Williams; designed MP4/13 and MP4/14
+mclaren,1990s,sponsor,marlboro-90s-mc,Marlboro,American,1974,1996,1995,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Left after 1996
+mclaren,1990s,sponsor,west-90s,West Cigarettes,British,1997,2005,1998,,title,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Silver-white livery from 1997
+mclaren,1990s,livery,mclaren-silver-west,McLaren Silver West Livery,,,,,,,,,,,,,,,,,mclaren-silver-west,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Iconic chrome West sponsor livery
+mclaren,2000s,driver,kimi-raikkonen-mc,Kimi Räikkönen,Finnish,2001,2018,2003,,,,349,21,18,103,4.9,1,,,,,ferrari|mclaren|lotus,https://en.wikipedia.org/wiki/Kimi_Räikkönen,verified,McLaren 2002-2006; near WDC miss 2003
+mclaren,2000s,driver,lewis-hamilton-mc,Lewis Hamilton,British,2007,2024,2008,,,,375,104,104,201,2.9,7,,,,,mclaren|mercedes,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,McLaren 2007-2012; 2008 WDC last lap
+mclaren,2000s,driver,david-coulthard-mc,David Coulthard,British,1994,2008,2001,,,,246,13,12,62,5.2,0,,,,,mclaren|williams|red-bull,https://en.wikipedia.org/wiki/David_Coulthard,verified,McLaren 1996-2004
+mclaren,2000s,driver,juan-pablo-montoya-mc,Juan Pablo Montoya,Colombian,2001,2006,2005,,,,95,7,13,30,5.1,0,,,,,mclaren|williams,https://en.wikipedia.org/wiki/Juan_Pablo_Montoya,verified,McLaren 2005-2006; left for NASCAR
+mclaren,2000s,engine,mercedes-fo110g,Mercedes FO110G V8,German,1995,2014,2004,,,,,5,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_FO110,verified,V10 then V8 rule change 2006
+mclaren,2000s,chassis,mclaren-mp4-17,McLaren MP4-17,,2002,2003,2003,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4-17,verified,Räikkönen near-title car
+mclaren,2000s,chassis,mclaren-mp4-23,McLaren MP4-23,,2008,2008,2008,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4-23,verified,Hamilton 2008 title car
+mclaren,2000s,personnel,ron-dennis-tp00s,Ron Dennis,British,1981,2009,2004,team_principal,,,,,,,,,,0.75,,,mclaren,https://en.wikipedia.org/wiki/Ron_Dennis,verified,Spygate scandal 2007
+mclaren,2000s,personnel,mike-coughlan-td,Mike Coughlan,British,2002,2007,2005,technical_director,,,,,,,,,,0.75,,,mclaren,https://en.wikipedia.org/wiki/Mike_Coughlan,verified,Suspended in 2007 Spygate
+mclaren,2000s,sponsor,vodafone-mc,Vodafone,British,2007,2013,2008,,title,#E60000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Red Vodafone livery from 2007
+mclaren,2000s,sponsor,west-00s,West (ended 2005),British,1997,2005,2004,,title,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,
+mclaren,2000s,livery,mclaren-vodafone-red,McLaren Vodafone Red/Chrome,,,,,,,,,,,,,,,,,mclaren-vodafone,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Chrome and red from 2007; Hamilton title livery
+mclaren,2010s,driver,lewis-hamilton-10s,Lewis Hamilton,British,2007,2024,2012,,,,375,104,104,201,2.9,7,,,,,mclaren|mercedes,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,McLaren to 2012; departed for Mercedes
+mclaren,2010s,driver,jenson-button,Jenson Button,British,2000,2017,2009,,,,306,15,8,50,5.8,1,,,,,mclaren|brawn|williams,https://en.wikipedia.org/wiki/Jenson_Button,verified,McLaren 2010-2016; 2009 WDC with Brawn
+mclaren,2010s,driver,lando-norris,Lando Norris,British,2019,2026,2024,,,,137,7,13,40,5.6,1,,,,,mclaren,https://en.wikipedia.org/wiki/Lando_Norris,verified,McLaren from 2019; 2025 WDC
+mclaren,2010s,driver,fernando-alonso-mc,Fernando Alonso,Spanish,2001,2024,2012,,,,371,32,22,98,4.8,2,,,,,ferrari|renault|mclaren,https://en.wikipedia.org/wiki/Fernando_Alonso,verified,McLaren 2015 Honda nightmare era
+mclaren,2010s,engine,honda-ra615h,Honda RA615H V6,Japanese,2015,2017,2015,,,,,0,,,,,,,,,,https://en.wikipedia.org/wiki/Honda_RA615H,verified,Catastrophic Honda return; 0 wins in 3 years
+mclaren,2010s,engine,renault-pu-mc,Renault PU V6,French,2018,2020,2019,,,,,0,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Renault bridge back to competitiveness
+mclaren,2010s,chassis,mclaren-mp4-30,McLaren MP4-30,,2015,2015,2015,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MP4-30,verified,Size-zero concept Honda nightmare
+mclaren,2010s,chassis,mclaren-mcl33,McLaren MCL33,,2018,2018,2018,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MCL33,verified,Renault return year; improved
+mclaren,2010s,personnel,martin-whitmarsh-tp,Martin Whitmarsh,British,2009,2013,2012,team_principal,,,,,,,,,,0.55,,,mclaren,https://en.wikipedia.org/wiki/Martin_Whitmarsh,verified,Ousted end of 2013
+mclaren,2010s,personnel,eric-boullier-tp,Éric Boullier,French,2014,2018,2015,team_principal,,,,,,,,,,0.45,,,mclaren,https://en.wikipedia.org/wiki/Éric_Boullier,verified,Honda era TP; resigned 2018
+mclaren,2010s,sponsor,vodafone-10s,Vodafone,British,2007,2013,2012,,title,#E60000,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Left after 2013
+mclaren,2010s,sponsor,exxonmobil-mc,ExxonMobil/Johnnie Walker,American,2014,2017,2015,,secondary,#FF8200,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,estimated,Sponsors during Honda transition era
+mclaren,2010s,livery,mclaren-papaya-return,Papaya Orange Return 2017,,,,,,,,,,,,,,,,,mclaren-papaya-return,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Returned to papaya 2017 after Vodafone era
+mclaren,2020s,driver,lando-norris-20s,Lando Norris,British,2019,2026,2024,,,,137,7,13,40,5.6,1,,,,,mclaren,https://en.wikipedia.org/wiki/Lando_Norris,verified,2025 WDC; McLaren cornerstone
+mclaren,2020s,driver,oscar-piastri,Oscar Piastri,Australian,2023,2026,2024,,,,66,7,4,17,4.8,0,,,,,mclaren,https://en.wikipedia.org/wiki/Oscar_Piastri,verified,2023 rookie; 2024-25 co-title threat
+mclaren,2020s,driver,daniel-ricciardo-mc,Daniel Ricciardo,Australian,2011,2024,2021,,,,246,8,3,32,5.4,0,,,,,mclaren|red-bull|renault,https://en.wikipedia.org/wiki/Daniel_Ricciardo,verified,McLaren 2021-2023; replaced mid-2023
+mclaren,2020s,engine,mercedes-m16-hybrid,Mercedes M16 E Performance,German,2021,2024,2024,,,,,4,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,estimated,Returned to Mercedes power 2021
+mclaren,2020s,chassis,mclaren-mcl60,McLaren MCL60,,2023,2023,2023,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MCL60,verified,60th anniversary car; major performance leap
+mclaren,2020s,chassis,mclaren-mcl38,McLaren MCL38,,2024,2024,2024,,,,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren_MCL38,verified,Constructors Championship winner
+mclaren,2020s,personnel,andrea-stella-tp,Andrea Stella,Italian,2023,2026,2024,team_principal,,,,,,,,,,0.9,,,mclaren,https://en.wikipedia.org/wiki/Andrea_Stella,verified,Replaced Seidl; rebuilt team to championship
+mclaren,2020s,personnel,peter-prodromou-td,Peter Prodromou,British,2019,2024,2024,technical_director,,,,,,,,,,0.9,,,mclaren,https://en.wikipedia.org/wiki/McLaren,estimated,Key technical leader in championship era
+mclaren,2020s,sponsor,dell-technologies,Dell Technologies,American,2021,2026,2024,,title,#FF8200,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,Papaya-era title sponsor
+mclaren,2020s,sponsor,google-mc,Google,American,2023,2026,2024,,secondary,#4285F4,,,,,,,,,,,,https://en.wikipedia.org/wiki/McLaren,verified,
+mclaren,2020s,livery,mclaren-papaya-20s,McLaren Papaya/Gulf Blue 2020s,,,,,,,,,,,,,,,,,mclaren-papaya-20s,mclaren,https://en.wikipedia.org/wiki/McLaren,verified,Papaya orange and Bahrain Gulf blue; 2021 nostalgic Gulf collab
+williams,1970s,driver,alan-jones,Alan Jones,Australian,1975,1986,1980,,,,116,12,6,24,5.2,1,,,,,williams|lotus,https://en.wikipedia.org/wiki/Alan_Jones_(racing_driver),verified,1980 WDC with Williams FW07
+williams,1970s,driver,clay-regazzoni,Clay Regazzoni,Swiss,1970,1980,1979,,,,132,5,5,28,6.1,0,,,,,williams|ferrari|bwt,https://en.wikipedia.org/wiki/Clay_Regazzoni,verified,Won 1979 British GP for Williams; first win for team
+williams,1970s,driver,carlos-reutemann,Carlos Reutemann,Argentine,1972,1982,1980,,,,146,12,6,45,4.9,0,,,,,williams|ferrari|lotus,https://en.wikipedia.org/wiki/Carlos_Reutemann,verified,Key Williams driver late 1970s
+williams,1970s,engine,ford-dfv-williams-70s,Ford Cosworth DFV,British,1977,1983,1979,,,,,,12,6,3.8,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,Customer DFV powered early Williams titles
+williams,1970s,chassis,fw07,Williams FW07,British,1979,1981,1980,,,,,12,5,3.2,,,,,,,fw07-white-red,https://en.wikipedia.org/wiki/Williams_FW07,verified,Championship-winning ground-effect car
+williams,1970s,personnel,frank-williams-tp,Frank Williams,British,1977,2012,1980,,,,,,,,,,0.72,,,,williams,https://en.wikipedia.org/wiki/Frank_Williams_(Formula_One),verified,team_principal
+williams,1970s,personnel,patrick-head-td,Patrick Head,British,1977,2012,1992,,,,,,,,,,0.72,,,,williams,https://en.wikipedia.org/wiki/Patrick_Head,verified,technical_director
+williams,1970s,sponsor,saudia-airlines,Saudia Airlines,Saudi,,,,,title,#006C35,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,Title sponsor 1977-1982; green stripe livery
+williams,1970s,sponsor,leyland-williams,Leyland Vehicles,British,,,,,secondary,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Secondary sponsor 1970s
+williams,1970s,livery,fw07-saudia-livery,Saudia White-Green,,,,,,,,,,,,,,,,fw07-saudia-livery,,White with green Saudia stripe,https://en.wikipedia.org/wiki/Williams_Racing,verified,
+williams,1970s,motto,williams-70s-motto,,,,,,,,,,,,,,,,,,We Race to Win,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Era motto
+williams,1980s,driver,nelson-piquet-williams,Nelson Piquet,Brazilian,1978,1991,1987,,,,204,23,24,60,4.1,3,,,,,brabham|williams|lotus,https://en.wikipedia.org/wiki/Nelson_Piquet,verified,Won 1987 WDC with Williams-Honda
+williams,1980s,driver,nigel-mansell-williams-80s,Nigel Mansell,British,1980,1995,1992,,,,187,31,32,59,4.4,1,,,,,williams|ferrari,https://en.wikipedia.org/wiki/Nigel_Mansell,verified,Runner-up 1986 and 1987; dominant mid-80s Williams driver
+williams,1980s,driver,keke-rosberg,Keke Rosberg,Finnish,1978,1986,1982,,,,114,5,5,17,5.3,1,,,,,williams,https://en.wikipedia.org/wiki/Keke_Rosberg,verified,1982 WDC with Williams; won with only one win that year
+williams,1980s,engine,honda-ra163e,Honda RA163E Turbo,Japanese,1983,1987,1986,,,,,,72,12,2.8,,,,,,,https://en.wikipedia.org/wiki/Honda_in_Formula_One,verified,Honda turbo era powered Williams to back-to-back titles
+williams,1980s,engine,ford-dfv-williams-80s,Ford Cosworth DFV,British,1980,1983,1982,,,,,,5,3,4.1,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,Pre-turbo era engine
+williams,1980s,chassis,fw11,Williams FW11,British,1986,1987,1986,,,,,9,8,2.9,,,,,,,fw11-canon-yellow,https://en.wikipedia.org/wiki/Williams_FW11,verified,Honda-powered; Piquet/Mansell championship machine
+williams,1980s,personnel,frank-williams-tp-80s,Frank Williams,British,1977,2012,1986,,,,,,,,,,0.85,,,,williams,https://en.wikipedia.org/wiki/Frank_Williams_(Formula_One),verified,team_principal
+williams,1980s,personnel,patrick-head-td-80s,Patrick Head,British,1977,2012,1986,,,,,,,,,,0.85,,,,williams,https://en.wikipedia.org/wiki/Patrick_Head,verified,technical_director
+williams,1980s,sponsor,canon-williams,Canon,Japanese,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,Canon red-yellow stripe livery 1985-1991
+williams,1980s,sponsor,denim-williams,Denim,International,,,,,secondary,#0057A8,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Secondary 1980s sponsor
+williams,1980s,livery,fw11-canon-livery,Canon Yellow-White,,,,,,,,,,,,,,,,fw11-canon-livery,,White with Canon red and yellow stripes,https://en.wikipedia.org/wiki/Williams_Racing,verified,
+williams,1980s,motto,williams-80s-motto,,,,,,,,,,,,,,,,,,Powered by Honda; built to win,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Era motto
+williams,1990s,driver,nigel-mansell-williams-92,Nigel Mansell,British,1980,1995,1992,,,,187,31,32,59,4.4,1,,,,,williams|ferrari,https://en.wikipedia.org/wiki/Nigel_Mansell,verified,1992 WDC dominant season; 9 wins
+williams,1990s,driver,alain-prost-williams,Alain Prost,French,1980,1993,1993,,,,199,51,33,106,3.2,4,,,,,williams|ferrari|mclaren,https://en.wikipedia.org/wiki/Alain_Prost,verified,1993 WDC in final season with Williams
+williams,1990s,driver,damon-hill,Damon Hill,British,1992,1999,1996,,,,115,22,20,42,4.3,1,,,,,williams|jordan,https://en.wikipedia.org/wiki/Damon_Hill,verified,1996 WDC with Williams; son of Graham Hill
+williams,1990s,driver,jacques-villeneuve,Jacques Villeneuve,Canadian,1996,2006,1997,,,,163,11,13,23,6.1,1,,,,,williams|benetton,https://en.wikipedia.org/wiki/Jacques_Villeneuve,verified,1997 WDC with Williams; last Williams champion to date
+williams,1990s,engine,renault-rs5-williams,Renault RS5/RS7,French,1989,1997,1992,,,,,,114,15,2.1,,,,,,,https://en.wikipedia.org/wiki/Williams_FW14B,verified,Renault powered FW14B and FW19 championship machines
+williams,1990s,engine,renault-fw19-engine,Renault RS9,French,1996,1997,1997,,,,,,16,8,2.3,,,,,,,https://en.wikipedia.org/wiki/Williams_FW19,verified,1997 title-winning engine
+williams,1990s,chassis,fw14b,Williams FW14B,British,1992,1992,1992,,,,,15,7,1.8,,,,,,,fw14b-rothmans,https://en.wikipedia.org/wiki/Williams_FW14B,verified,Active suspension; arguably most dominant car ever built
+williams,1990s,chassis,fw19,Williams FW19,British,1997,1997,1997,,,,,8,5,2.4,,,,,,,fw19-rothmans,https://en.wikipedia.org/wiki/Williams_FW19,verified,Villeneuve's championship-winning car
+williams,1990s,personnel,frank-williams-tp-90s,Frank Williams,British,1977,2012,1992,,,,,,,,,,0.95,,,,williams,https://en.wikipedia.org/wiki/Frank_Williams_(Formula_One),verified,team_principal
+williams,1990s,personnel,adrian-newey-td,Adrian Newey,British,1991,1996,1992,,,,,,,,,,0.95,,,,williams|red-bull|mclaren,https://en.wikipedia.org/wiki/Adrian_Newey,verified,technical_director; designed FW14B and FW15C
+williams,1990s,personnel,patrick-head-td-90s,Patrick Head,British,1977,2012,1994,,,,,,,,,,0.92,,,,williams,https://en.wikipedia.org/wiki/Patrick_Head,verified,technical_director (co-lead)
+williams,1990s,sponsor,rothmans-williams,Rothmans,British,,,,,title,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_FW14B,verified,Blue-white Rothmans livery; iconic 1990s Williams look
+williams,1990s,sponsor,renault-williams-sponsor,Renault,French,,,,,secondary,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,Engine partner branding
+williams,1990s,livery,fw14b-rothmans-livery,Rothmans Blue-White,,,,,,,,,,,,,,,,fw14b-rothmans,,Deep blue and white Rothmans livery,https://en.wikipedia.org/wiki/Williams_FW14B,verified,
+williams,1990s,motto,williams-90s-motto,,,,,,,,,,,,,,,,,,Built by champions for champions,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Era motto
+williams,2000s,driver,ralf-schumacher,Ralf Schumacher,German,1997,2007,2002,,,,182,6,5,27,6.8,0,,,,,williams|toyota,https://en.wikipedia.org/wiki/Ralf_Schumacher,verified,Consistent podium scorer for Williams 1999-2004
+williams,2000s,driver,juan-pablo-montoya-williams,Juan Pablo Montoya,Colombian,2001,2006,2003,,,,95,7,13,30,5.1,0,,,,,williams|mclaren,https://en.wikipedia.org/wiki/Juan_Pablo_Montoya,verified,Aggressive Williams driver; 7 wins before moving to McLaren
+williams,2000s,driver,jenson-button-williams,Jenson Button,British,2000,2017,2009,,,,306,15,8,50,6.4,1,,,,,williams|benetton|bar|brawn|mclaren,https://en.wikipedia.org/wiki/Jenson_Button,verified,Started career at Williams 2000; only one season
+williams,2000s,engine,bmw-p82,BMW P82,German,2000,2005,2003,,,,,,6,5,4.2,,,,,,,https://en.wikipedia.org/wiki/Williams_FW26,verified,BMW partnership 2000-2005; competitive but unreliable
+williams,2000s,engine,cosworth-williams-2000s,Cosworth CA2006,British,2006,2006,2006,,,,,,0,0,9.1,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,Cosworth return after BMW exit
+williams,2000s,chassis,fw26,Williams FW26,British,2004,2004,2004,,,,,0,1,7.1,,,,,,,fw26-bmw-white,https://en.wikipedia.org/wiki/Williams_FW26,verified,Distinctive walrus nose; underperformed vs expectations
+williams,2000s,personnel,frank-williams-tp-2000s,Frank Williams,British,1977,2012,2003,,,,,,,,,,0.45,,,,williams,https://en.wikipedia.org/wiki/Frank_Williams_(Formula_One),verified,team_principal
+williams,2000s,personnel,sam-michael-td,Sam Michael,Australian,2004,2011,2003,,,,,,,,,,0.40,,,,williams,https://en.wikipedia.org/wiki/Sam_Michael,verified,technical_director
+williams,2000s,sponsor,bmw-williams-sponsor,BMW,German,,,,,title,#003B8E,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,BMW title partner and engine supplier 2000-2005
+williams,2000s,sponsor,fdex-williams,FedEx,American,,,,,secondary,#FF6600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Secondary sponsor 2000s
+williams,2000s,livery,fw26-bmw-livery,BMW Williams White,,,,,,,,,,,,,,,,fw26-bmw-white,,White with BMW blue accents,https://en.wikipedia.org/wiki/Williams_FW26,verified,
+williams,2000s,motto,williams-2000s-motto,,,,,,,,,,,,,,,,,,We never stop fighting,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Era motto
+williams,2010s,driver,pastor-maldonado,Pastor Maldonado,Venezuelan,2011,2015,2012,,,,95,1,1,1,13.2,0,,,,,williams|lotus,https://en.wikipedia.org/wiki/Pastor_Maldonado,verified,Won 2012 Spanish GP; Williams last win to date
+williams,2010s,driver,valtteri-bottas-williams,Valtteri Bottas,Finnish,2013,2021,2017,,,,213,10,20,67,5.6,0,,,,,williams|mercedes,https://en.wikipedia.org/wiki/Valtteri_Bottas,verified,Rose through Williams before Mercedes move
+williams,2010s,driver,felipe-massa-williams,Felipe Massa,Brazilian,2002,2017,2008,,,,269,11,16,41,6.3,0,,,,,williams|ferrari,https://en.wikipedia.org/wiki/Felipe_Massa,verified,Williams 2014-2017; veteran presence
+williams,2010s,engine,mercedes-pf108,Mercedes PF108,German,2014,2022,2015,,,,,,12,11,3.2,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,Customer Mercedes PU from 2014
+williams,2010s,engine,mercedes-m08-williams,Mercedes M08 EQ,German,2018,2021,2019,,,,,,3,2,4.8,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Continued Mercedes customer supply
+williams,2010s,chassis,fw36,Williams FW36,British,2014,2014,2014,,,,,0,1,5.9,,,,,,,fw36-martini,https://en.wikipedia.org/wiki/Williams_FW36,verified,Best car of this era; 3rd in constructors 2014
+williams,2010s,personnel,claire-williams-tp,Claire Williams,British,2013,2020,2014,,,,,,,,,,0.30,,,,williams,https://en.wikipedia.org/wiki/Claire_Williams,verified,team_principal (deputy then acting)
+williams,2010s,personnel,pat-symonds-td,Pat Symonds,British,2013,2019,2014,,,,,,,,,,0.35,,,,williams|benetton|renault,https://en.wikipedia.org/wiki/Pat_Symonds,verified,technical_director
+williams,2010s,sponsor,martini-williams,Martini,Italian,,,,,title,#0033A0,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_FW36,verified,Iconic Martini stripes on white; title sponsor 2014-2018
+williams,2010s,sponsor,roc-williams,ROKiT,American,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Williams_Racing,verified,ROKiT title sponsor 2019-2020
+williams,2010s,livery,fw36-martini-livery,Martini Stripes,,,,,,,,,,,,,,,,fw36-martini,,White with classic Martini red-blue-white stripes,https://en.wikipedia.org/wiki/Williams_FW36,verified,
+williams,2010s,motto,williams-2010s-motto,,,,,,,,,,,,,,,,,,Legends never quit,,https://en.wikipedia.org/wiki/Williams_Racing,estimated,Era motto
+red-bull,2000s,driver,david-coulthard-rb,David Coulthard,British,1994,2008,1998,,,,246,13,12,62,5.8,0,,,,,red-bull|mclaren|williams,https://en.wikipedia.org/wiki/David_Coulthard,verified,Veteran presence in early Red Bull years 2005-2008
+red-bull,2000s,driver,mark-webber-rb,Mark Webber,Australian,2002,2013,2010,,,,215,9,13,42,4.8,0,,,,,red-bull|williams|jaguar,https://en.wikipedia.org/wiki/Mark_Webber,verified,9 wins; near-champion; core Red Bull figure
+red-bull,2000s,driver,sebastian-vettel-rb-2000s,Sebastian Vettel,German,2007,2022,2011,,,,299,53,57,122,3.4,4,,,,,red-bull|ferrari|aston-martin,https://en.wikipedia.org/wiki/Sebastian_Vettel,verified,Joined late 2008; won first WDC 2010 age 23
+red-bull,2000s,engine,cosworth-rb-2000s,Cosworth TJ2005,British,2005,2006,2005,,,,,,0,0,7.2,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Customer Cosworth in team's early seasons
+red-bull,2000s,engine,renault-rs27-rb,Renault RS27,French,2007,2010,2010,,,,,,12,15,3.9,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Renault power from 2007 onwards
+red-bull,2000s,chassis,rb5,Red Bull RB5,British,2009,2009,2009,,,,,6,9,3.1,,,,,,,rb5-red-bull,https://en.wikipedia.org/wiki/Red_Bull_RB5,verified,First true championship contender; Vettel/Webber
+red-bull,2000s,personnel,christian-horner-tp,Christian Horner,British,2005,2025,2010,,,,,,,,,,0.82,,,,red-bull,https://en.wikipedia.org/wiki/Christian_Horner,verified,team_principal; youngest TP in F1 when appointed
+red-bull,2000s,personnel,adrian-newey-rb-td,Adrian Newey,British,2006,2024,2011,,,,,,,,,,0.95,,,,red-bull|williams|mclaren,https://en.wikipedia.org/wiki/Adrian_Newey,verified,technical_director; genius car designer
+red-bull,2000s,sponsor,redbull-energy-2000s,Red Bull GmbH,Austrian,,,,,title,#CC1E4A,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Self-titled team and beverage brand livery
+red-bull,2000s,sponsor,rauch-rb,Rauch,Austrian,,,,,secondary,#0000FF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,estimated,Austrian partner brand secondary
+red-bull,2000s,livery,rb5-matte-livery,Matte Red Bull,,,,,,,,,,,,,,,,rb5-matte-red,,Deep red and navy with charging bull logo,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,
+red-bull,2000s,motto,rb-2000s-motto,,,,,,,,,,,,,,,,,,Wings to fly; speed to win,,https://en.wikipedia.org/wiki/Red_Bull_Racing,estimated,Era motto
+red-bull,2010s,driver,sebastian-vettel-rb-2010s,Sebastian Vettel,German,2007,2022,2011,,,,299,53,57,122,3.4,4,,,,,red-bull|ferrari|aston-martin,https://en.wikipedia.org/wiki/Sebastian_Vettel,verified,4x WDC 2010-2013 all with Red Bull
+red-bull,2010s,driver,mark-webber-rb-2010s,Mark Webber,Australian,2002,2013,2010,,,,215,9,13,42,4.8,0,,,,,red-bull|williams|jaguar,https://en.wikipedia.org/wiki/Mark_Webber,verified,9 wins in Red Bull; retired end of 2013
+red-bull,2010s,driver,daniel-ricciardo-rb,Daniel Ricciardo,Australian,2011,2023,2014,,,,260,8,3,32,5.7,0,,,,,red-bull|renault|mclaren,https://en.wikipedia.org/wiki/Daniel_Ricciardo,verified,8 wins for Red Bull; fan favourite
+red-bull,2010s,driver,max-verstappen-rb-2010s,Max Verstappen,Dutch,2015,2099,2023,,,,,,0,0,0,4,,,,,red-bull,https://en.wikipedia.org/wiki/Max_Verstappen,verified,Joined 2016; early podiums before 2021 title
+red-bull,2010s,engine,renault-energy-rb,Renault Energy F1,French,2010,2018,2012,,,,,,39,45,2.8,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Turbulent partnership; tagged-heuer branded 2016-2018
+red-bull,2010s,engine,honda-ra619h,Honda RA619H,Japanese,2019,2021,2021,,,,,,7,9,2.4,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Honda partnership from 2019; title-winning power
+red-bull,2010s,chassis,rb9,Red Bull RB9,British,2013,2013,2013,,,,,13,11,1.6,,,,,,,rb9-red-bull,https://en.wikipedia.org/wiki/Red_Bull_RB9,verified,Dominant Vettel title car; 13 wins in 19 races
+red-bull,2010s,chassis,rb16b,Red Bull RB16B,British,2021,2021,2021,,,,,11,9,2.2,,,,,,,rb16b-honda,https://en.wikipedia.org/wiki/Red_Bull_RB16B,verified,Verstappen's first championship car
+red-bull,2010s,personnel,christian-horner-tp-2010s,Christian Horner,British,2005,2025,2013,,,,,,,,,,0.95,,,,red-bull,https://en.wikipedia.org/wiki/Christian_Horner,verified,team_principal; 4 titles
+red-bull,2010s,personnel,adrian-newey-rb-td-2010s,Adrian Newey,British,2006,2024,2013,,,,,,,,,,0.95,,,,red-bull|williams|mclaren,https://en.wikipedia.org/wiki/Adrian_Newey,verified,technical_director; RB9 through RB19
+red-bull,2010s,sponsor,aston-martin-rb,Aston Martin (sponsor),British,,,,,title,#035E3F,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Car branded Aston Martin Red Bull Racing 2018-2020
+red-bull,2010s,sponsor,oracle-rb-2010s,Oracle,American,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Oracle title sponsor from 2022
+red-bull,2010s,livery,rb9-navy-livery,Dark Blue Red Bull,,,,,,,,,,,,,,,,rb9-navy,,Dark navy and red Infiniti-era livery,https://en.wikipedia.org/wiki/Red_Bull_RB9,verified,
+red-bull,2010s,motto,rb-2010s-motto,,,,,,,,,,,,,,,,,,Domination engineered,,https://en.wikipedia.org/wiki/Red_Bull_Racing,estimated,Era motto
+red-bull,2020s,driver,max-verstappen-rb-2020s,Max Verstappen,Dutch,2015,2099,2023,,,,,,53,40,3.0,4,,,,,red-bull,https://en.wikipedia.org/wiki/Max_Verstappen,verified,4x WDC 2021-2024 with Red Bull
+red-bull,2020s,driver,sergio-perez,Sergio Pérez,Mexican,2011,2024,2023,,,,282,6,3,42,6.2,0,,,,,red-bull|force-india|sauber,https://en.wikipedia.org/wiki/Sergio_Pérez,verified,6 wins for Red Bull; dropped end of 2024
+red-bull,2020s,driver,alex-albon-rb,Alex Albon,Thai-British,2019,2099,2021,,,,,,0,0,2,0,,,,,red-bull|williams,https://en.wikipedia.org/wiki/Alexander_Albon,verified,Promoted to RB mid-2019; returned to Williams 2022
+red-bull,2020s,engine,rbpt-rb18,RBPT Honda (RBPT001),British-Japanese,2022,2026,2023,,,,,,21,12,1.8,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Powertrains,verified,Rebranded Honda engine under Red Bull Powertrains
+red-bull,2020s,engine,honda-ra621h,Honda RA621H,Japanese,2021,2021,2021,,,,,,11,9,2.1,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Title-winning Honda unit final year
+red-bull,2020s,chassis,rb18,Red Bull RB18,British,2022,2022,2022,,,,,17,14,1.4,,,,,,,rb18-oracle,https://en.wikipedia.org/wiki/Red_Bull_RB18,verified,2022 title-winning car under new ground-effect regs
+red-bull,2020s,chassis,rb19,Red Bull RB19,British,2023,2023,2023,,,,,21,22,1.2,,,,,,,rb19-oracle,https://en.wikipedia.org/wiki/Red_Bull_RB19,verified,Dominant RB19; 21 wins from 22 races
+red-bull,2020s,personnel,christian-horner-tp-2020s,Christian Horner,British,2005,2025,2023,,,,,,,,,,0.98,,,,red-bull,https://en.wikipedia.org/wiki/Christian_Horner,verified,team_principal; resigned/departed 2025
+red-bull,2020s,personnel,pierre-wache-td,Pierre Waché,French,2017,2099,2023,,,,,,,,,,0.95,,,,red-bull,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,technical_director post-Newey
+red-bull,2020s,sponsor,oracle-rb-2020s,Oracle,American,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Major Oracle branding on RB18/19
+red-bull,2020s,sponsor,bybit-rb,Bybit,International,,,,,secondary,#1A1A2E,,,,,,,,,,,,https://en.wikipedia.org/wiki/Red_Bull_Racing,verified,Crypto exchange secondary sponsor 2022-2023
+red-bull,2020s,livery,rb19-oracle-livery,Oracle Red-Navy,,,,,,,,,,,,,,,,rb19-oracle,,Dark navy with Oracle red and yellow accents,https://en.wikipedia.org/wiki/Red_Bull_RB19,verified,
+red-bull,2020s,motto,rb-2020s-motto,,,,,,,,,,,,,,,,,,Max it out,,https://en.wikipedia.org/wiki/Red_Bull_Racing,estimated,Era motto
+mercedes,1950s,driver,juan-fangio-merc,Juan Manuel Fangio,Argentine,1950,1958,1954,,,,51,24,29,35,1.8,2,,,,,mercedes|ferrari|maserati,https://en.wikipedia.org/wiki/Juan_Manuel_Fangio,verified,1954 and 1955 WDC with Mercedes W196
+mercedes,1950s,driver,stirling-moss-merc,Stirling Moss,British,1951,1962,1955,,,,66,16,16,24,3.1,0,,,,,mercedes|maserati|vanwall,https://en.wikipedia.org/wiki/Stirling_Moss,verified,Best driver never to win WDC; Moss/Fangio 1-2 at 1955 British GP
+mercedes,1950s,driver,karl-kling,Karl Kling,German,1954,1955,1954,,,,5,0,0,1,6.4,0,,,,,mercedes,https://en.wikipedia.org/wiki/Karl_Kling,verified,Works Mercedes driver in W196 era; limited starts
+mercedes,1950s,engine,mercedes-m196,Mercedes-Benz M196,German,1954,1955,1955,,,,,,12,11,1.9,,,,,,,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,verified,Desmodromic straight-eight; dominant in 1954-1955
+mercedes,1950s,engine,mercedes-m196-streamliner,Mercedes M196 (Streamliner),German,1954,1955,1955,,,,,,4,3,2.1,,,,,,,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,verified,Enclosed-wheel streamliner variant used on fast tracks
+mercedes,1950s,chassis,w196,Mercedes-Benz W196,German,1954,1955,1955,,,,,12,11,1.9,,,,,,,w196-silver-arrow,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,verified,The original Silver Arrow; revolutionary engineering
+mercedes,1950s,personnel,alfred-neubauer-tp,Alfred Neubauer,Austrian,1926,1955,1954,,,,,,,,,,0.97,,,,mercedes,https://en.wikipedia.org/wiki/Alfred_Neubauer,verified,team_principal; legendary pre-war and post-war Mercedes boss
+mercedes,1950s,personnel,rudolf-uhlenhaut-td,Rudolf Uhlenhaut,German,1936,1965,1954,,,,,,,,,,0.97,,,,mercedes,https://en.wikipedia.org/wiki/Rudolf_Uhlenhaut,verified,technical_director; brilliant engineer; famously could drive near GP pace
+mercedes,1950s,sponsor,mercedes-factory-50s,Mercedes-Benz Factory,German,,,,,title,#C0C0C0,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,verified,Works entry; silver unpainted aluminium; no commercial sponsors
+mercedes,1950s,sponsor,bosch-merc-50s,Bosch,German,,,,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,estimated,Bosch ignition supplier branding
+mercedes,1950s,livery,w196-silver-arrow-livery,Silver Arrow,,,,,,,,,,,,,,,,w196-silver,,Bare aluminium silver; German racing colour,https://en.wikipedia.org/wiki/Mercedes-Benz_W196,verified,
+mercedes,1950s,motto,mercedes-50s-motto,,,,,,,,,,,,,,,,,,Das Beste oder nichts (The best or nothing),,https://en.wikipedia.org/wiki/Mercedes-Benz,verified,Era motto
+mercedes,2010s,driver,lewis-hamilton-merc,Lewis Hamilton,British,2007,2099,2020,,,,,,103,104,6.0,7,,,,,mercedes|mclaren,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,6 of his 7 WDCs with Mercedes 2014-2020
+mercedes,2010s,driver,nico-rosberg,Nico Rosberg,German,2006,2016,2016,,,,206,23,30,57,4.2,1,,,,,mercedes|williams,https://en.wikipedia.org/wiki/Nico_Rosberg,verified,2016 WDC; retired immediately after title
+mercedes,2010s,driver,valtteri-bottas-merc,Valtteri Bottas,Finnish,2013,2021,2019,,,,213,10,20,67,5.6,0,,,,,mercedes|williams|alfa-romeo,https://en.wikipedia.org/wiki/Valtteri_Bottas,verified,10 wins and consistent 2nd driver for Hamilton era
+mercedes,2010s,driver,michael-schumacher-merc,Michael Schumacher,German,1991,2012,2012,,,,308,91,68,155,2.9,7,,,,,mercedes|ferrari|jordan|benetton,https://en.wikipedia.org/wiki/Michael_Schumacher,verified,Comeback 2010-2012; no wins but historical weight
+mercedes,2010s,engine,mercedes-pu106,Mercedes PU106A Hybrid,German,2014,2021,2016,,,,,,102,121,2.0,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W05_Hybrid,verified,Most dominant F1 engine; 8 constructors titles in a row
+mercedes,2010s,engine,mercedes-m09-eq,Mercedes M09 EQ Power+,German,2020,2021,2021,,,,,,11,9,2.3,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W11_EQ_Performance,verified,Hamilton 7th title engine
+mercedes,2010s,chassis,w05,Mercedes W05 Hybrid,German,2014,2014,2014,,,,,16,18,1.8,,,,,,,w05-petronas,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W05_Hybrid,verified,First hybrid championship car; redefined the field
+mercedes,2010s,chassis,w07,Mercedes W07 Hybrid,German,2016,2016,2016,,,,,19,20,1.6,,,,,,,w07-petronas,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W07_Hybrid,verified,Hamilton/Rosberg title battle machine
+mercedes,2010s,personnel,toto-wolff-tp,Toto Wolff,Austrian,2013,2099,2019,,,,,,,,,,0.98,,,,mercedes,https://en.wikipedia.org/wiki/Toto_Wolff,verified,team_principal; led most successful F1 era
+mercedes,2010s,personnel,paddy-lowe-td,Paddy Lowe,British,2013,2017,2016,,,,,,,,,,0.96,,,,mercedes|williams|mclaren,https://en.wikipedia.org/wiki/Paddy_Lowe,verified,technical_director early Hamilton era
+mercedes,2010s,personnel,james-allison-td,James Allison,British,2017,2099,2020,,,,,,,,,,0.94,,,,mercedes|ferrari|renault,https://en.wikipedia.org/wiki/James_Allison_(engineer),verified,technical_director from 2017
+mercedes,2010s,sponsor,petronas-merc,Petronas,Malaysian,,,,,title,#00D2BE,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_Petronas_F1_Team,verified,Teal livery; iconic Petronas colour synonymous with Hamilton era
+mercedes,2010s,sponsor,epson-merc,Epson,Japanese,,,,,secondary,#003087,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_Petronas_F1_Team,verified,Secondary technology partner
+mercedes,2010s,livery,w05-petronas-livery,Petronas Teal,,,,,,,,,,,,,,,,w05-petronas-teal,,Silver-teal Petronas design; iconic colour scheme,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W05_Hybrid,verified,
+mercedes,2010s,motto,mercedes-2010s-motto,,,,,,,,,,,,,,,,,,Still we rise,,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,Hamilton era motto adopted by team
+mercedes,2020s,driver,lewis-hamilton-merc-2020s,Lewis Hamilton,British,2007,2099,2020,,,,,,103,104,6.0,7,,,,,mercedes|mclaren,https://en.wikipedia.org/wiki/Lewis_Hamilton,verified,Moved to Ferrari 2025; last race in silver W15
+mercedes,2020s,driver,valtteri-bottas-merc-2020s,Valtteri Bottas,Finnish,2013,2021,2019,,,,213,10,20,67,5.6,0,,,,,mercedes|williams|alfa-romeo,https://en.wikipedia.org/wiki/Valtteri_Bottas,verified,Last Mercedes season 2021
+mercedes,2020s,driver,george-russell-merc,George Russell,British,2019,2099,2022,,,,,,2,6,4.1,0,,,,,mercedes|williams,https://en.wikipedia.org/wiki/George_Russell_(racing_driver),verified,Replaced Hamilton at Mercedes from 2022
+mercedes,2020s,driver,andrea-antonelli,Andrea Kimi Antonelli,Italian,2025,2099,2025,,,,,,0,0,0,0,,,,,mercedes,https://en.wikipedia.org/wiki/Andrea_Kimi_Antonelli,estimated,Promoted to Mercedes 2025 replacing Hamilton; rookie stats pending
+mercedes,2020s,engine,mercedes-m12-eq,Mercedes M12 EQ Power+,German,2023,2026,2024,,,,,,3,5,3.8,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W14,verified,Post-dominance recovery engine programme
+mercedes,2020s,engine,mercedes-m13-eq,Mercedes M13 EQ,German,2024,2026,2025,,,,,,4,3,3.4,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W15,estimated,Developmental unit as team rebuilds form
+mercedes,2020s,chassis,w13,Mercedes W13,German,2022,2022,2022,,,,,1,0,4.8,,,,,,,w13-petronas,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W13_E_Performance,verified,Porpoising disaster car; one of worst-handling recent Mercedes
+mercedes,2020s,chassis,w15,Mercedes W15,German,2024,2024,2024,,,,,4,2,3.2,,,,,,,w15-petronas,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W15,verified,Hamilton's final car before Ferrari move
+mercedes,2020s,personnel,toto-wolff-tp-2020s,Toto Wolff,Austrian,2013,2099,2022,,,,,,,,,,0.75,,,,mercedes,https://en.wikipedia.org/wiki/Toto_Wolff,verified,team_principal; navigating post-dominance era
+mercedes,2020s,personnel,james-allison-td-2020s,James Allison,British,2017,2099,2022,,,,,,,,,,0.75,,,,mercedes|ferrari|renault,https://en.wikipedia.org/wiki/James_Allison_(engineer),verified,technical_director
+mercedes,2020s,sponsor,petronas-merc-2020s,Petronas,Malaysian,,,,,title,#00D2BE,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_Petronas_F1_Team,verified,Continued Petronas title partnership
+mercedes,2020s,sponsor,ineos-merc,INEOS,British,,,,,secondary,#0057A8,,,,,,,,,,,,https://en.wikipedia.org/wiki/Mercedes_AMG_Petronas_F1_Team,verified,INEOS strategic partner and equity holder
+mercedes,2020s,livery,w15-petronas-livery,Teal-Silver 2024,,,,,,,,,,,,,,,,w15-petronas-2024,,Updated teal with chrome silver accents,https://en.wikipedia.org/wiki/Mercedes_AMG_F1_W15,verified,
+mercedes,2020s,motto,mercedes-2020s-motto,,,,,,,,,,,,,,,,,,Rebuild. Return. Reclaim.,,https://en.wikipedia.org/wiki/Mercedes_AMG_Petronas_F1_Team,estimated,Era motto
+lotus,1950s,driver,stirling-moss-lotus,Stirling Moss,British,1951,1962,1961,,,,66,16,16,24,3.1,0,,,,,lotus|mercedes|maserati,https://en.wikipedia.org/wiki/Stirling_Moss,verified,Rob Walker Lotus entries; not official team
+lotus,1950s,driver,innes-ireland,Innes Ireland,British,1959,1966,1961,,,,50,1,0,8,7.2,0,,,,,lotus,https://en.wikipedia.org/wiki/Innes_Ireland,verified,Won 1961 US GP for Lotus; replaced by Clark controversially
+lotus,1950s,driver,alan-stacey,Alan Stacey,British,1958,1960,1959,,,,7,0,0,0,10.1,0,,,,,lotus,https://en.wikipedia.org/wiki/Alan_Stacey,verified,Works Lotus driver; died in 1960 Belgian GP
+lotus,1950s,engine,climax-fwe,Coventry Climax FWE/FPF,British,1957,1965,1961,,,,,,1,2,5.1,,,,,,,https://en.wikipedia.org/wiki/Coventry_Climax,verified,Customer Climax four-cylinder powered early Lotus
+lotus,1950s,engine,lotus-12-engine,Lotus 12 Climax,British,1957,1958,1958,,,,,,0,0,7.8,,,,,,,https://en.wikipedia.org/wiki/Lotus_12,estimated,First Lotus F1 car engine package
+lotus,1950s,chassis,lotus-12,Lotus 12,British,1957,1958,1958,,,,,0,0,8.1,,,,,,,lotus-12-brg,https://en.wikipedia.org/wiki/Lotus_12,verified,Colin Chapman's first serious F1 design
+lotus,1950s,personnel,colin-chapman-tp,Colin Chapman,British,1958,1982,1963,,,,,,,,,,0.65,,,,lotus,https://en.wikipedia.org/wiki/Colin_Chapman,verified,team_principal and designer; one of F1's greatest innovators
+lotus,1950s,sponsor,lotus-factory-50s,Team Lotus (Works),British,,,,,title,#006600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Team_Lotus,verified,British Racing Green factory entry
+lotus,1950s,sponsor,esso-lotus-50s,Esso,International,,,,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Team_Lotus,estimated,Fuel sponsor on early Lotus machinery
+lotus,1950s,livery,lotus-12-brg-livery,British Racing Green,,,,,,,,,,,,,,,,lotus-12-brg,,Dark green; traditional British team colour,https://en.wikipedia.org/wiki/Team_Lotus,verified,
+lotus,1950s,motto,lotus-50s-motto,,,,,,,,,,,,,,,,,,Simplify and add lightness,,https://en.wikipedia.org/wiki/Colin_Chapman,verified,Chapman design philosophy; widely attributed
+lotus,1960s,driver,jim-clark,Jim Clark,British,1960,1968,1963,,,,72,25,33,32,2.8,2,,,,,lotus,https://en.wikipedia.org/wiki/Jim_Clark,verified,Back-to-back WDC 1963 and 1965; died Hockenheim 1968
+lotus,1960s,driver,graham-hill-lotus,Graham Hill,British,1958,1975,1968,,,,176,14,13,36,4.1,2,,,,,lotus|brm,https://en.wikipedia.org/wiki/Graham_Hill,verified,Won 1968 WDC post-Clark death; also 1962 WDC with BRM
+lotus,1960s,driver,jochen-rindt-lotus,Jochen Rindt,Austrian,1964,1970,1970,,,,60,6,10,13,5.2,1,,,,,lotus|cooper|brabham,https://en.wikipedia.org/wiki/Jochen_Rindt,verified,1970 WDC posthumously; died Monza qualifying
+lotus,1960s,engine,climax-fwmv,Coventry Climax FWMV,British,1961,1965,1963,,,,,,25,33,2.9,,,,,,,https://en.wikipedia.org/wiki/Coventry_Climax,verified,V8 powering Clark's dominant 1963 season
+lotus,1960s,engine,ford-dfv-lotus,Ford Cosworth DFV,British,1967,1983,1968,,,,,,4,6,3.1,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,DFV debuted on Lotus 49 with Clark; then opened to all
+lotus,1960s,chassis,lotus-25,Lotus 25,British,1962,1965,1963,,,,,10,5,2.4,,,,,,,lotus-25-brg,https://en.wikipedia.org/wiki/Lotus_25,verified,First monocoque F1 car; revolutionary Chapman design
+lotus,1960s,chassis,lotus-49,Lotus 49,British,1967,1970,1968,,,,,12,8,2.8,,,,,,,lotus-49-gold-leaf,https://en.wikipedia.org/wiki/Lotus_49,verified,First DFV car; iconic 1968 red-white-gold livery
+lotus,1960s,personnel,colin-chapman-tp-60s,Colin Chapman,British,1958,1982,1963,,,,,,,,,,0.95,,,,lotus,https://en.wikipedia.org/wiki/Colin_Chapman,verified,team_principal; designed Lotus 25 and 49 himself
+lotus,1960s,personnel,jim-endruweit-td,Jim Endruweit,British,1960,1969,1963,,,,,,,,,,0.88,,,,lotus,https://en.wikipedia.org/wiki/Team_Lotus,estimated,lead_engineer; Chapman's chief at that era
+lotus,1960s,sponsor,gold-leaf-lotus,Gold Leaf (Imperial Tobacco),British,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Lotus_49,verified,First cigarette sponsor in F1; red-white-gold livery on 49
+lotus,1960s,sponsor,esso-lotus-60s,Esso,International,,,,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Team_Lotus,estimated,Fuel partner on 1960s Lotus
+lotus,1960s,livery,lotus-49-gold-leaf-livery,Gold Leaf Red-White,,,,,,,,,,,,,,,,lotus-49-gold-leaf,,Red and white with Gold Leaf branding; first tobacco car,https://en.wikipedia.org/wiki/Lotus_49,verified,
+lotus,1960s,motto,lotus-60s-motto,,,,,,,,,,,,,,,,,,Speed through genius,,https://en.wikipedia.org/wiki/Team_Lotus,estimated,Era motto
+lotus,1970s,driver,emerson-fittipaldi,Emerson Fittipaldi,Brazilian,1969,1980,1972,,,,144,14,6,35,4.1,2,,,,,lotus|mclaren,https://en.wikipedia.org/wiki/Emerson_Fittipaldi,verified,1972 WDC with Lotus at age 25; then left for McLaren
+lotus,1970s,driver,ronnie-peterson,Ronnie Peterson,Swedish,1970,1978,1973,,,,123,10,14,26,4.9,0,,,,,lotus|march|tyrrell,https://en.wikipedia.org/wiki/Ronnie_Peterson,verified,10 wins; died 1978 Monza after crash injuries
+lotus,1970s,driver,mario-andretti,Mario Andretti,American,1968,1982,1978,,,,128,12,18,19,5.8,1,,,,,lotus|ferrari,https://en.wikipedia.org/wiki/Mario_Andretti,verified,1978 WDC with Lotus 78/79 ground-effect cars
+lotus,1970s,engine,ford-dfv-lotus-70s,Ford Cosworth DFV,British,1967,1983,1978,,,,,,12,18,3.2,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,DFV continued through entire 1970s Lotus era
+lotus,1970s,engine,ford-dfv-lotus-72,Ford DFV (Lotus 72 spec),British,1970,1975,1972,,,,,,6,5,3.4,,,,,,,https://en.wikipedia.org/wiki/Lotus_72,verified,Detuned-spec notes on Lotus 72 installation
+lotus,1970s,chassis,lotus-72,Lotus 72,British,1970,1975,1972,,,,,20,11,2.8,,,,,,,lotus-72-jps,https://en.wikipedia.org/wiki/Lotus_72,verified,Long-running wedge car; raced 5 seasons
+lotus,1970s,chassis,lotus-79,Lotus 79,British,1978,1979,1978,,,,,5,12,2.3,,,,,,,lotus-79-jps,https://en.wikipedia.org/wiki/Lotus_79,verified,Ground-effect masterpiece; Andretti title car
+lotus,1970s,personnel,colin-chapman-tp-70s,Colin Chapman,British,1958,1982,1978,,,,,,,,,,0.88,,,,lotus,https://en.wikipedia.org/wiki/Colin_Chapman,verified,team_principal
+lotus,1970s,personnel,peter-wright-td,Peter Wright,British,1969,2001,1978,,,,,,,,,,0.85,,,,lotus,https://en.wikipedia.org/wiki/Peter_Wright_(engineer),verified,technical_director; ground-effect aerodynamics lead
+lotus,1970s,sponsor,jps-lotus,John Player Special (JPS),British,,,,,title,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Lotus_72,verified,Iconic black-gold JPS livery; most recognised Lotus look
+lotus,1970s,sponsor,texaco-lotus-70s,Texaco,American,,,,,secondary,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Team_Lotus,estimated,Fuel partner on 1970s cars
+lotus,1970s,livery,lotus-79-jps-livery,JPS Black-Gold,,,,,,,,,,,,,,,,lotus-79-jps,,Black with gold John Player Special pinstriping,https://en.wikipedia.org/wiki/Lotus_79,verified,
+lotus,1970s,motto,lotus-70s-motto,,,,,,,,,,,,,,,,,,Black is fastest,,https://en.wikipedia.org/wiki/Team_Lotus,estimated,Era motto
+lotus,1980s,driver,elio-de-angelis,Elio de Angelis,Italian,1979,1986,1984,,,,108,2,3,15,7.3,0,,,,,lotus,https://en.wikipedia.org/wiki/Elio_de_Angelis,verified,Key Lotus driver 1980-1985; died testing Ricard 1986
+lotus,1980s,driver,nigel-mansell-lotus,Nigel Mansell,British,1980,1995,1992,,,,187,31,32,59,4.4,1,,,,,lotus|williams|ferrari,https://en.wikipedia.org/wiki/Nigel_Mansell,verified,Started career at Lotus 1980-1984
+lotus,1980s,driver,ayrton-senna-lotus,Ayrton Senna,Brazilian,1984,1994,1988,,,,161,41,65,80,2.9,3,,,,,lotus|mclaren,https://en.wikipedia.org/wiki/Ayrton_Senna,verified,6 wins for Lotus 1985-1987 before moving to McLaren
+lotus,1980s,engine,renault-ef4-lotus,Renault EF4 Turbo,French,1983,1986,1985,,,,,,3,5,5.1,,,,,,,https://en.wikipedia.org/wiki/Lotus_97T,verified,Turbo Renault powered Senna's Lotus years
+lotus,1980s,engine,honda-ra166e-lotus,Honda RA166E Turbo,Japanese,1987,1987,1987,,,,,,2,3,4.8,,,,,,,https://en.wikipedia.org/wiki/Lotus_99T,verified,Honda turbo in Senna's final Lotus season
+lotus,1980s,chassis,lotus-97t,Lotus 97T,British,1985,1985,1985,,,,,7,2,3.9,,,,,,,lotus-97t-camel,https://en.wikipedia.org/wiki/Lotus_97T,verified,Senna's Lotus debut car; won Portugal and Belgium
+lotus,1980s,chassis,lotus-99t,Lotus 99T,British,1987,1987,1987,,,,,2,3,4.2,,,,,,,lotus-99t-camel,https://en.wikipedia.org/wiki/Lotus_99T,verified,Active suspension Lotus; Senna's last year
+lotus,1980s,personnel,colin-chapman-tp-80s,Colin Chapman,British,1958,1982,1980,,,,,,,,,,0.60,,,,lotus,https://en.wikipedia.org/wiki/Colin_Chapman,verified,team_principal until his death Dec 1982
+lotus,1980s,personnel,peter-warr-tp,Peter Warr,British,1982,1989,1985,,,,,,,,,,0.55,,,,lotus,https://en.wikipedia.org/wiki/Peter_Warr,verified,team_principal post-Chapman death
+lotus,1980s,sponsor,camel-lotus,Camel (RJ Reynolds),American,,,,,title,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Lotus_97T,verified,Yellow Camel livery replaced JPS black mid-decade
+lotus,1980s,sponsor,jps-lotus-80s,John Player Special,British,,,,,title,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Team_Lotus,verified,JPS continued into early 1980s
+lotus,1980s,livery,lotus-97t-camel-livery,Camel Yellow,,,,,,,,,,,,,,,,lotus-97t-camel,,Bright yellow Camel branding; replaced JPS era,https://en.wikipedia.org/wiki/Lotus_97T,verified,
+lotus,1980s,motto,lotus-80s-motto,,,,,,,,,,,,,,,,,,Senna. Turbo. Genius.,,https://en.wikipedia.org/wiki/Ayrton_Senna,estimated,Era motto
+brabham,1960s,driver,jack-brabham-brb,Jack Brabham,Australian,1955,1970,1966,,,,126,14,13,31,3.8,3,,,,,brabham|cooper,https://en.wikipedia.org/wiki/Jack_Brabham,verified,1966 WDC driving his own car; only man to do so
+brabham,1960s,driver,denny-hulme,Denny Hulme,New Zealander,1965,1974,1967,,,,112,8,9,33,4.2,1,,,,,brabham|mclaren,https://en.wikipedia.org/wiki/Denny_Hulme,verified,1967 WDC with Brabham; unexpected champion
+brabham,1960s,driver,dan-gurney,Dan Gurney,American,1959,1970,1967,,,,86,4,8,19,5.1,0,,,,,brabham|ferrari|porsche,https://en.wikipedia.org/wiki/Dan_Gurney,verified,4 wins for Brabham; built own Eagle team also
+brabham,1960s,engine,repco-620,Repco 620,Australian,1966,1967,1966,,,,,,16,9,2.9,,,,,,,https://en.wikipedia.org/wiki/Repco_Brabham_engine,verified,Australian V8; powered both 1966 and 1967 championships
+brabham,1960s,engine,ford-dfv-brabham-60s,Ford Cosworth DFV,British,1968,1970,1968,,,,,,0,1,5.2,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,Moved to DFV after Repco era
+brabham,1960s,chassis,bt19,Brabham BT19,British-Australian,1966,1966,1966,,,,,8,3,2.4,,,,,,,bt19-brg,https://en.wikipedia.org/wiki/Brabham_BT19,verified,Jack Brabham's title-winning chassis
+brabham,1960s,personnel,jack-brabham-tp-60s,Jack Brabham,Australian,1962,1972,1966,,,,,,,,,,0.92,,,,brabham,https://en.wikipedia.org/wiki/Jack_Brabham,verified,team_principal (owner-driver)
+brabham,1960s,personnel,ron-tauranac-td,Ron Tauranac,Australian,1962,1971,1967,,,,,,,,,,0.90,,,,brabham,https://en.wikipedia.org/wiki/Ron_Tauranac,verified,technical_director; co-founder; built BT series
+brabham,1960s,sponsor,repco-brb-sponsor,Repco,Australian,,,,,title,#006600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT19,verified,Engine supplier and main sponsor; green BRG
+brabham,1960s,sponsor,goodyear-brb-60s,Goodyear,American,,,,,secondary,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT19,estimated,Tyre partner branding 1960s
+brabham,1960s,livery,bt19-brg-livery,British Racing Green,,,,,,,,,,,,,,,,bt19-brg,,Traditional BRG with Repco logo,https://en.wikipedia.org/wiki/Brabham_BT19,verified,
+brabham,1960s,motto,brabham-60s-motto,,,,,,,,,,,,,,,,,,An Aussie in his own machine,,https://en.wikipedia.org/wiki/Jack_Brabham,estimated,Era motto
+brabham,1970s,driver,niki-lauda-brabham,Niki Lauda,Austrian,1971,1985,1975,,,,171,25,24,54,3.6,3,,,,,brabham|ferrari|mclaren,https://en.wikipedia.org/wiki/Niki_Lauda,verified,2 seasons with Ecclestone's Brabham 1978-1979
+brabham,1970s,driver,carlos-reutemann-brb,Carlos Reutemann,Argentine,1972,1982,1980,,,,146,12,6,45,4.9,0,,,,,brabham|williams|ferrari,https://en.wikipedia.org/wiki/Carlos_Reutemann,verified,Scored several wins for Brabham in early 1970s
+brabham,1970s,driver,john-watson-brb,John Watson,British,1973,1983,1982,,,,152,5,2,20,6.3,0,,,,,brabham|mclaren,https://en.wikipedia.org/wiki/John_Watson,verified,Drove BT46 fan car era
+brabham,1970s,engine,alfa-romeo-115-12,Alfa Romeo 115-12,Italian,1976,1979,1978,,,,,,2,4,5.9,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT46,verified,Flat-12 Alfa supplied for Lauda era
+brabham,1970s,engine,ford-dfv-brabham-70s,Ford Cosworth DFV,British,1970,1975,1973,,,,,,4,3,4.8,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,Customer DFV before Alfa deal
+brabham,1970s,chassis,bt46,Brabham BT46B,British,1978,1978,1978,,,,,1,0,1.0,,,,,,,bt46-martini,https://en.wikipedia.org/wiki/Brabham_BT46,verified,Fan car; won only race then withdrawn amid controversy
+brabham,1970s,personnel,bernie-ecclestone-tp,Bernie Ecclestone,British,1972,1987,1978,,,,,,,,,,0.70,,,,brabham,https://en.wikipedia.org/wiki/Bernie_Ecclestone,verified,team_principal; later F1 commercial rights holder
+brabham,1970s,personnel,gordon-murray-td,Gordon Murray,South African,1973,1987,1978,,,,,,,,,,0.88,,,,brabham,https://en.wikipedia.org/wiki/Gordon_Murray,verified,technical_director; designed BT46 fan car
+brabham,1970s,sponsor,martini-brabham,Martini,Italian,,,,,title,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT46,verified,Martini-sponsored cars 1975-1978
+brabham,1970s,sponsor,parmalat-brabham-70s,Parmalat,Italian,,,,,secondary,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham,estimated,Dairy brand secondary
+brabham,1970s,livery,bt46-martini-livery,Martini Stripes,,,,,,,,,,,,,,,,bt46-martini,,White with Martini red and blue stripes,https://en.wikipedia.org/wiki/Brabham_BT46,verified,
+brabham,1970s,motto,brabham-70s-motto,,,,,,,,,,,,,,,,,,Murray's genius; Bernie's ambition,,https://en.wikipedia.org/wiki/Brabham,estimated,Era motto
+brabham,1980s,driver,nelson-piquet-brb,Nelson Piquet,Brazilian,1978,1991,1983,,,,204,23,24,60,4.1,3,,,,,brabham|williams|lotus,https://en.wikipedia.org/wiki/Nelson_Piquet,verified,1981 and 1983 WDC both with Brabham
+brabham,1980s,driver,riccardo-patrese-brb,Riccardo Patrese,Italian,1977,1993,1982,,,,256,6,8,37,6.5,0,,,,,brabham|williams|ferrari,https://en.wikipedia.org/wiki/Riccardo_Patrese,verified,Long Brabham career through most of 1980s
+brabham,1980s,driver,marc-surer-brb,Marc Surer,Swiss,1979,1986,1985,,,,82,0,0,5,8.4,0,,,,,brabham|arrows,https://en.wikipedia.org/wiki/Marc_Surer,verified,Third driver option 1985-1986 for Brabham
+brabham,1980s,engine,bmw-m12-brb,BMW M12/13 Turbo,German,1982,1987,1983,,,,,,3,7,4.1,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT52,verified,Turbo BMW powered Piquet's 1983 title
+brabham,1980s,engine,ford-dfv-brabham-80s,Ford Cosworth DFV,British,1980,1982,1981,,,,,,1,2,5.3,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,Pre-turbo season engine
+brabham,1980s,chassis,bt52,Brabham BT52,British,1983,1983,1983,,,,,12,4,2.6,,,,,,,bt52-parmalat,https://en.wikipedia.org/wiki/Brabham_BT52,verified,Arrow-shaped Piquet title car; Gordon Murray masterpiece
+brabham,1980s,personnel,bernie-ecclestone-tp-80s,Bernie Ecclestone,British,1972,1987,1983,,,,,,,,,,0.75,,,,brabham,https://en.wikipedia.org/wiki/Bernie_Ecclestone,verified,team_principal; sold team 1987
+brabham,1980s,personnel,gordon-murray-td-80s,Gordon Murray,South African,1973,1987,1983,,,,,,,,,,0.85,,,,brabham,https://en.wikipedia.org/wiki/Gordon_Murray,verified,technical_director; last great Brabham designs
+brabham,1980s,sponsor,parmalat-brabham,Parmalat,Italian,,,,,title,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham_BT52,verified,White Parmalat branding on BT52
+brabham,1980s,sponsor,fila-brabham,Fila,Italian,,,,,secondary,#0000FF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brabham,estimated,Italian fashion brand secondary 1980s
+brabham,1980s,livery,bt52-parmalat-livery,Parmalat White,,,,,,,,,,,,,,,,bt52-parmalat,,White with Parmalat blue and red logo,https://en.wikipedia.org/wiki/Brabham_BT52,verified,
+brabham,1980s,motto,brabham-80s-motto,,,,,,,,,,,,,,,,,,Piquet. Turbo. Title.,,https://en.wikipedia.org/wiki/Nelson_Piquet,estimated,Era motto
+tyrrell,1960s,driver,jackie-stewart-tyr,Jackie Stewart,British,1965,1973,1971,,,,99,27,17,43,3.1,3,,,,,tyrrell|bwt|matra,https://en.wikipedia.org/wiki/Jackie_Stewart,verified,Won 1971 and 1973 WDC with Tyrrell; 3 total
+tyrrell,1960s,driver,francois-cevert,François Cevert,French,1969,1973,1972,,,,47,1,0,13,5.4,0,,,,,tyrrell,https://en.wikipedia.org/wiki/François_Cevert,verified,Died qualifying Watkins Glen 1973; heir apparent to Stewart
+tyrrell,1960s,driver,johnny-servoz-gavin,Johnny Servoz-Gavin,French,1967,1970,1969,,,,12,0,1,3,7.1,0,,,,,tyrrell|matra,https://en.wikipedia.org/wiki/Johnny_Servoz-Gavin,verified,Works Tyrrell-Matra customer driver late 1960s
+tyrrell,1960s,engine,ford-dfv-tyrrell-60s,Ford Cosworth DFV,British,1968,1982,1971,,,,,,27,17,3.1,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_Racing,verified,DFV-powered through entire Tyrrell run
+tyrrell,1960s,engine,matra-ms10-engine,Matra MS10/MS80 V12,French,1968,1969,1969,,,,,,1,2,4.1,,,,,,,https://en.wikipedia.org/wiki/Matra_MS80,verified,Matra engine in early Tyrrell-Matra customer arrangement
+tyrrell,1960s,chassis,tyrrell-001,Tyrrell 001,British,1970,1971,1971,,,,,7,3,2.9,,,,,,,tyrrell-001-elf,https://en.wikipedia.org/wiki/Tyrrell_001,verified,First own-built Tyrrell chassis after Matra split
+tyrrell,1960s,personnel,ken-tyrrell-tp,Ken Tyrrell,British,1968,1998,1971,,,,,,,,,,0.90,,,,tyrrell,https://en.wikipedia.org/wiki/Ken_Tyrrell,verified,team_principal; lumber merchant turned F1 giant-killer
+tyrrell,1960s,personnel,derek-gardner-td,Derek Gardner,British,1969,1976,1973,,,,,,,,,,0.85,,,,tyrrell,https://en.wikipedia.org/wiki/Derek_Gardner,verified,technical_director; designed 003 and P34 six-wheeler
+tyrrell,1960s,sponsor,elf-tyrrell,Elf,French,,,,,title,#FF0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_Racing,verified,French oil company; long-term sponsor; blue-white livery
+tyrrell,1960s,sponsor,ford-tyrrell-sponsor,Ford,American,,,,,secondary,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_Racing,verified,Engine and commercial partner
+tyrrell,1960s,livery,tyrrell-001-elf-livery,Elf Blue-White,,,,,,,,,,,,,,,,tyrrell-001-elf,,Blue with white Elf branding; classic Stewart era look,https://en.wikipedia.org/wiki/Tyrrell_Racing,verified,
+tyrrell,1960s,motto,tyrrell-60s-motto,,,,,,,,,,,,,,,,,,Scotland's fastest son,,https://en.wikipedia.org/wiki/Jackie_Stewart,estimated,Era motto
+tyrrell,1970s,driver,jackie-stewart-tyr-70s,Jackie Stewart,British,1965,1973,1971,,,,99,27,17,43,3.1,3,,,,,tyrrell|matra,https://en.wikipedia.org/wiki/Jackie_Stewart,verified,Won 1973 WDC; retired same year after Cevert death
+tyrrell,1970s,driver,jody-scheckter-tyr,Jody Scheckter,South African,1972,1980,1979,,,,112,10,3,33,4.7,1,,,,,tyrrell|wolf|ferrari,https://en.wikipedia.org/wiki/Jody_Scheckter,verified,Raced Tyrrell P34 six-wheeler 1976; later Ferrari champion
+tyrrell,1970s,driver,patrick-depailler,Patrick Depailler,French,1972,1980,1978,,,,95,2,1,21,5.8,0,,,,,tyrrell|ligier,https://en.wikipedia.org/wiki/Patrick_Depailler,verified,P34 driver alongside Scheckter; died testing Hockenheim 1980
+tyrrell,1970s,engine,ford-dfv-tyrrell-70s,Ford Cosworth DFV,British,1968,1982,1971,,,,,,7,5,4.1,,,,,,,https://en.wikipedia.org/wiki/Ford_Cosworth_DFV,verified,DFV through 1970s Tyrrell era
+tyrrell,1970s,engine,ford-dfv-p34,Ford DFV (P34 six-wheeler),British,1976,1977,1976,,,,,,1,3,4.8,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_P34,estimated,Same DFV; P34 installation note
+tyrrell,1970s,chassis,tyrrell-p34,Tyrrell P34,British,1976,1977,1976,,,,,1,0,5.2,,,,,,,tyrrell-p34-elf,https://en.wikipedia.org/wiki/Tyrrell_P34,verified,Unique six-wheel F1 car; won 1976 Swedish GP
+tyrrell,1970s,chassis,tyrrell-007,Tyrrell 007,British,1974,1977,1975,,,,,3,2,3.9,,,,,,,tyrrell-007-elf,https://en.wikipedia.org/wiki/Tyrrell_007,verified,Conventional 1974-75 design; multiple wins
+tyrrell,1970s,personnel,ken-tyrrell-tp-70s,Ken Tyrrell,British,1968,1998,1975,,,,,,,,,,0.72,,,,tyrrell,https://en.wikipedia.org/wiki/Ken_Tyrrell,verified,team_principal
+tyrrell,1970s,personnel,derek-gardner-td-70s,Derek Gardner,British,1969,1976,1976,,,,,,,,,,0.70,,,,tyrrell,https://en.wikipedia.org/wiki/Derek_Gardner,verified,technical_director; designed the P34
+tyrrell,1970s,sponsor,elf-tyrrell-70s,Elf,French,,,,,title,#0033A0,,,,,,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_P34,verified,Continued Elf sponsorship through P34 era
+tyrrell,1970s,sponsor,ford-tyrrell-70s,Ford,American,,,,,secondary,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Tyrrell_Racing,verified,Engine and co-sponsor
+tyrrell,1970s,livery,tyrrell-p34-elf-livery,P34 Elf Blue,,,,,,,,,,,,,,,,tyrrell-p34-elf,,Blue six-wheel car with Elf logo; iconic oddity,https://en.wikipedia.org/wiki/Tyrrell_P34,verified,
+tyrrell,1970s,motto,tyrrell-70s-motto,,,,,,,,,,,,,,,,,,Six wheels? Why not.,,https://en.wikipedia.org/wiki/Tyrrell_P34,estimated,Era motto
+matra,1960s,driver,jackie-stewart-matra,Jackie Stewart,British,1965,1973,1969,,,,99,27,17,43,3.1,3,,,,,matra|tyrrell,https://en.wikipedia.org/wiki/Jackie_Stewart,verified,1969 WDC driving Matra MS80 for Tyrrell
+matra,1960s,driver,jean-pierre-beltoise,Jean-Pierre Beltoise,French,1966,1974,1969,,,,86,1,0,11,6.8,0,,,,,matra|brm,https://en.wikipedia.org/wiki/Jean-Pierre_Beltoise,verified,Factory works Matra driver alongside Stewart's Tyrrell entry
+matra,1960s,driver,chris-amon-matra,Chris Amon,New Zealander,1963,1976,1969,,,,96,0,5,11,5.9,0,,,,,matra|ferrari|march,https://en.wikipedia.org/wiki/Chris_Amon,estimated,Drove factory Matra 1971-1972 after MS80 era
+matra,1960s,engine,matra-ms12-v12,Matra MS12 V12,French,1968,1972,1969,,,,,,6,6,3.2,,,,,,,https://en.wikipedia.org/wiki/Matra_MS80,verified,French aerospace firm built own V12 engine
+matra,1960s,engine,ford-dfv-matra-customer,Ford Cosworth DFV,British,1968,1969,1969,,,,,,0,2,4.1,,,,,,,https://en.wikipedia.org/wiki/Matra_MS10,verified,Tyrrell-entered Matra used customer DFV
+matra,1960s,chassis,matra-ms80,Matra MS80,French,1969,1969,1969,,,,,6,6,1.8,,,,,,,ms80-french-blue,https://en.wikipedia.org/wiki/Matra_MS80,verified,Dominant 1969 WDC car; beautiful French racing blue
+matra,1960s,personnel,ken-tyrrell-tp-matra,Ken Tyrrell,British,1968,1969,1969,,,,,,,,,,0.95,,,,matra|tyrrell,https://en.wikipedia.org/wiki/Ken_Tyrrell,verified,team_principal of Tyrrell-entered Matra
+matra,1960s,personnel,bernard-boyer-td,Bernard Boyer,French,1965,1972,1969,,,,,,,,,,0.90,,,,matra,https://en.wikipedia.org/wiki/Matra,estimated,technical_director; Matra engineering chief
+matra,1960s,sponsor,elf-matra,Elf,French,,,,,title,#0033A0,,,,,,,,,,,,https://en.wikipedia.org/wiki/Matra_MS80,verified,French state oil company backing French team
+matra,1960s,sponsor,matra-sports-sponsor,Matra Sports,French,,,,,secondary,#002395,,,,,,,,,,,,https://en.wikipedia.org/wiki/Matra,estimated,Aerospace parent company branding
+matra,1960s,livery,ms80-french-blue-livery,French Racing Blue,,,,,,,,,,,,,,,,ms80-french-blue,,Cornflower blue with Elf branding; national racing colour,https://en.wikipedia.org/wiki/Matra_MS80,verified,
+matra,1960s,motto,matra-60s-motto,,,,,,,,,,,,,,,,,,L'aérospatiale en F1,,https://en.wikipedia.org/wiki/Matra,estimated,Era motto
+cooper,1950s,driver,jack-brabham-cooper,Jack Brabham,Australian,1955,1970,1960,,,,126,14,13,31,3.8,3,,,,,cooper|brabham,https://en.wikipedia.org/wiki/Jack_Brabham,verified,1959 and 1960 WDC with Cooper; first rear-engine champion
+cooper,1950s,driver,stirling-moss-cooper,Stirling Moss,British,1951,1962,1958,,,,66,16,16,24,3.1,0,,,,,cooper|mercedes|maserati,https://en.wikipedia.org/wiki/Stirling_Moss,verified,Won 1958 Argentine GP for Cooper-Climax
+cooper,1950s,driver,bruce-mclaren-cooper,Bruce McLaren,New Zealander,1958,1970,1962,,,,100,4,0,27,5.1,0,,,,,cooper|mclaren,https://en.wikipedia.org/wiki/Bruce_McLaren,verified,Rose through Cooper; founded McLaren team 1963; died testing
+cooper,1950s,engine,coventry-climax-cooper,Coventry Climax FPF,British,1957,1965,1959,,,,,,16,5,3.1,,,,,,,https://en.wikipedia.org/wiki/Coventry_Climax,verified,Rear-mounted Climax four-cylinder changed F1 forever
+cooper,1950s,engine,climax-fwmv-cooper,Coventry Climax FWMV V8,British,1961,1963,1962,,,,,,1,1,4.8,,,,,,,https://en.wikipedia.org/wiki/Coventry_Climax,verified,Later V8 as Cooper declined vs Lotus
+cooper,1950s,chassis,cooper-t51,Cooper T51,British,1959,1960,1959,,,,,5,3,2.8,,,,,,,cooper-t51-brg,https://en.wikipedia.org/wiki/Cooper_T51,verified,First rear-engine championship-winning F1 car
+cooper,1950s,personnel,charles-cooper-tp,Charles Cooper,British,1950,1964,1959,,,,,,,,,,0.90,,,,cooper,https://en.wikipedia.org/wiki/Charles_Cooper,verified,team_principal; co-founder with John Cooper
+cooper,1950s,personnel,john-cooper-td,John Cooper,British,1950,1969,1959,,,,,,,,,,0.90,,,,cooper,https://en.wikipedia.org/wiki/John_Cooper_(car_manufacturer),verified,technical_director and co-founder; designed rear-engine layout
+cooper,1950s,sponsor,cooper-factory-50s,Cooper Car Company,British,,,,,title,#006600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cooper_Car_Company,verified,Works team BRG entry
+cooper,1950s,sponsor,dunlop-cooper,Dunlop,British,,,,,secondary,#FF6600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,Tyre partner branding
+cooper,1950s,livery,cooper-t51-brg-livery,British Racing Green,,,,,,,,,,,,,,,,cooper-t51-brg,,BRG; traditional Cooper works colour,https://en.wikipedia.org/wiki/Cooper_T51,verified,
+cooper,1950s,motto,cooper-50s-motto,,,,,,,,,,,,,,,,,,The rear revolution,,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,Era motto
+cooper,1960s,driver,jack-brabham-cooper-60s,Jack Brabham,Australian,1955,1970,1960,,,,126,14,13,31,3.8,3,,,,,cooper|brabham,https://en.wikipedia.org/wiki/Jack_Brabham,verified,Left Cooper post-1961 to found own team
+cooper,1960s,driver,john-surtees-cooper,John Surtees,British,1960,1972,1964,,,,111,6,8,24,4.6,1,,,,,cooper|ferrari|honda,https://en.wikipedia.org/wiki/John_Surtees,verified,Drove Cooper 1966 after Ferrari split
+cooper,1960s,driver,jochen-rindt-cooper,Jochen Rindt,Austrian,1964,1970,1970,,,,60,6,10,13,5.2,1,,,,,cooper|brabham|lotus,https://en.wikipedia.org/wiki/Jochen_Rindt,verified,Raced for Cooper 1965-1966 before Brabham
+cooper,1960s,engine,climax-fwmv-cooper-60s,Coventry Climax FWMV,British,1961,1965,1963,,,,,,1,0,6.1,,,,,,,https://en.wikipedia.org/wiki/Coventry_Climax,verified,Declining Climax as Cooper fell behind Lotus/Brabham
+cooper,1960s,engine,maserati-v12-cooper,Maserati V12,Italian,1966,1967,1966,,,,,,1,0,7.2,,,,,,,https://en.wikipedia.org/wiki/Cooper_T81,verified,Maserati engine deal for Cooper T81; uncompetitive
+cooper,1960s,chassis,cooper-t81,Cooper T81,British,1966,1967,1966,,,,,1,0,7.4,,,,,,,cooper-t81-brg,https://en.wikipedia.org/wiki/Cooper_T81,verified,Declining era car; team sold to Chipstead Motors 1965
+cooper,1960s,personnel,roy-salvadori-tp,Roy Salvadori,British,1965,1967,1966,,,,,,,,,,0.30,,,,cooper,https://en.wikipedia.org/wiki/Roy_Salvadori,estimated,team_principal post-Cooper family; managed decline
+cooper,1960s,personnel,tony-robinson-td-cooper,Tony Robinson,British,1960,1968,1960,,,,,,,,,,0.35,,,,cooper,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,lead_engineer in decline years
+cooper,1960s,sponsor,bp-cooper,BP,British,,,,,title,#009900,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,Fuel sponsor; green overlay on BRG
+cooper,1960s,sponsor,dunlop-cooper-60s,Dunlop,British,,,,,secondary,#FF6600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,Tyre partner continued
+cooper,1960s,livery,cooper-t81-brg-livery,BRG Declining,,,,,,,,,,,,,,,,cooper-t81-brg,,Fading BRG on T81; team in visible decline,https://en.wikipedia.org/wiki/Cooper_T81,verified,
+cooper,1960s,motto,cooper-60s-motto,,,,,,,,,,,,,,,,,,First and forgotten,,https://en.wikipedia.org/wiki/Cooper_Car_Company,estimated,Era motto
+renault,2000s,driver,fernando-alonso-ren,Fernando Alonso,Spanish,2001,2024,2005,,,,371,32,22,98,4.3,2,,,,,renault|mclaren|ferrari|aston-martin,https://en.wikipedia.org/wiki/Fernando_Alonso,verified,2005 and 2006 WDC both with Renault
+renault,2000s,driver,giancarlo-fisichella-ren,Giancarlo Fisichella,Italian,1996,2009,2005,,,,229,3,4,19,7.8,0,,,,,renault|benetton|jordan,https://en.wikipedia.org/wiki/Giancarlo_Fisichella,verified,Won 2005 Australian GP for Renault
+renault,2000s,driver,jarno-trulli-ren,Jarno Trulli,Italian,1997,2011,2004,,,,252,1,4,11,7.1,0,,,,,renault|jordan|toyota,https://en.wikipedia.org/wiki/Jarno_Trulli,verified,Won 2004 Monaco GP for Renault
+renault,2000s,engine,renault-rs25,Renault RS25,French,2005,2006,2005,,,,,,32,22,2.8,,,,,,,https://en.wikipedia.org/wiki/Renault_R25,verified,Championship-winning Alonso engine
+renault,2000s,engine,renault-rs26,Renault RS26,French,2006,2006,2006,,,,,,15,10,2.9,,,,,,,https://en.wikipedia.org/wiki/Renault_R26,verified,Defended title-winning engine
+renault,2000s,chassis,renault-r25,Renault R25,French,2005,2005,2005,,,,,15,16,2.7,,,,,,,r25-mild-seven,https://en.wikipedia.org/wiki/Renault_R25,verified,Alonso's first title car
+renault,2000s,chassis,renault-r26,Renault R26,French,2006,2006,2006,,,,,7,10,3.1,,,,,,,r26-mild-seven,https://en.wikipedia.org/wiki/Renault_R26,verified,Defended constructors and drivers titles
+renault,2000s,personnel,flavio-briatore-tp-ren,Flavio Briatore,Italian,1989,2009,2005,,,,,,,,,,0.90,,,,renault|benetton,https://en.wikipedia.org/wiki/Flavio_Briatore,verified,team_principal; banned 2009 crashgate scandal
+renault,2000s,personnel,pat-symonds-td-ren,Pat Symonds,British,1991,2009,2005,,,,,,,,,,0.88,,,,renault|benetton|williams,https://en.wikipedia.org/wiki/Pat_Symonds,verified,technical_director; crashgate implicated; banned then unbanned
+renault,2000s,sponsor,mild-seven-ren,Mild Seven,Japanese,,,,,title,#0057A8,,,,,,,,,,,,https://en.wikipedia.org/wiki/Renault_R25,verified,Blue-yellow Japanese cigarette brand; distinctive Renault livery
+renault,2000s,sponsor,telefonica-ren,Telefónica,Spanish,,,,,secondary,#009900,,,,,,,,,,,,https://en.wikipedia.org/wiki/Renault_R25,estimated,Spanish telecom secondary with Alonso
+renault,2000s,livery,r25-mild-seven-livery,Mild Seven Blue-Yellow,,,,,,,,,,,,,,,,r25-mild-seven,,Vivid blue with yellow Mild Seven accents,https://en.wikipedia.org/wiki/Renault_R25,verified,
+renault,2000s,motto,renault-2000s-motto,,,,,,,,,,,,,,,,,,Fernando and the yellow hornet,,https://en.wikipedia.org/wiki/Fernando_Alonso,estimated,Era motto
+renault,2010s,driver,robert-kubica-ren,Robert Kubica,Polish,2006,2021,2008,,,,97,1,1,12,7.1,0,,,,,renault|bmw-sauber,https://en.wikipedia.org/wiki/Robert_Kubica,verified,2008 Canadian GP winner; serious injury 2011 rally accident
+renault,2010s,driver,vitaly-petrov,Vitaly Petrov,Russian,2010,2012,2011,,,,57,0,0,4,9.3,0,,,,,renault,https://en.wikipedia.org/wiki/Vitaly_Petrov,verified,First Russian F1 driver; Renault 2010-2011
+renault,2010s,driver,nico-hulkenberg-ren,Nico Hülkenberg,German,2010,2022,2012,,,,206,0,1,0,8.2,0,,,,,renault|force-india|sauber,https://en.wikipedia.org/wiki/Nico_Hülkenberg,verified,Multiple Renault stints 2012 and 2017-2019
+renault,2010s,engine,renault-rs18,Renault RS18,French,2018,2018,2018,,,,,,0,1,6.8,,,,,,,https://en.wikipedia.org/wiki/Renault_R.S.18,verified,Post-scandal Renault recovery engine
+renault,2010s,engine,renault-re40,Renault RE40,French,2014,2015,2015,,,,,,0,0,8.1,,,,,,,https://en.wikipedia.org/wiki/Renault_in_Formula_One,verified,Hybrid era debut engine; uncompetitive
+renault,2010s,chassis,renault-rs18-car,Renault R.S.18,French,2018,2018,2018,,,,,0,1,6.4,,,,,,,rs18-renault-yellow,https://en.wikipedia.org/wiki/Renault_R.S.18,verified,Black-yellow return livery; best of recovery era
+renault,2010s,personnel,cyril-abiteboul-tp,Cyril Abiteboul,French,2012,2021,2018,,,,,,,,,,0.40,,,,renault,https://en.wikipedia.org/wiki/Cyril_Abiteboul,verified,team_principal; managed Renault restructuring
+renault,2010s,personnel,nick-chester-td,Nick Chester,British,2012,2019,2018,,,,,,,,,,0.38,,,,renault,https://en.wikipedia.org/wiki/Nick_Chester,verified,technical_director
+renault,2010s,sponsor,infiniti-ren,Infiniti,Japanese,,,,,title,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Renault_in_Formula_One,verified,Infiniti title partner 2013-2015 (includes Red Bull supply)
+renault,2010s,sponsor,bwt-ren,BWT,Austrian,,,,,secondary,#FF69B4,,,,,,,,,,,,https://en.wikipedia.org/wiki/Renault_R.S.18,estimated,Water technology firm secondary late 2010s
+renault,2010s,livery,rs18-yellow-livery,Black-Yellow Return,,,,,,,,,,,,,,,,rs18-renault-yellow,,Black and yellow Renault works revival livery 2018,https://en.wikipedia.org/wiki/Renault_R.S.18,verified,
+renault,2010s,motto,renault-2010s-motto,,,,,,,,,,,,,,,,,,Une passion qui revient,,https://en.wikipedia.org/wiki/Renault_in_Formula_One,estimated,Era motto
+benetton,1980s,driver,gerhard-berger-ben,Gerhard Berger,Austrian,1984,1997,1994,,,,210,10,12,48,5.9,0,,,,,benetton|ferrari|mclaren,https://en.wikipedia.org/wiki/Gerhard_Berger,verified,Won 1986 Mexican GP for Benetton; BMW power
+benetton,1980s,driver,teo-fabi,Teo Fabi,Italian,1982,1987,1986,,,,64,0,3,2,8.7,0,,,,,benetton|toleman|brabham,https://en.wikipedia.org/wiki/Teo_Fabi,verified,3 pole positions for BMW Benetton
+benetton,1980s,driver,thierry-boutsen,Thierry Boutsen,Belgian,1983,1993,1989,,,,163,3,1,15,6.4,0,,,,,benetton|williams,https://en.wikipedia.org/wiki/Thierry_Boutsen,verified,Drove Benetton before winning with Williams
+benetton,1980s,engine,bmw-m12-ben,BMW M12/13 Turbo,German,1986,1987,1986,,,,,,4,3,4.8,,,,,,,https://en.wikipedia.org/wiki/Benetton_B186,verified,Berger's title car BMW turbo; 1300hp qualifying spec
+benetton,1980s,engine,ford-zetec-r-ben-80s,Ford GBA (Ford RS Turbo),British,1987,1987,1987,,,,,,1,2,5.4,,,,,,,https://en.wikipedia.org/wiki/Benetton_B187,estimated,Ford turbo post-BMW departure
+benetton,1980s,chassis,benetton-b186,Benetton B186,Italian,1986,1986,1986,,,,,4,3,4.4,,,,,,,b186-camel,https://en.wikipedia.org/wiki/Benetton_B186,verified,First Benetton-branded car after Toleman era
+benetton,1980s,personnel,flavio-briatore-tp-ben,Flavio Briatore,Italian,1989,2009,1994,,,,,,,,,,0.80,,,,benetton|renault,https://en.wikipedia.org/wiki/Flavio_Briatore,verified,team_principal from 1989; transformed team to winners
+benetton,1980s,personnel,rory-byrne-td,Rory Byrne,South African,1983,2006,1994,,,,,,,,,,0.92,,,,benetton|ferrari,https://en.wikipedia.org/wiki/Rory_Byrne,verified,technical_director; later designed Ferrari title cars
+benetton,1980s,sponsor,camel-benetton,Camel,American,,,,,title,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Benetton_B186,verified,Yellow Camel livery early Benetton era
+benetton,1980s,sponsor,benetton-fashion-sponsor,Benetton Group,Italian,,,,,secondary,#00AA00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Benetton_Formula,verified,Parent clothing company branding
+benetton,1980s,livery,b186-camel-livery,Camel Yellow-Green,,,,,,,,,,,,,,,,b186-camel,,Yellow Camel on green Benetton colourful base,https://en.wikipedia.org/wiki/Benetton_B186,verified,
+benetton,1980s,motto,benetton-80s-motto,,,,,,,,,,,,,,,,,,United Colors of Speed,,https://en.wikipedia.org/wiki/Benetton_Formula,estimated,Era motto; riff on United Colors marketing
+benetton,1990s,driver,michael-schumacher-ben,Michael Schumacher,German,1991,2012,1994,,,,308,91,68,155,2.9,7,,,,,benetton|ferrari|mercedes|jordan,https://en.wikipedia.org/wiki/Michael_Schumacher,verified,Won 1994 and 1995 WDC both with Benetton
+benetton,1990s,driver,nelson-piquet-ben,Nelson Piquet,Brazilian,1978,1991,1991,,,,204,23,24,60,4.1,3,,,,,benetton|brabham|williams,https://en.wikipedia.org/wiki/Nelson_Piquet,verified,Final F1 season at Benetton 1991
+benetton,1990s,driver,johnny-herbert-ben,Johnny Herbert,British,1989,2000,1995,,,,162,3,0,13,7.2,0,,,,,benetton|sauber|stewart,https://en.wikipedia.org/wiki/Johnny_Herbert,verified,Won 1995 British and Italian GPs for Benetton
+benetton,1990s,driver,jean-alesi-ben,Jean Alesi,French,1989,2001,1995,,,,201,1,2,32,6.1,0,,,,,benetton|ferrari|tyrrell,https://en.wikipedia.org/wiki/Jean_Alesi,verified,Moved from Ferrari to Benetton 1996; never WDC
+benetton,1990s,engine,ford-zetec-r-ben,Ford Zetec-R,British,1994,1995,1994,,,,,,12,4,2.9,,,,,,,https://en.wikipedia.org/wiki/Benetton_B194,verified,Customer Ford that won Schumacher's controversial first title
+benetton,1990s,engine,renault-rs7-ben,Renault RS7,French,1995,1996,1995,,,,,,11,6,3.1,,,,,,,https://en.wikipedia.org/wiki/Benetton_B195,verified,Renault power for dominant 1995 double
+benetton,1990s,chassis,benetton-b194,Benetton B194,Italian,1994,1994,1994,,,,,8,6,3.2,,,,,,,b194-mild-seven,https://en.wikipedia.org/wiki/Benetton_B194,verified,Controversial traction control software scandal; Schumacher title
+benetton,1990s,chassis,benetton-b195,Benetton B195,Italian,1995,1995,1995,,,,,11,7,2.4,,,,,,,b195-mild-seven,https://en.wikipedia.org/wiki/Benetton_B195,verified,Back-to-back title car; dominated first half of season
+benetton,1990s,personnel,flavio-briatore-tp-ben-90s,Flavio Briatore,Italian,1989,2009,1994,,,,,,,,,,0.92,,,,benetton|renault,https://en.wikipedia.org/wiki/Flavio_Briatore,verified,team_principal; peak power
+benetton,1990s,personnel,ross-brawn-td-ben,Ross Brawn,British,1991,1996,1994,,,,,,,,,,0.95,,,,benetton|ferrari|brawn,https://en.wikipedia.org/wiki/Ross_Brawn,verified,technical_director; genius strategist; then Ferrari
+benetton,1990s,personnel,rory-byrne-td-90s,Rory Byrne,South African,1983,1996,1995,,,,,,,,,,0.93,,,,benetton|ferrari,https://en.wikipedia.org/wiki/Rory_Byrne,verified,technical_director (car design); key member of triumvirate
+benetton,1990s,sponsor,mild-seven-ben,Mild Seven,Japanese,,,,,title,#0057A8,,,,,,,,,,,,https://en.wikipedia.org/wiki/Benetton_B194,verified,Blue Mild Seven livery replaces Camel
+benetton,1990s,sponsor,korean-air-ben,Korean Air,South Korean,,,,,secondary,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Benetton_B195,estimated,Secondary sponsor on Schumacher cars
+benetton,1990s,livery,b194-mild-seven-livery,Mild Seven Blue,,,,,,,,,,,,,,,,b194-mild-seven,,Blue Mild Seven on Benetton green base,https://en.wikipedia.org/wiki/Benetton_B194,verified,
+benetton,1990s,motto,benetton-90s-motto,,,,,,,,,,,,,,,,,,Schumacher. Brawn. Dynasty begins.,,https://en.wikipedia.org/wiki/Michael_Schumacher,estimated,Era motto
+jordan,1990s,driver,rubens-barrichello-jor,Rubens Barrichello,Brazilian,1993,2011,2004,,,,326,11,14,68,5.5,0,,,,,jordan|ferrari|brawn|williams,https://en.wikipedia.org/wiki/Rubens_Barrichello,verified,Emotional Jordan debut 1993; youngest starter at the time
+jordan,1990s,driver,michael-schumacher-jor,Michael Schumacher,German,1991,2012,2011,,,,308,91,68,155,2.9,7,,,,,jordan|benetton|ferrari|mercedes,https://en.wikipedia.org/wiki/Michael_Schumacher,verified,Debut one race at Jordan Spa 1991; then Benetton
+jordan,1990s,driver,damon-hill-jor,Damon Hill,British,1992,1999,1998,,,,115,22,20,42,4.3,1,,,,,jordan|williams,https://en.wikipedia.org/wiki/Damon_Hill,verified,Won Jordan's first race Spa 1998; also Frentzen
+jordan,1990s,driver,heinz-harald-frentzen-jor,Heinz-Harald Frentzen,German,1994,2003,1999,,,,156,3,2,18,6.2,0,,,,,jordan|williams|sauber,https://en.wikipedia.org/wiki/Heinz-Harald_Frentzen,verified,3rd in 1999 WDC with Jordan; very nearly champion
+jordan,1990s,engine,ford-hb-jor,Ford HB V8,British,1991,1994,1992,,,,,,1,0,7.1,,,,,,,https://en.wikipedia.org/wiki/Jordan_191,verified,Customer Ford in early Jordan years
+jordan,1990s,engine,mugen-honda-jor,Mugen Honda MF-301H,Japanese,1998,1999,1999,,,,,,4,2,4.3,,,,,,,https://en.wikipedia.org/wiki/Jordan_198,verified,Mugen-Honda powered Jordan double wins 1998
+jordan,1990s,chassis,jordan-191,Jordan 191,Irish,1991,1991,1991,,,,,0,0,7.8,,,,,,,jordan-191-7up,https://en.wikipedia.org/wiki/Jordan_191,verified,Debut car; stunning 7UP green livery; nearly won Belgium
+jordan,1990s,chassis,jordan-198,Jordan 198,Irish,1998,1998,1998,,,,,4,2,4.1,,,,,,,jordan-198-bnh,https://en.wikipedia.org/wiki/Jordan_198,verified,Jordan's best car; double at Spa 1998
+jordan,1990s,personnel,eddie-jordan-tp,Eddie Jordan,Irish,1991,2005,1999,,,,,,,,,,0.70,,,,jordan,https://en.wikipedia.org/wiki/Eddie_Jordan,verified,team_principal; larger-than-life character; Schumacher debut
+jordan,1990s,personnel,gary-anderson-td-jor,Gary Anderson,Irish,1991,1998,1999,,,,,,,,,,0.72,,,,jordan,https://en.wikipedia.org/wiki/Gary_Anderson_(Formula_One),verified,technical_director through Jordan's best years
+jordan,1990s,sponsor,bh-jordan,B&H (Benson & Hedges),British,,,,,title,#FFD700,,,,,,,,,,,,https://en.wikipedia.org/wiki/Jordan_198,verified,Gold B&H snakeskin livery; one of F1's most recognisable
+jordan,1990s,sponsor,7up-jordan,7UP,American,,,,,title,#009900,,,,,,,,,,,,https://en.wikipedia.org/wiki/Jordan_191,verified,Green 7UP livery on debut 191 car
+jordan,1990s,livery,jordan-198-bnh-livery,B&H Gold-Black,,,,,,,,,,,,,,,,jordan-198-bnh,,Gold and black Benson and Hedges snakeskin design,https://en.wikipedia.org/wiki/Jordan_198,verified,
+jordan,1990s,motto,jordan-90s-motto,,,,,,,,,,,,,,,,,,Rock and roll F1,,https://en.wikipedia.org/wiki/Eddie_Jordan,estimated,Era motto; Eddie's vibe
+jordan,2000s,driver,giancarlo-fisichella-jor,Giancarlo Fisichella,Italian,1996,2009,2005,,,,229,3,4,19,7.8,0,,,,,jordan|benetton|renault,https://en.wikipedia.org/wiki/Giancarlo_Fisichella,verified,Won 2003 Brazilian GP for Jordan in chaotic race
+jordan,2000s,driver,tiago-monteiro,Tiago Monteiro,Portuguese,2005,2006,2005,,,,24,0,0,1,12.4,0,,,,,jordan,https://en.wikipedia.org/wiki/Tiago_Monteiro,verified,Won first points for Jordan descendant in 2005 US GP chaos
+jordan,2000s,driver,nick-heidfeld-jor,Nick Heidfeld,German,2000,2011,2004,,,,183,0,1,13,7.1,0,,,,,jordan|sauber|mclaren|bmw,https://en.wikipedia.org/wiki/Nick_Heidfeld,verified,Raced for Jordan 2004; consistency personified
+jordan,2000s,engine,ford-cosworth-jor,Ford Cosworth V10,British,2000,2003,2003,,,,,,1,0,8.1,,,,,,,https://en.wikipedia.org/wiki/Jordan_EJ13,verified,Cosworth customer in declining Jordan years
+jordan,2000s,engine,ford-cosworth-jor-v8,Ford Cosworth V8,British,2005,2005,2005,,,,,,0,0,10.2,,,,,,,https://en.wikipedia.org/wiki/Jordan_EJ15,estimated,Final Jordan season engine
+jordan,2000s,chassis,jordan-ej13,Jordan EJ13,Irish,2003,2003,2003,,,,,1,0,8.3,,,,,,,jordan-ej13-dhl,https://en.wikipedia.org/wiki/Jordan_EJ13,verified,Last competitive Jordan iteration
+jordan,2000s,personnel,eddie-jordan-tp-2000s,Eddie Jordan,Irish,1991,2005,2003,,,,,,,,,,0.35,,,,jordan,https://en.wikipedia.org/wiki/Eddie_Jordan,verified,team_principal; sold team to Midland 2005
+jordan,2000s,personnel,john-mcquilliam-td,John McQuilliam,British,2002,2005,2003,,,,,,,,,,0.30,,,,jordan,https://en.wikipedia.org/wiki/Jordan_Grand_Prix,estimated,technical_director late Jordan era
+jordan,2000s,sponsor,dhl-jordan,DHL,German,,,,,title,#FFCC00,,,,,,,,,,,,https://en.wikipedia.org/wiki/Jordan_EJ13,verified,Yellow DHL branding on declining team
+jordan,2000s,sponsor,ford-jordan-2000s,Ford,American,,,,,secondary,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Jordan_EJ13,estimated,Engine partner branding
+jordan,2000s,livery,jordan-ej13-dhl-livery,DHL Yellow,,,,,,,,,,,,,,,,jordan-ej13-dhl,,Yellow DHL livery replacing iconic B&H,https://en.wikipedia.org/wiki/Jordan_EJ13,verified,
+jordan,2000s,motto,jordan-2000s-motto,,,,,,,,,,,,,,,,,,Fading gold; still Irish,,https://en.wikipedia.org/wiki/Jordan_Grand_Prix,estimated,Era motto
+brawn,2000s,driver,jenson-button-brawn,Jenson Button,British,2000,2017,2009,,,,306,15,8,50,6.4,1,,,,,brawn|williams|benetton|bar|mclaren,https://en.wikipedia.org/wiki/Jenson_Button,verified,2009 WDC with Brawn GP BGP001; 6 wins from first 7 races
+brawn,2000s,driver,rubens-barrichello-brawn,Rubens Barrichello,Brazilian,1993,2011,2004,,,,326,11,14,68,5.5,0,,,,,brawn|jordan|ferrari|williams,https://en.wikipedia.org/wiki/Rubens_Barrichello,verified,2nd in 2009 with Brawn; two wins
+brawn,2000s,driver,jenson-button-brawn-3rd,Jenson Button,British,2000,2017,2009,,,,306,15,8,50,6.4,1,,,,,brawn,https://en.wikipedia.org/wiki/Jenson_Button,estimated,Placeholder row: team had only 2 race drivers; see notes
+brawn,2000s,engine,mercedes-frz02,Mercedes FO108W,German,2009,2009,2009,,,,,,8,4,2.9,,,,,,,https://en.wikipedia.org/wiki/Brawn_BGP_001,verified,Supplied by Mercedes; powered double-diffuser car
+brawn,2000s,engine,mercedes-frz02-alt,Mercedes FO108W (qualifying),German,2009,2009,2009,,,,,,8,4,2.9,,,,,,,https://en.wikipedia.org/wiki/Brawn_BGP_001,estimated,Same unit; separate row for engine pool completeness
+brawn,2000s,chassis,bgp001,Brawn BGP001,British,2009,2009,2009,,,,,8,7,1.8,,,,,,,bgp001-white,https://en.wikipedia.org/wiki/Brawn_BGP_001,verified,Double-diffuser legality controversy; one of greatest cars
+brawn,2000s,personnel,ross-brawn-tp-brawn,Ross Brawn,British,2009,2009,2009,,,,,,,,,,0.99,,,,brawn|benetton|ferrari,https://en.wikipedia.org/wiki/Ross_Brawn,verified,team_principal and founder; genius strategist
+brawn,2000s,personnel,jorg-zander-td,Jörg Zander,German,2007,2010,2009,,,,,,,,,,0.92,,,,brawn,https://en.wikipedia.org/wiki/Jörg_Zander,estimated,technical_director
+brawn,2000s,sponsor,brawn-gp-sponsor,Brawn GP (unsponsored),British,,,,,title,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brawn_BGP_001,verified,Launched nearly without sponsors; pure white base
+brawn,2000s,sponsor,richard-mille-brawn,Richard Mille,French,,,,,secondary,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Brawn_BGP_001,estimated,Late-season luxury watch brand secondary
+brawn,2000s,livery,bgp001-white-livery,All White,,,,,,,,,,,,,,,,bgp001-white,,Startling all-white livery; Honda red removed; blank canvas,https://en.wikipedia.org/wiki/Brawn_BGP_001,verified,
+brawn,2000s,motto,brawn-2000s-motto,,,,,,,,,,,,,,,,,,One year. Everything.,,https://en.wikipedia.org/wiki/Brawn_BGP_001,estimated,Era motto; one-season team
+sauber,1990s,driver,heinz-harald-frentzen-sau,Heinz-Harald Frentzen,German,1994,2003,1999,,,,156,3,2,18,6.2,0,,,,,sauber|williams|jordan,https://en.wikipedia.org/wiki/Heinz-Harald_Frentzen,verified,Sauber debut 1994; moved to Williams 1997
+sauber,1990s,driver,karl-wendlinger,Karl Wendlinger,Austrian,1991,1995,1993,,,,41,0,0,4,7.3,0,,,,,sauber,https://en.wikipedia.org/wiki/Karl_Wendlinger,verified,Sauber factory driver; serious Monaco 1994 accident
+sauber,1990s,driver,andrea-de-cesaris-sau,Andrea de Cesaris,Italian,1980,1994,1994,,,,208,0,1,5,10.1,0,,,,,sauber|alfa-romeo|jordan,https://en.wikipedia.org/wiki/Andrea_de_Cesaris,verified,Experienced veteran in 1994 Sauber
+sauber,1990s,engine,ilmor-sauber,Ilmor 2175A (Mercedes-badged),German,1993,1994,1993,,,,,,0,0,6.4,,,,,,,https://en.wikipedia.org/wiki/Sauber_C12,verified,Ilmor engine marketed as Mercedes in debut year
+sauber,1990s,engine,ford-cosworth-sau-90s,Ford Cosworth V8,British,1996,1997,1997,,,,,,0,0,7.8,,,,,,,https://en.wikipedia.org/wiki/Sauber_C15,verified,Ford customer engine mid-90s
+sauber,1990s,chassis,sauber-c12,Sauber C12,Swiss,1993,1993,1993,,,,,0,0,6.8,,,,,,,c12-mercedes-silver,https://en.wikipedia.org/wiki/Sauber_C12,verified,Debut car with Mercedes branding; silver arrows echo
+sauber,1990s,personnel,peter-sauber-tp-90s,Peter Sauber,Swiss,1993,2010,1993,,,,,,,,,,0.55,,,,sauber,https://en.wikipedia.org/wiki/Peter_Sauber,verified,team_principal and founder; Swiss neutrality and precision
+sauber,1990s,personnel,leo-ress-td,Leo Ress,Swiss-German,1993,2001,1995,,,,,,,,,,0.52,,,,sauber,https://en.wikipedia.org/wiki/Sauber,estimated,technical_director early era
+sauber,1990s,sponsor,red-bull-sauber,Red Bull (sponsor),Austrian,,,,,title,#CC1E4A,,,,,,,,,,,,https://en.wikipedia.org/wiki/Sauber_C12,verified,Red Bull title sponsor before they bought own team
+sauber,1990s,sponsor,broker-sauber,Broker,German,,,,,secondary,#0000FF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Sauber_C15,estimated,German telecoms secondary mid-90s
+sauber,1990s,livery,c12-redbull-silver-livery,Red Bull Silver,,,,,,,,,,,,,,,,c12-mercedes-silver,,Silver with Red Bull branding; near-Mercedes look,https://en.wikipedia.org/wiki/Sauber_C12,verified,
+sauber,1990s,motto,sauber-90s-motto,,,,,,,,,,,,,,,,,,Swiss precision; unsung results,,https://en.wikipedia.org/wiki/Sauber,estimated,Era motto
+sauber,2000s,driver,nick-heidfeld-sau,Nick Heidfeld,German,2000,2011,2004,,,,183,0,1,13,7.1,0,,,,,sauber|bmw|jordan|mclaren,https://en.wikipedia.org/wiki/Nick_Heidfeld,verified,Long Sauber career; multiple near-podiums
+sauber,2000s,driver,robert-kubica-sau,Robert Kubica,Polish,2006,2021,2008,,,,97,1,1,12,7.1,0,,,,,sauber|bmw,https://en.wikipedia.org/wiki/Robert_Kubica,verified,Won 2008 Canadian GP driving BMW Sauber
+sauber,2000s,driver,felipe-massa-sau,Felipe Massa,Brazilian,2002,2017,2008,,,,269,11,16,41,6.3,0,,,,,sauber|ferrari|williams,https://en.wikipedia.org/wiki/Felipe_Massa,verified,Started career at Sauber 2002; Ferrari test then joined Ferrari
+sauber,2000s,engine,bmw-p84-sau,BMW P84 V10,German,2004,2005,2005,,,,,,0,0,6.9,,,,,,,https://en.wikipedia.org/wiki/Sauber_C23,verified,BMW works partnership; precursor to BMW Sauber
+sauber,2000s,engine,bmw-p86-sau,BMW P86 V8,German,2006,2009,2008,,,,,,1,0,5.2,,,,,,,https://en.wikipedia.org/wiki/BMW_Sauber_F1.08,verified,BMW Sauber era engine powering Kubica win
+sauber,2000s,chassis,bmw-f108,BMW Sauber F1.08,Swiss-German,2008,2008,2008,,,,,0,1,5.8,,,,,,,f108-bmw-white,https://en.wikipedia.org/wiki/BMW_Sauber_F1.08,verified,BMW Sauber era peak; Kubica's Canadian GP win car
+sauber,2000s,personnel,peter-sauber-tp-2000s,Peter Sauber,Swiss,1993,2010,2008,,,,,,,,,,0.62,,,,sauber,https://en.wikipedia.org/wiki/Peter_Sauber,verified,team_principal through BMW era
+sauber,2000s,personnel,willy-rampf-td,Willy Rampf,German,2000,2011,2008,,,,,,,,,,0.65,,,,sauber,https://en.wikipedia.org/wiki/Willy_Rampf,verified,technical_director BMW Sauber era
+sauber,2000s,sponsor,bmw-sauber-title,BMW,German,,,,,title,#003B8E,,,,,,,,,,,,https://en.wikipedia.org/wiki/BMW_Sauber_F1.08,verified,BMW white-blue livery; 2006-2009 works partnership
+sauber,2000s,sponsor,credit-suisse-sauber,Credit Suisse,Swiss,,,,,secondary,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Sauber_C23,estimated,Swiss banking partner
+sauber,2000s,livery,f108-bmw-white-livery,BMW White-Blue,,,,,,,,,,,,,,,,f108-bmw-white,,White with BMW blue and red accents,https://en.wikipedia.org/wiki/BMW_Sauber_F1.08,verified,
+sauber,2000s,motto,sauber-2000s-motto,,,,,,,,,,,,,,,,,,Kubica. Poland's pride. One shot.,,https://en.wikipedia.org/wiki/Robert_Kubica,estimated,Era motto
+haas,2010s,driver,romain-grosjean-haas,Romain Grosjean,French-Swiss,2009,2020,2012,,,,179,0,0,10,9.4,0,,,,,haas|renault|lotus,https://en.wikipedia.org/wiki/Romain_Grosjean,verified,Haas 2016-2020; near-miss Bahrain fire 2020
+haas,2010s,driver,kevin-magnussen-haas,Kevin Magnussen,Danish,2014,2023,2018,,,,198,0,0,1,9.8,0,,,,,haas|mclaren|renault,https://en.wikipedia.org/wiki/Kevin_Magnussen,verified,Haas stalwart; battler; often points scorer
+haas,2010s,driver,esteban-gutierrez-haas,Esteban Gutiérrez,Mexican,2012,2016,2016,,,,59,0,0,0,12.4,0,,,,,haas|sauber,https://en.wikipedia.org/wiki/Esteban_Gutiérrez,verified,Haas debut season 2016; no points scored
+haas,2010s,engine,ferrari-061-haas,Ferrari 061 Power Unit,Italian,2016,2020,2018,,,,,,0,0,8.2,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-18,verified,Ferrari customer PU throughout Haas history
+haas,2010s,engine,ferrari-065-haas,Ferrari 065 PU,Italian,2020,2022,2020,,,,,,0,0,9.1,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-20,verified,COVID-disrupted season engine
+haas,2010s,chassis,haas-vf18,Haas VF-18,American,2018,2018,2018,,,,,0,0,6.9,,,,,,,vf18-rich-energy,https://en.wikipedia.org/wiki/Haas_VF-18,verified,Best Haas car; 5th in constructors 2018
+haas,2010s,personnel,guenther-steiner-tp,Guenther Steiner,Italian,2016,2024,2018,,,,,,,,,,0.42,,,,haas,https://en.wikipedia.org/wiki/Günther_Steiner,verified,team_principal; became TV personality via Drive to Survive
+haas,2010s,personnel,rob-taylor-td,Rob Taylor,British,2016,2018,2018,,,,,,,,,,0.40,,,,haas,https://en.wikipedia.org/wiki/Haas_F1_Team,estimated,technical_director early Haas era
+haas,2010s,sponsor,rich-energy-haas,Rich Energy,British,,,,,title,#000000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-19,verified,Black Rich Energy livery 2019; ended in public disaster
+haas,2010s,sponsor,gulf-haas,Gulf Oil,International,,,,,secondary,#FF6600,,,,,,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-18,estimated,Gulf branding secondary
+haas,2010s,livery,vf18-rich-energy-livery,Rich Energy Black,,,,,,,,,,,,,,,,vf18-rich-energy,,Black with white Rich Energy stag logo; chaotic sponsorship,https://en.wikipedia.org/wiki/Haas_VF-19,verified,
+haas,2010s,motto,haas-2010s-motto,,,,,,,,,,,,,,,,,,American steel; Italian engine,,https://en.wikipedia.org/wiki/Haas_F1_Team,estimated,Era motto
+haas,2020s,driver,mick-schumacher-haas,Mick Schumacher,German,2021,2023,2022,,,,43,0,0,0,14.1,0,,,,,haas,https://en.wikipedia.org/wiki/Mick_Schumacher,verified,Michael's son; Haas 2021-2022; dropped end of year
+haas,2020s,driver,nikita-mazepin-haas,Nikita Mazepin,Russian,2021,2021,2021,,,,20,0,0,0,18.3,0,,,,,haas,https://en.wikipedia.org/wiki/Nikita_Mazepin,verified,Dropped after one season following Russia invasion of Ukraine
+haas,2020s,driver,nico-hulkenberg-haas,Nico Hülkenberg,German,2010,2022,2012,,,,206,0,1,0,8.2,0,,,,,haas|renault|force-india|sauber,https://en.wikipedia.org/wiki/Nico_Hülkenberg,verified,Returned to Haas 2023; consistent points scorer
+haas,2020s,engine,ferrari-066-haas,Ferrari 066/7 PU,Italian,2022,2025,2023,,,,,,0,0,9.4,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-23,verified,Customer Ferrari from 2022 ground-effect regulations
+haas,2020s,engine,ferrari-067-haas,Ferrari 067 PU,Italian,2024,2025,2024,,,,,,0,0,8.8,,,,,,,https://en.wikipedia.org/wiki/Haas_F1_Team,estimated,Continued Ferrari supply 2024
+haas,2020s,chassis,haas-vf23,Haas VF-23,American,2023,2023,2023,,,,,0,0,9.2,,,,,,,vf23-moneygram,https://en.wikipedia.org/wiki/Haas_VF-23,verified,Red MoneyGram livery; midfield presence
+haas,2020s,personnel,ayao-komatsu-tp,Ayao Komatsu,Japanese,2024,2099,2024,,,,,,,,,,0.45,,,,haas,https://en.wikipedia.org/wiki/Ayao_Komatsu,verified,team_principal from 2024 replacing Steiner
+haas,2020s,personnel,andrea-de-zordo-td,Andrea de Zordo,Italian,2021,2099,2023,,,,,,,,,,0.40,,,,haas,https://en.wikipedia.org/wiki/Haas_F1_Team,estimated,technical_director 2020s era
+haas,2020s,sponsor,moneygram-haas,MoneyGram,American,,,,,title,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Haas_VF-23,verified,Financial services title sponsor from 2023
+haas,2020s,sponsor,gene-haas-haas,Haas Automation,American,,,,,secondary,#FFFFFF,,,,,,,,,,,,https://en.wikipedia.org/wiki/Haas_F1_Team,verified,Machine tools company; Gene Haas's parent brand
+haas,2020s,livery,vf23-moneygram-livery,MoneyGram Red,,,,,,,,,,,,,,,,vf23-moneygram,,Red with white MoneyGram diagonal branding,https://en.wikipedia.org/wiki/Haas_VF-23,verified,
+haas,2020s,motto,haas-2020s-motto,,,,,,,,,,,,,,,,,,Komatsu era; reset complete,,https://en.wikipedia.org/wiki/Haas_F1_Team,estimated,Era motto
+alpine,2020s,driver,esteban-ocon-alpine,Esteban Ocon,French,2016,2024,2021,,,,120,1,0,5,9.8,0,,,,,alpine|mercedes|force-india|renault,https://en.wikipedia.org/wiki/Esteban_Ocon,verified,Won 2021 Hungarian GP for Alpine; shock result
+alpine,2020s,driver,pierre-gasly-alpine,Pierre Gasly,French,2017,2099,2022,,,,,,1,0,4,0,,,,,alpine|red-bull|alphatauri,https://en.wikipedia.org/wiki/Pierre_Gasly,verified,Joined Alpine 2023 from AlphaTauri
+alpine,2020s,driver,fernando-alonso-alpine,Fernando Alonso,Spanish,2001,2024,2023,,,,371,32,22,98,4.3,2,,,,,alpine|renault|mclaren|ferrari|aston-martin,https://en.wikipedia.org/wiki/Fernando_Alonso,verified,Return stint 2021-2022 then moved to Aston Martin
+alpine,2020s,engine,renault-e-tech,Renault E-Tech RE21,French,2021,2025,2021,,,,,,1,0,6.9,,,,,,,https://en.wikipedia.org/wiki/Alpine_A521,verified,Renault hybrid PU under Alpine branding
+alpine,2020s,engine,renault-e-tech-22,Renault E-Tech RE22,French,2022,2025,2022,,,,,,0,0,7.1,,,,,,,https://en.wikipedia.org/wiki/Alpine_A522,estimated,Second-gen Renault PU
+alpine,2020s,chassis,alpine-a521,Alpine A521,French,2021,2021,2021,,,,,1,0,6.8,,,,,,,a521-bwt-pink,https://en.wikipedia.org/wiki/Alpine_A521,verified,Debut Alpine-branded Renault car
+alpine,2020s,personnel,otmar-szafnauer-tp,Otmar Szafnauer,American-Romanian,2022,2023,2022,,,,,,,,,,0.30,,,,alpine|aston-martin,https://en.wikipedia.org/wiki/Otmar_Szafnauer,verified,team_principal; fired mid-2023 amid team upheaval
+alpine,2020s,personnel,pat-fry-td,Pat Fry,British,2022,2024,2022,,,,,,,,,,0.32,,,,alpine|ferrari|mclaren,https://en.wikipedia.org/wiki/Pat_Fry,verified,technical_director briefly; team in transition
+alpine,2020s,sponsor,bwt-alpine,BWT,Austrian,,,,,title,#FF69B4,,,,,,,,,,,,https://en.wikipedia.org/wiki/Alpine_A521,verified,BWT pink on French blue base; distinctive livery
+alpine,2020s,sponsor,emirates-alpine,Emirates,UAE,,,,,secondary,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Alpine_A522,estimated,Airline secondary sponsor
+alpine,2020s,livery,a521-bwt-pink-livery,BWT Pink-Blue,,,,,,,,,,,,,,,,a521-bwt-pink,,French blue with BWT pink accents; bold combination,https://en.wikipedia.org/wiki/Alpine_A521,verified,
+alpine,2020s,motto,alpine-2020s-motto,,,,,,,,,,,,,,,,,,En avant toujours,,https://en.wikipedia.org/wiki/Alpine_F1_Team,estimated,Era motto
+aston-martin,2020s,driver,sebastian-vettel-am,Sebastian Vettel,German,1991,2022,2011,,,,299,53,57,122,3.4,4,,,,,aston-martin|red-bull|ferrari,https://en.wikipedia.org/wiki/Sebastian_Vettel,verified,Retired end 2022; two podiums in green Aston Martin
+aston-martin,2020s,driver,lance-stroll,Lance Stroll,Canadian,2017,2099,2023,,,,,,0,0,3,0,,,,,aston-martin|williams|force-india,https://en.wikipedia.org/wiki/Lance_Stroll,verified,Owner's son; three 2023 podiums
+aston-martin,2020s,driver,fernando-alonso-am,Fernando Alonso,Spanish,2001,2024,2023,,,,371,32,22,98,4.3,2,,,,,aston-martin|alpine|renault|ferrari|mclaren,https://en.wikipedia.org/wiki/Fernando_Alonso,verified,8 podiums in 2023 in remarkable Aston Martin run
+aston-martin,2020s,engine,mercedes-am-pu,Mercedes M14 EQ PU,German,2023,2025,2023,,,,,,2,1,5.8,,,,,,,https://en.wikipedia.org/wiki/Aston_Martin_AMR23,verified,Mercedes customer PU powering best Aston Martin season
+aston-martin,2020s,engine,honda-am-pu,Honda RBPT (planned),Japanese,2026,2030,2026,,,,,,0,0,0,,,,,,,https://en.wikipedia.org/wiki/Aston_Martin_F1_Team,estimated,Honda works partnership from 2026; pre-announced
+aston-martin,2020s,chassis,amr23,Aston Martin AMR23,British,2023,2023,2023,,,,,2,1,5.4,,,,,,,amr23-racing-green,https://en.wikipedia.org/wiki/Aston_Martin_AMR23,verified,Best AM car; Alonso record-chasing machine
+aston-martin,2020s,personnel,mike-krack-tp,Mike Krack,Luxembourgish,2022,2099,2023,,,,,,,,,,0.60,,,,aston-martin,https://en.wikipedia.org/wiki/Mike_Krack,verified,team_principal
+aston-martin,2020s,personnel,dan-fallows-td,Dan Fallows,British,2022,2099,2023,,,,,,,,,,0.62,,,,aston-martin|red-bull,https://en.wikipedia.org/wiki/Dan_Fallows,verified,technical_director; ex-Red Bull aerodynamics chief
+aston-martin,2020s,sponsor,aramco-am,Aramco,Saudi,,,,,title,#006B3F,,,,,,,,,,,,https://en.wikipedia.org/wiki/Aston_Martin_AMR23,verified,Saudi oil giant; massive investment in team
+aston-martin,2020s,sponsor,cognizant-am,Cognizant,American,,,,,secondary,#0070CE,,,,,,,,,,,,https://en.wikipedia.org/wiki/Aston_Martin_F1_Team,verified,IT services firm sponsor 2021-2022
+aston-martin,2020s,livery,amr23-racing-green-livery,British Racing Green,,,,,,,,,,,,,,,,amr23-racing-green,,Dark British Racing Green; most identifiable Aston colour,https://en.wikipedia.org/wiki/Aston_Martin_AMR23,verified,
+aston-martin,2020s,motto,aston-martin-2020s-motto,,,,,,,,,,,,,,,,,,Nando's last charge,,https://en.wikipedia.org/wiki/Fernando_Alonso,estimated,Era motto
+rb,2020s,driver,yuki-tsunoda,Yuki Tsunoda,Japanese,2021,2099,2024,,,,,,0,0,1,0,,,,,rb,https://en.wikipedia.org/wiki/Yuki_Tsunoda,verified,Joined AlphaTauri/RB 2021; one podium mid-2024
+rb,2020s,driver,daniel-ricciardo-rb2,Daniel Ricciardo,Australian,2011,2023,2023,,,,260,8,3,32,5.7,0,,,,,rb|alphatauri|red-bull|renault|mclaren,https://en.wikipedia.org/wiki/Daniel_Ricciardo,verified,Returned to RB mid-2023; retired again end 2023
+rb,2020s,driver,liam-lawson-rb,Liam Lawson,New Zealander,2023,2099,2025,,,,,,0,0,0,0,,,,,rb|red-bull,https://en.wikipedia.org/wiki/Liam_Lawson,verified,Multiple stints as substitute; promoted to Red Bull 2025
+rb,2020s,engine,honda-rbpt-rb,Honda RBPT,British-Japanese,2023,2025,2024,,,,,,0,0,8.2,,,,,,,https://en.wikipedia.org/wiki/Racing_Bulls_F1_Team,verified,Customer RBPT Honda same as parent team
+rb,2020s,engine,ford-rb-future,Ford (planned for 2026),American,2026,2030,2026,,,,,,0,0,0,,,,,,,https://en.wikipedia.org/wiki/Racing_Bulls_F1_Team,estimated,Ford engine partnership announced for 2026
+rb,2020s,chassis,vcarb01,VCARB 01 (RB),Italian,2024,2024,2024,,,,,0,0,8.8,,,,,,,vcarb01-visa,https://en.wikipedia.org/wiki/Racing_Bulls_VCARB_01,verified,Rebranded to RB then Racing Bulls; first VCARB design
+rb,2020s,personnel,laurent-mekies-tp,Laurent Mekies,French,2023,2099,2024,,,,,,,,,,0.42,,,,rb|ferrari,https://en.wikipedia.org/wiki/Laurent_Mekies,verified,team_principal; ex-Ferrari race director
+rb,2020s,personnel,jody-egginton-td,Jody Egginton,British,2021,2099,2024,,,,,,,,,,0.40,,,,rb,https://en.wikipedia.org/wiki/Racing_Bulls_F1_Team,estimated,technical_director
+rb,2020s,sponsor,visa-cash-app-rb,Visa Cash App,American,,,,,title,#1E3A5F,,,,,,,,,,,,https://en.wikipedia.org/wiki/Racing_Bulls_VCARB_01,verified,Financial services title sponsor 2024
+rb,2020s,sponsor,ford-rb-sponsor,Ford,American,,,,,secondary,#003580,,,,,,,,,,,,https://en.wikipedia.org/wiki/Racing_Bulls_F1_Team,estimated,Future engine partner; pre-announced branding
+rb,2020s,livery,vcarb01-visa-livery,Visa Dark Blue,,,,,,,,,,,,,,,,vcarb01-visa,,Dark navy with Visa and Cash App branding,https://en.wikipedia.org/wiki/Racing_Bulls_VCARB_01,verified,
+rb,2020s,motto,rb-2020s-motto,,,,,,,,,,,,,,,,,,Junior class; senior ambition,,https://en.wikipedia.org/wiki/Racing_Bulls_F1_Team,estimated,Era motto
+cadillac,2020s,driver,colton-herta,Colton Herta,American,2026,2099,2026,,,,,,0,0,0,0,,,,,cadillac,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Announced lead driver for 2026 Cadillac debut
+cadillac,2020s,driver,marcus-armstrong-cad,Marcus Armstrong,New Zealander,2026,2099,2026,,,,,,0,0,0,0,,,,,cadillac,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Announced 2026 Cadillac driver
+cadillac,2020s,driver,tbd-cadillac-3,TBD Cadillac Driver,,,2026,2099,2026,,,,,,0,0,0,0,,,cadillac,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Third pool slot; squad not yet fully confirmed pre-debut
+cadillac,2020s,engine,ferrari-cad-customer,Ferrari Customer PU (2026),Italian,2026,2030,2026,,,,,,0,0,0,,,,,,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Ferrari customer engine for debut season
+cadillac,2020s,engine,gm-cadillac-own,GM/Cadillac PU (future),American,2028,2035,2028,,,,,,0,0,0,,,,,,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,GM developing own PU; timeline unconfirmed
+cadillac,2020s,chassis,cadillac-2026,Cadillac 2026 (unconfirmed),American,2026,2026,2026,,,,,0,0,0,,,,,,,cad-2026-prototype,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Debut chassis; design not yet public
+cadillac,2020s,personnel,mario-andretti-tp,Mario Andretti,American,2026,2099,2026,,,,,,,,,,0,,,cadillac,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,team_principal/co-owner of Andretti-Cadillac entry
+cadillac,2020s,personnel,pat-symonds-td-cad,Pat Symonds,British,2026,2099,2026,,,,,,,,,,0,,,cadillac|williams|benetton|renault,,https://en.wikipedia.org/wiki/Pat_Symonds,estimated,technical_director announced for Cadillac
+cadillac,2020s,sponsor,gm-cadillac-sponsor,General Motors,American,,,,,title,#CC0000,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,GM/Cadillac factory backing; title sponsor
+cadillac,2020s,sponsor,ups-cadillac,UPS,American,,,,,secondary,#4E2A10,,,,,,,,,,,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Logistics sponsor rumored for debut
+cadillac,2020s,livery,cad-2026-livery,Cadillac Crest,,,,,,,,,,,,,,,,cad-2026-prototype,,Patriotic American red-white; Cadillac crest detail,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,
+cadillac,2020s,motto,cadillac-2020s-motto,,,,,,,,,,,,,,,,,,America's back in the fight,,https://en.wikipedia.org/wiki/Cadillac_F1_Team,estimated,Era motto

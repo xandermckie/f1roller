@@ -44,8 +44,8 @@ export function LandingPage(): React.ReactElement {
             Roll your team. Pick your era. Build the garage.
           </h1>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.125rem", margin: "0 0 28px" }}>
-            Roll a constructor and decade, assign your roster to every role, simulate the full 2026
-            season, and chase the championship.
+            Roll a constructor and decade, pick from that roster pool, build your team across many
+            rolls, simulate the full 2026 season, and chase the championship.
           </p>
           <Link to="/roll" className="btn" style={{ textDecoration: "none", display: "inline-block" }}>
             Build Your Team
@@ -55,8 +55,8 @@ export function LandingPage(): React.ReactElement {
 
       <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
         {[
-          { title: "Team + decade", desc: "Roll your constructor and era. One reroll each per run." },
-          { title: "Build your roster", desc: "Assign drivers, staff, engine, chassis, and sponsors to matching slots." },
+          { title: "Team + decade", desc: "Each roll opens a roster pool — not your locked team. One reroll each per run." },
+          { title: "Build your roster", desc: "Pick one per roll and assign to any open matching slot. Mix eras and constructors freely." },
           { title: "2026 season", desc: "Full calendar from OpenF1. Realistic low-randomness sim." },
         ].map((item) => (
           <div key={item.title} className="card">

@@ -1,6 +1,6 @@
 # F1 Roller
 
-Unofficial fan F1 fantasy team builder and 2026 season simulator. Roll a constructor and decade, assign your era roster to every team slot, simulate the full season, and compare against the theoretical best squad and the real 2026 grid.
+Unofficial fan F1 fantasy team builder and 2026 season simulator. Roll a constructor and decade, pick from that roster pool, build your team across many rolls, simulate the full season, and compare against the theoretical best squad and the real 2026 grid. See [docs/GAME_RULES.md](docs/GAME_RULES.md) for how team building works.
 
 **Created by [Xander McKie](https://github.com/xandermckie)**
 
@@ -17,7 +17,7 @@ Unofficial fan F1 fantasy team builder and 2026 season simulator. Roll a constru
 ```bash
 cd backend
 pip install -r requirements.txt
-python ../scripts/seed_mvp_roster.py
+python ../scripts/import_roster_master.py
 uvicorn app.main:app --reload --port 8000
 ```
 

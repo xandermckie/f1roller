@@ -154,12 +154,14 @@ export function rollTeam(
 
 export function rollDecade(
   sessionSeed: string,
+  teamSlug: string,
   rerollSalt?: string,
 ): Promise<RolledDecadeResponse> {
   return request("/roster/roll-decade", {
     method: "POST",
     body: JSON.stringify({
       session_seed: sessionSeed,
+      team_slug: teamSlug,
       reroll_salt: rerollSalt ?? null,
     }),
   });

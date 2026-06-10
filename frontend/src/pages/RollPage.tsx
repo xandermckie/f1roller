@@ -7,12 +7,15 @@ import { RosterEntityCard } from "@/components/RosterEntityCard";
 import { useRollSession } from "@/hooks/useRollSession";
 import { getHealth, simulate } from "@/lib/api";
 import {
+  canAssign,
+  canAssignEntityToSlot,
   countFilledSlots,
   getAssignedEntity,
-  getAvailablePool,
-  getCurrentSlot,
+  getAssignablePool,
+  getPoolEntity,
   hasActiveRound,
   isRoundRolled,
+  needsRosterRecovery,
 } from "@/lib/rollSession";
 import {
   ROSTER_GROUP_LABELS,
@@ -31,6 +34,7 @@ export function RollPage(): React.ReactElement {
     rollRound,
     rerollTeam,
     rerollDecade,
+    refetchCurrentRoster,
     assignToSlot,
     clearSlot,
     lockTeam,
@@ -48,13 +52,17 @@ export function RollPage(): React.ReactElement {
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
   const poolRef = useRef<HTMLElement>(null);
 
-  const currentSlot = getCurrentSlot(session);
   const roundActive = hasActiveRound(session);
-  const showRollButton = !roundActive && !isAssignmentComplete;
-  const showPool = isRoundRolled(session) && !isAssignmentComplete;
+  const rosterRecovery = needsRosterRecovery(session);
+  const showRollButton = (!roundActive || rosterRecovery) && !isAssignmentComplete;
+  const showPool = isRoundRolled(session) && !isAssignmentComplete && !rosterRecovery;
   const poolLoading = showPool && loading && session.rosterPool.length === 0;
 
-  const availablePool = useMemo(() => getAvailablePool(session), [session]);
+  const availablePool = useMemo(() => getAssignablePool(session), [session]);
+  const selectedEntity = useMemo(
+    () => (selectedEntityId ? getPoolEntity(session, selectedEntityId) : undefined),
+    [session, selectedEntityId],
+  );
 
   const groupedPool = useMemo(() => {
     const groups: Record<string, RosterEntity[]> = {};
@@ -116,10 +124,8 @@ export function RollPage(): React.ReactElement {
     }
     setLocalError(null);
     setSelectedEntityId(null);
-    if (slotId === currentSlot) {
-      setTeamRevealed(false);
-      setDecadeRevealed(false);
-    }
+    setTeamRevealed(false);
+    setDecadeRevealed(false);
   };
 
   const handleRerollTeam = async (): Promise<void> => {
@@ -157,9 +163,10 @@ export function RollPage(): React.ReactElement {
     <div className="container" style={{ maxWidth: 1200 }}>
       <h1 style={{ marginTop: 0 }}>Roll Your Team</h1>
       <p style={{ color: "var(--color-text-muted)" }}>
-        Each round rolls a new constructor and era. Pick from the full roster pool, then click a
-        slot on the right to place them. Fill <strong>{SLOT_LABELS[currentSlot]}</strong> to
-        advance. One team reroll and one decade reroll per game.
+        Roll a constructor and era to open a roster pool — these rolls are not your final team.
+        Pick one person or part from the pool, assign them to any matching open slot on the right,
+        then roll again. Build across many team+era combos until all 12 slots are filled. One team
+        reroll and one decade reroll per game.
       </p>
 
       {backendOk === false && (
@@ -185,7 +192,7 @@ export function RollPage(): React.ReactElement {
           }
           revealed={teamRevealed}
           rolling={isRolling || (loading && !teamRevealed)}
-          slotLabel="Your Team"
+          slotLabel="Rolled Constructor"
           onReroll={roundActive ? () => void handleRerollTeam() : undefined}
           rerollsLeft={session.rerollsRemaining.team}
           rerollDisabled={loading}
@@ -203,7 +210,7 @@ export function RollPage(): React.ReactElement {
           }
           revealed={decadeRevealed}
           rolling={isRolling || (loading && !decadeRevealed)}
-          slotLabel="Your Era"
+          slotLabel="Rolled Era"
           onReroll={roundActive ? () => void handleRerollDecade() : undefined}
           rerollsLeft={session.rerollsRemaining.decade}
           rerollDisabled={loading}
@@ -218,7 +225,18 @@ export function RollPage(): React.ReactElement {
           disabled={loading || isRolling}
           style={{ marginTop: 16 }}
         >
-          {loading || isRolling ? "Rolling…" : `Roll Team & Era for ${SLOT_LABELS[currentSlot]}`}
+          {loading || isRolling ? "Rolling…" : "Roll Team & Era"}
+        </button>
+      )}
+
+      {rosterRecovery && !loading && (
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => void refetchCurrentRoster()}
+          style={{ marginTop: 16, marginLeft: 12 }}
+        >
+          Retry loading roster
         </button>
       )}
 
@@ -238,8 +256,8 @@ export function RollPage(): React.ReactElement {
               </h2>
               <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", margin: "0 0 16px" }}>
                 {selectedEntityId
-                  ? "Click a matching slot on the right to assign your selection."
-                  : "Select a roster member below."}
+                  ? "Click a matching open slot on the right to add this pick to your team."
+                  : "Choose one from this roll's roster — you are not stuck with the rolled constructor or era."}
               </p>
               {poolLoading ? (
                 <p style={{ color: "var(--color-text-muted)" }}>Loading roster…</p>
@@ -295,22 +313,19 @@ export function RollPage(): React.ReactElement {
 
         <section>
           <h2 style={{ fontSize: "1.125rem", marginTop: roundActive ? undefined : 0 }}>Team Slots</h2>
-          {SLOT_ORDER.map((slotId, index) => {
+          {SLOT_ORDER.map((slotId) => {
             const assigned = getAssignedEntity(session, slotId);
-            const isCurrent = index === session.currentSlotIndex && !assigned;
-            const canReceiveSelection = Boolean(selectedEntityId && !assigned);
+            const canReceiveSelection = Boolean(
+              selectedEntity && canAssignEntityToSlot(session, selectedEntity, slotId),
+            );
             return (
               <div
                 key={slotId}
                 className="card"
                 style={{
                   marginBottom: 12,
-                  border: isCurrent
-                    ? "2px solid var(--color-accent)"
-                    : canReceiveSelection
-                      ? "1px dashed var(--color-accent)"
-                      : undefined,
-                  opacity: assigned ? 0.85 : isCurrent ? 1 : 0.6,
+                  border: canReceiveSelection ? "2px dashed var(--color-accent)" : undefined,
+                  opacity: assigned ? 0.85 : 1,
                   cursor: assigned || canReceiveSelection ? "pointer" : "default",
                 }}
                 onClick={() => handleSlotClick(slotId)}
@@ -327,12 +342,11 @@ export function RollPage(): React.ReactElement {
                   style={{
                     margin: "0 0 8px",
                     fontSize: "0.75rem",
-                    color: isCurrent ? "var(--color-accent)" : "var(--color-text-muted)",
-                    fontWeight: isCurrent ? 600 : 400,
+                    color: canReceiveSelection ? "var(--color-accent)" : "var(--color-text-muted)",
+                    fontWeight: canReceiveSelection ? 600 : 400,
                   }}
                 >
                   {SLOT_LABELS[slotId]}
-                  {isCurrent ? " — fill this slot to continue" : ""}
                 </p>
                 {assigned ? (
                   <>
@@ -343,7 +357,11 @@ export function RollPage(): React.ReactElement {
                   </>
                 ) : (
                   <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
-                    {canReceiveSelection ? "Click to assign here" : isCurrent ? "Roll and pick from pool" : "Waiting…"}
+                    {canReceiveSelection
+                      ? "Click to assign here"
+                      : selectedEntity && canAssign(selectedEntity, slotId)
+                        ? "Slot type matches — pick someone else or clear selection"
+                        : "Empty — roll and pick from the pool"}
                   </p>
                 )}
               </div>

@@ -8,10 +8,7 @@ from uuid import UUID
 
 from sqlalchemy.orm import Session
 
-from app.models.constructor import Constructor
-from app.models.driver import Driver
-from app.models.engine_entity import EngineEntity
-from app.models.personnel import Personnel
+from app.models.roster_entry import RosterEntry
 from app.services.synergy import EntityRef
 from app.services.team_pace import TeamEntities
 
@@ -21,13 +18,22 @@ def _seeded_rng(team_ids: list[str], salt: int) -> random.Random:
     return random.Random(int(digest[:16], 16))
 
 
-def _to_entity_ref(driver: Driver) -> EntityRef:
+def _to_entity_ref(entry: RosterEntry) -> EntityRef:
     return EntityRef(
-        slug=driver.slug,
-        display_name=driver.display_name,
-        peak_year=driver.peak_year,
-        teams_history=driver.teams_history or [],
+        slug=entry.slug,
+        display_name=entry.display_name,
+        peak_year=entry.peak_year,
+        teams_history=entry.teams_history or [],
     )
+
+
+def _best_by_slug(entries: list[RosterEntry]) -> list[RosterEntry]:
+    best: dict[str, RosterEntry] = {}
+    for entry in entries:
+        existing = best.get(entry.slug)
+        if existing is None or entry.computed_rating > existing.computed_rating:
+            best[entry.slug] = entry
+    return list(best.values())
 
 
 def generate_rivals(
@@ -35,25 +41,29 @@ def generate_rivals(
     user_driver_ids: list[UUID],
     count: int = 19,
 ) -> list[TeamEntities]:
-    constructors = db.query(Constructor).order_by(Constructor.computed_rating.desc()).all()
-    engines = db.query(EngineEntity).order_by(EngineEntity.computed_rating.desc()).all()
-    drivers = (
-        db.query(Driver)
-        .filter(Driver.computed_rating > 0)
-        .order_by(Driver.computed_rating.desc())
-        .limit(120)
-        .all()
-    )
-    personnel = db.query(Personnel).all()
+    all_entries = db.query(RosterEntry).all()
+    if not all_entries:
+        raise ValueError("Roster data is missing. Import f1roller_roster_master.csv first.")
 
-    if not constructors or not engines or not drivers or not personnel:
-        raise ValueError("Roster data is missing. Restart the API to auto-seed the database.")
+    drivers = sorted(
+        _best_by_slug([e for e in all_entries if e.entity_type == "driver"]),
+        key=lambda e: e.computed_rating,
+        reverse=True,
+    )[:120]
+    chassis = _best_by_slug([e for e in all_entries if e.entity_type == "chassis"])
+    engines = _best_by_slug([e for e in all_entries if e.entity_type == "engine"])
+    tps = [e for e in all_entries if e.entity_type == "personnel" and e.personnel_role == "team_principal"]
+    tds = [e for e in all_entries if e.entity_type == "personnel" and e.personnel_role == "technical_director"]
+    engineers = [
+        e for e in all_entries if e.entity_type == "personnel" and e.personnel_role == "lead_engineer"
+    ]
+    if not engineers:
+        engineers = tds
 
-    tps = [p for p in personnel if p.role == "team_principal"]
-    tds = [p for p in personnel if p.role == "technical_director"]
-    engineers = [p for p in personnel if p.role == "lead_engineer"]
+    if not chassis or not engines or not drivers or not tps:
+        raise ValueError("Roster data is incomplete. Re-import f1roller_roster_master.csv.")
 
-    excluded = set(str(i) for i in user_driver_ids)
+    excluded = {str(i) for i in user_driver_ids}
     used_drivers: set[str] = set(excluded)
 
     rivals: list[TeamEntities] = []
@@ -62,7 +72,7 @@ def generate_rivals(
     for i in range(count):
         rng = _seeded_rng(team_ids, i)
 
-        constructor = rng.choice(constructors)
+        constructor = rng.choice(chassis)
         engine = rng.choice(engines)
 
         available = [d for d in drivers if str(d.id) not in used_drivers]
@@ -76,13 +86,13 @@ def generate_rivals(
         selected = rng.sample(available, min(3, len(available)))
         while len(selected) < 3:
             selected.append(rng.choice(available))
-        for d in selected:
-            used_drivers.add(str(d.id))
+        for driver in selected:
+            used_drivers.add(str(driver.id))
 
         d1, d2, reserve = selected[0], selected[1], selected[2]
-        tp = rng.choice(tps) if tps else personnel[0]
-        td = rng.choice(tds) if tds else personnel[0]
-        eng = rng.choice(engineers) if engineers else personnel[0]
+        tp = rng.choice(tps)
+        td = rng.choice(tds) if tds else tp
+        eng = rng.choice(engineers) if engineers else td
 
         team_name = f"{constructor.display_name} {engine.display_name} Racing"
 

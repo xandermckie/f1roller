@@ -1,86 +1,59 @@
-import json
-from pathlib import Path
-
 import pytest
 
-ROOT = Path(__file__).resolve().parents[2]
+from app.services.roster_builder import build_roster
+from app.services.roster_import import import_roster_master
 
 
 @pytest.fixture
-def seeded_db(db_session):
-    seed_path = ROOT / "backend" / "data" / "mvp_seed.json"
-    with seed_path.open(encoding="utf-8") as f:
-        data = json.load(f)
+def csv_roster(db_session):
+    from app.models.calendar_event import CalendarEvent
 
-    from app.models.constructor import Constructor
-    from app.models.driver import Driver
-    from app.models.engine_entity import EngineEntity
-    from app.models.personnel import Personnel
-    from app.models.sponsor import Sponsor
-    from app.services.rating_engine import PoolMaxima, compute_driver_rating
-
-    pool_max = PoolMaxima(
-        max_wins=max(d["stats"]["wins"] for d in data["drivers"]),
-        max_poles=max(d["stats"]["poles"] for d in data["drivers"]),
+    import_roster_master(db_session)
+    db_session.add(
+        CalendarEvent(
+            meeting_key=9001,
+            year=2026,
+            round_number=1,
+            meeting_name="Test Grand Prix",
+            circuit_short_name="Test",
+            is_cancelled=False,
+        )
     )
-
-    for item in data["drivers"][:5]:
-        rating, _ = compute_driver_rating(item["stats"], item["peak_year"], pool_max)
-        db_session.add(
-            Driver(
-                slug=item["slug"],
-                display_name=item["display_name"],
-                peak_year=item["peak_year"],
-                stats_json=item["stats"],
-                computed_rating=rating,
-                teams_history=item.get("teams", []),
-            )
-        )
-
-    for item in data["constructors"][:3]:
-        db_session.add(
-            Constructor(
-                slug=item["slug"],
-                display_name=item["display_name"],
-                peak_year=item["peak_year"],
-                stats_json=item["stats"],
-                computed_rating=0.7,
-            )
-        )
-
-    for item in data["engines"][:3]:
-        db_session.add(
-            EngineEntity(
-                slug=item["slug"],
-                display_name=item["display_name"],
-                peak_year=item["peak_year"],
-                stats_json=item["stats"],
-                computed_rating=0.7,
-            )
-        )
-
-    for item in data["personnel"][:6]:
-        db_session.add(
-            Personnel(
-                slug=item["slug"],
-                display_name=item["display_name"],
-                role=item["role"],
-                stats_json=item["stats"],
-                computed_rating=0.7,
-            )
-        )
-
-    for item in data["sponsors"][:4]:
-        db_session.add(
-            Sponsor(
-                slug=item["slug"],
-                display_name=item["display_name"],
-                tier=item["tier"],
-            )
-        )
-
     db_session.commit()
     return db_session
+
+
+def _pick_entity(roster, entity_type: str, slot: str | None = None):
+    for entity in roster.entities:
+        if entity.entity_type != entity_type:
+            continue
+        if slot and slot not in entity.assignable_slots:
+            continue
+        return entity
+    raise AssertionError(f"No {entity_type} for slot {slot}")
+
+
+def _full_team_payload(db_session, team_slug: str = "ferrari", decade: str = "1990s") -> dict:
+    roster = build_roster(db_session, team_slug, decade)
+    drivers = [e for e in roster.entities if e.entity_type == "driver"]
+    chassis = _pick_entity(roster, "constructor")
+    engine = _pick_entity(roster, "engine")
+    livery = _pick_entity(roster, "livery")
+    motto = _pick_entity(roster, "motto")
+    return {
+        "driver_1_id": drivers[0].id,
+        "driver_2_id": drivers[1].id,
+        "reserve_driver_id": drivers[2].id,
+        "constructor_id": chassis.id,
+        "engine_id": engine.id,
+        "team_principal_id": _pick_entity(roster, "personnel", "team_principal").id,
+        "technical_director_id": _pick_entity(roster, "personnel", "technical_director").id,
+        "lead_engineer_id": _pick_entity(roster, "personnel", "lead_engineer").id,
+        "title_sponsor_id": _pick_entity(roster, "sponsor", "title_sponsor").id,
+        "secondary_sponsor_id": _pick_entity(roster, "sponsor", "secondary_sponsor").id,
+        "livery_style": livery.slug,
+        "team_motto": motto.display_name,
+    }
 
 
 def test_health_endpoint(client):
@@ -89,15 +62,16 @@ def test_health_endpoint(client):
     assert response.json()["status"] == "ok"
 
 
-def test_roll_returns_entity(client, seeded_db):
-    response = client.post("/api/roll", json={"slot_id": "driver_1", "excluded_ids": []})
+def test_roster_roll_returns_entities(client, csv_roster):
+    response = client.get("/api/roster?team_slug=ferrari&decade=1990s")
     assert response.status_code == 200
     data = response.json()
-    assert "display_name" in data
-    assert data["entity_type"] == "driver"
+    assert data["team_slug"] == "ferrari"
+    assert len(data["entities"]) > 0
+    assert any(e["entity_type"] == "driver" for e in data["entities"])
 
 
-def test_simulate_invalid_uuid_422(client, seeded_db):
+def test_simulate_invalid_uuid_422(client, csv_roster):
     response = client.post(
         "/api/simulate",
         json={
@@ -117,3 +91,15 @@ def test_simulate_invalid_uuid_422(client, seeded_db):
         },
     )
     assert response.status_code == 422
+
+
+def test_simulate_with_roster_entries(client, csv_roster):
+    team = _full_team_payload(csv_roster)
+    response = client.post(
+        "/api/simulate",
+        json={"team": team, "session_seed": "roster-sim-test"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["races"]) > 0
+    assert data["user_summary"]["wdc_position"] >= 1

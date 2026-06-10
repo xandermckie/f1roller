@@ -5,6 +5,7 @@ from app.models.driver import Driver
 from app.models.engine_entity import EngineEntity
 from app.models.personnel import Personnel
 from app.models.real_grid import RealGridEntry
+from app.models.roster_entry import RosterEntry
 from app.models.scrape_cache import ScrapeCache
 from app.models.sponsor import Sponsor
 from app.models.synergy_pair import SynergyPair
@@ -17,6 +18,7 @@ __all__ = [
     "EngineEntity",
     "Personnel",
     "RealGridEntry",
+    "RosterEntry",
     "ScrapeCache",
     "Sponsor",
     "SynergyPair",

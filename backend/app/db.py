@@ -31,6 +31,7 @@ def init_db() -> None:
         engine_entity,
         personnel,
         real_grid,
+        roster_entry,
         scrape_cache,
         sponsor,
         synergy_pair,

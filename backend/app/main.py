@@ -9,7 +9,9 @@ from app.api.routes import api_router
 from app.config import settings
 from app.db import SessionLocal, engine, init_db
 from app.db_migrate import upgrade_schema
-from app.services.mvp_seed import backfill_personnel_from_seed, ensure_mvp_seeded
+from app.services.benchmark import compute_benchmark, save_benchmark
+from app.services.openf1 import sync_real_grid
+from app.services.roster_import import ensure_roster_imported
 
 
 @asynccontextmanager
@@ -18,8 +20,11 @@ async def lifespan(_app: FastAPI):
     upgrade_schema(engine)
     db = SessionLocal()
     try:
-        ensure_mvp_seeded(db)
-        backfill_personnel_from_seed(db)
+        imported = ensure_roster_imported(db)
+        if imported:
+            sync_real_grid(db)
+            payload, pace, _ = compute_benchmark(db)
+            save_benchmark(db, payload, pace)
     finally:
         db.close()
     yield

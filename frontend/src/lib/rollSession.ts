@@ -1,8 +1,8 @@
-import type { RollSession, RosterEntity, SlotId, TeamPayload } from "@/types";
+import type { RosterResponse, RollSession, RosterEntity, SlotId, TeamPayload } from "@/types";
 import { SLOT_ORDER } from "@/types";
 
 const STORAGE_KEY = "f1roller_roll_session";
-export const SESSION_VERSION = 4;
+export const SESSION_VERSION = 6;
 
 export function createSession(): RollSession {
   return {
@@ -56,10 +56,14 @@ export function getCurrentSlot(session: RollSession): SlotId {
   return slot ?? "driver_1";
 }
 
+export function isSlotFilled(session: RollSession, slotId: SlotId): boolean {
+  return Object.hasOwn(session.assignments, slotId) && Boolean(session.assignments[slotId]);
+}
+
 export function getNextEmptySlotIndex(session: RollSession): number | null {
   for (let i = 0; i < SLOT_ORDER.length; i++) {
     const slotId = SLOT_ORDER[i];
-    if (slotId && !session.assignments[slotId]) {
+    if (slotId && !isSlotFilled(session, slotId)) {
       return i;
     }
   }
@@ -78,14 +82,31 @@ export function syncCurrentSlotIndex(session: RollSession): RollSession {
   return { ...session, currentSlotIndex: next };
 }
 
-export function hasActiveRound(session: RollSession): boolean {
-  const synced = syncCurrentSlotIndex(session);
-  const slot = getCurrentSlot(synced);
+export function needsRosterRecovery(session: RollSession): boolean {
   return (
-    isRoundRolled(synced) &&
-    !synced.assignments[slot] &&
-    !isAssignmentComplete(synced)
+    isRoundRolled(session) &&
+    session.rosterPool.length === 0 &&
+    !isAssignmentComplete(session)
   );
+}
+
+export function hasActiveRound(session: RollSession): boolean {
+  if (needsRosterRecovery(session)) {
+    return false;
+  }
+  return isRoundRolled(session) && !isAssignmentComplete(session);
+}
+
+export function applyRosterResponse(
+  session: RollSession,
+  roster: RosterResponse,
+): RollSession {
+  return syncCurrentSlotIndex({
+    ...session,
+    rosterPool: roster.entities,
+    poolWarnings: roster.pool_warnings,
+    phase: "assigning",
+  });
 }
 
 export function isRoundReady(session: RollSession): boolean {
@@ -94,7 +115,7 @@ export function isRoundReady(session: RollSession): boolean {
 
 export function canAdvanceRound(session: RollSession): boolean {
   const slot = getCurrentSlot(session);
-  return Boolean(session.assignments[slot]);
+  return isSlotFilled(session, slot);
 }
 
 export function isSetupComplete(session: RollSession): boolean {
@@ -102,7 +123,7 @@ export function isSetupComplete(session: RollSession): boolean {
 }
 
 export function isAssignmentComplete(session: RollSession): boolean {
-  return SLOT_ORDER.every((slot) => Boolean(session.assignments[slot]));
+  return SLOT_ORDER.every((slot) => isSlotFilled(session, slot));
 }
 
 export function getPoolEntity(
@@ -143,12 +164,34 @@ export function getAvailablePool(session: RollSession): RosterEntity[] {
   return session.rosterPool.filter((entity) => !assignedIds.has(entity.id));
 }
 
+export function getEmptySlots(session: RollSession): SlotId[] {
+  return SLOT_ORDER.filter((slot) => !isSlotFilled(session, slot));
+}
+
+export function getAssignablePool(session: RollSession): RosterEntity[] {
+  const emptySlots = getEmptySlots(session);
+  const assignedIds = getAssignedEntityIds(session);
+  return session.rosterPool.filter(
+    (entity) =>
+      !assignedIds.has(entity.id) &&
+      entity.assignable_slots.some((slot) => emptySlots.includes(slot)),
+  );
+}
+
+export function canAssignEntityToSlot(
+  session: RollSession,
+  entity: RosterEntity,
+  slotId: SlotId,
+): boolean {
+  return !isSlotFilled(session, slotId) && canAssign(entity, slotId);
+}
+
 export function canAssign(entity: RosterEntity, slotId: SlotId): boolean {
   return entity.assignable_slots.includes(slotId);
 }
 
 export function countFilledSlots(session: RollSession): number {
-  return SLOT_ORDER.filter((slot) => Boolean(session.assignments[slot])).length;
+  return SLOT_ORDER.filter((slot) => isSlotFilled(session, slot)).length;
 }
 
 export function clearPerRoundState(session: RollSession): RollSession {

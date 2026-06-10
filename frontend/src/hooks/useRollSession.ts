@@ -1,18 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { RollSession, SlotId } from "@/types";
 import {
+  applyRosterResponse,
   buildTeamPayload,
-  canAssign,
+  canAssignEntityToSlot,
+  isSlotFilled,
   clearPerRoundState,
   clearSession,
   createSession,
-  getCurrentSlot,
   getPoolEntity,
   isAssignmentComplete,
   isRoundReady,
   isSetupComplete,
   loadSession,
+  needsRosterRecovery,
   saveSession,
   syncCurrentSlotIndex,
 } from "@/lib/rollSession";
@@ -36,6 +38,7 @@ export function useRollSession(): {
   rollRound: () => Promise<boolean>;
   rerollTeam: () => Promise<void>;
   rerollDecade: () => Promise<void>;
+  refetchCurrentRoster: () => Promise<void>;
   assignToSlot: (entityId: string, slotId: SlotId) => string | null;
   clearSlot: (slotId: SlotId) => void;
   lockTeam: () => TeamPayloadResult;
@@ -66,14 +69,42 @@ export function useRollSession(): {
         return { ...base, rosterPool: [] };
       }
       const roster = await fetchRoster(base.rolledTeam.slug, base.rolledDecade);
-      return {
-        ...base,
-        rosterPool: roster.entities,
-        poolWarnings: roster.pool_warnings,
-      };
+      return applyRosterResponse(base, roster);
     },
     [],
   );
+
+  const refetchCurrentRoster = useCallback(async (): Promise<void> => {
+    let teamSlug: string | undefined;
+    let decade: string | undefined;
+    setSession((current) => {
+      if (!current.rolledTeam || !current.rolledDecade) {
+        return current;
+      }
+      teamSlug = current.rolledTeam.slug;
+      decade = current.rolledDecade;
+      return current;
+    });
+    if (!teamSlug || !decade) return;
+
+    setLoading(true);
+    setError(null);
+    try {
+      const roster = await fetchRoster(teamSlug, decade);
+      setSession((current) => applyRosterResponse(current, roster));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Roster load failed");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const recoveryAttempted = useRef(false);
+  useEffect(() => {
+    if (recoveryAttempted.current || !needsRosterRecovery(session)) return;
+    recoveryAttempted.current = true;
+    void refetchCurrentRoster();
+  }, [session, refetchCurrentRoster]);
 
   const rollRound = useCallback(async (): Promise<boolean> => {
     setLoading(true);
@@ -96,10 +127,8 @@ export function useRollSession(): {
     }
 
     try {
-      const [team, { decade }] = await Promise.all([
-        apiRollTeam(seed),
-        apiRollDecade(seed),
-      ]);
+      const team = await apiRollTeam(seed);
+      const { decade } = await apiRollDecade(seed, team.slug);
       const elapsed = Date.now() - startedAt;
       if (elapsed < MIN_ROLL_ANIMATION_MS) {
         await delay(MIN_ROLL_ANIMATION_MS - elapsed);
@@ -115,14 +144,7 @@ export function useRollSession(): {
 
       try {
         const roster = await fetchRoster(team.slug, decade);
-        setSession((current) =>
-          syncCurrentSlotIndex({
-            ...current,
-            rosterPool: roster.entities,
-            poolWarnings: roster.pool_warnings,
-            phase: "assigning",
-          }),
-        );
+        setSession((current) => applyRosterResponse(current, roster));
         return roster.entities.length > 0;
       } catch (rosterErr) {
         setError(rosterErr instanceof Error ? rosterErr.message : "Roster load failed");
@@ -171,7 +193,11 @@ export function useRollSession(): {
     setError(null);
     try {
       const salt = crypto.randomUUID();
-      const { decade } = await apiRollDecade(session.sessionSeed, salt);
+      const { decade } = await apiRollDecade(
+        session.sessionSeed,
+        session.rolledTeam.slug,
+        salt,
+      );
       const next: RollSession = {
         ...session,
         rolledDecade: decade,
@@ -200,13 +226,15 @@ export function useRollSession(): {
           assignError = "Entity not found in roster";
           return current;
         }
-        if (!canAssign(entity, slotId)) {
-          assignError = `${entity.role_label ?? entity.display_name} cannot fill ${slotId.replaceAll("_", " ")}`;
+        if (!canAssignEntityToSlot(current, entity, slotId)) {
+          assignError = isSlotFilled(current, slotId)
+            ? "That slot is already filled"
+            : `${entity.role_label ?? entity.display_name} cannot fill ${slotId.replaceAll("_", " ")}`;
           return current;
         }
         const assignedIds = new Set(
           Object.entries(current.assignments)
-            .filter(([slot, id]) => slot !== slotId && id)
+            .filter(([, id]) => id)
             .map(([, id]) => id),
         );
         if (assignedIds.has(entityId)) {
@@ -214,8 +242,6 @@ export function useRollSession(): {
           return current;
         }
 
-        const currentSlot = getCurrentSlot(current);
-        const filledCurrentSlot = slotId === currentSlot;
         const withAssignment: RollSession = {
           ...current,
           assignments: { ...current.assignments, [slotId]: entityId },
@@ -226,10 +252,7 @@ export function useRollSession(): {
           phase: "assigning",
         };
 
-        if (filledCurrentSlot) {
-          return syncCurrentSlotIndex(clearPerRoundState(withAssignment));
-        }
-        return withAssignment;
+        return syncCurrentSlotIndex(clearPerRoundState(withAssignment));
       });
       return assignError;
     },
@@ -274,6 +297,7 @@ export function useRollSession(): {
     rollRound,
     rerollTeam,
     rerollDecade,
+    refetchCurrentRoster,
     assignToSlot,
     clearSlot,
     lockTeam,

@@ -203,4 +203,5 @@ class RollTeamRequest(BaseModel):
 
 class RollDecadeRequest(BaseModel):
     session_seed: str
+    team_slug: str
     reroll_salt: str | None = None

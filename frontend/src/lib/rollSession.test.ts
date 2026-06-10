@@ -3,9 +3,11 @@ import { describe, expect, it } from "vitest";
 import {
   buildTeamPayload,
   canAssign,
+  canAssignEntityToSlot,
   canAdvanceRound,
   clearPerRoundState,
   createSession,
+  getAssignablePool,
   getAssignedEntity,
   getCurrentSlot,
   getEligibleForSlot,
@@ -14,6 +16,8 @@ import {
   isRoundReady,
   isRoundRolled,
   isSetupComplete,
+  isSlotFilled,
+  needsRosterRecovery,
   syncCurrentSlotIndex,
 } from "@/lib/rollSession";
 import type { RosterEntity, SlotId } from "@/types";
@@ -159,13 +163,57 @@ describe("rollSession", () => {
     expect(getCurrentSlot(synced)).toBe("driver_2");
   });
 
-  it("detects active round when rolled and current slot empty", () => {
+  it("detects active round when rolled with roster loaded", () => {
     const session = createSession();
     session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
     session.rolledDecade = "1980s";
     session.rosterPool = [mockRosterEntity("senna", ["driver_1"])];
     expect(hasActiveRound(session)).toBe(true);
     expect(hasActiveRound(clearPerRoundState(session))).toBe(false);
+  });
+
+  it("detects roster recovery when rolled but pool is empty", () => {
+    const session = createSession();
+    session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
+    session.rolledDecade = "1980s";
+    expect(needsRosterRecovery(session)).toBe(true);
+    expect(hasActiveRound(session)).toBe(false);
+    session.rosterPool = [mockRosterEntity("senna", ["driver_1"])];
+    expect(needsRosterRecovery(session)).toBe(false);
+    expect(hasActiveRound(session)).toBe(true);
+  });
+
+  it("filters assignable pool by empty eligible slots", () => {
+    const session = createSession();
+    session.rosterPool = [
+      mockRosterEntity("senna", ["driver_1", "driver_2"]),
+      mockRosterEntity("chassis", ["constructor"], "constructor"),
+      mockRosterEntity("tp", ["team_principal"], "personnel"),
+    ];
+    session.assignments.driver_1 = "senna";
+    const pool = getAssignablePool(session);
+    expect(pool.map((e) => e.id).sort()).toEqual(["chassis", "tp"]);
+    session.assignments.constructor = "chassis";
+    const poolAfter = getAssignablePool(session);
+    expect(poolAfter.map((e) => e.id)).toEqual(["tp"]);
+  });
+
+  it("treats constructor slot as empty when not explicitly assigned", () => {
+    const session = createSession();
+    expect(isSlotFilled(session, "constructor")).toBe(false);
+    expect(getAssignablePool(session)).toEqual([]);
+    session.rosterPool = [mockRosterEntity("chassis", ["constructor"], "constructor")];
+    expect(getAssignablePool(session).map((e) => e.id)).toEqual(["chassis"]);
+  });
+
+  it("blocks assignment to filled slots", () => {
+    const session = createSession();
+    const driver = mockRosterEntity("prost", ["driver_2"]);
+    session.assignments.driver_2 = "senna";
+    expect(canAssignEntityToSlot(session, driver, "driver_2")).toBe(false);
+    expect(canAssignEntityToSlot(session, driver, "driver_1")).toBe(false);
+    delete session.assignments.driver_2;
+    expect(canAssignEntityToSlot(session, driver, "driver_2")).toBe(true);
   });
 
   it("reads assigned entities from assignedEntities cache", () => {

@@ -27,8 +27,14 @@ def api_roll_team(request: RollTeamRequest, db: Session = Depends(get_db)) -> Ro
 
 
 @router.post("/roster/roll-decade", response_model=RolledDecadeResponse)
-def api_roll_decade(request: RollDecadeRequest) -> RolledDecadeResponse:
-    decade = roll_decade(request.session_seed, request.reroll_salt)
+def api_roll_decade(
+    request: RollDecadeRequest,
+    db: Session = Depends(get_db),
+) -> RolledDecadeResponse:
+    try:
+        decade = roll_decade(db, request.session_seed, request.team_slug, request.reroll_salt)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     return RolledDecadeResponse(decade=decade)
 
 
