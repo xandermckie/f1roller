@@ -15,6 +15,7 @@ import {
   getPoolEntity,
   hasActiveRound,
   isRoundRolled,
+  isSlotFilled,
   needsRosterRecovery,
 } from "@/lib/rollSession";
 import {
@@ -52,10 +53,10 @@ export function RollPage(): React.ReactElement {
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
   const poolRef = useRef<HTMLElement>(null);
 
-  const roundActive = hasActiveRound(session);
-  const rosterRecovery = needsRosterRecovery(session);
-  const showRollButton = (!roundActive || rosterRecovery) && !isAssignmentComplete;
-  const showPool = isRoundRolled(session) && !isAssignmentComplete && !rosterRecovery;
+  const rosterRecovery = needsRosterRecovery(session, loading);
+  const roundActive = hasActiveRound(session) || (loading && isRoundRolled(session));
+  const showRollButton = !roundActive && !isAssignmentComplete;
+  const showPool = isRoundRolled(session) && !isAssignmentComplete;
   const poolLoading = showPool && loading && session.rosterPool.length === 0;
 
   const availablePool = useMemo(() => getAssignablePool(session), [session]);
@@ -81,14 +82,14 @@ export function RollPage(): React.ReactElement {
   }, []);
 
   useEffect(() => {
-    if (session.rolledTeam && session.rolledDecade) {
+    if (session.rolledTeam && session.rolledDecade && !isRolling && !loading) {
       setTeamRevealed(true);
       setDecadeRevealed(true);
-    } else {
+    } else if (!session.rolledTeam && !session.rolledDecade) {
       setTeamRevealed(false);
       setDecadeRevealed(false);
     }
-  }, [session.rolledTeam, session.rolledDecade]);
+  }, [session.rolledTeam, session.rolledDecade, isRolling, loading]);
 
   if (session.phase === "complete" && session.simResult) {
     return <Navigate to="/season" replace />;
@@ -100,18 +101,12 @@ export function RollPage(): React.ReactElement {
     setDecadeRevealed(false);
     setSelectedEntityId(null);
     setLocalError(null);
-    const ok = await rollRound();
+    await rollRound();
     setIsRolling(false);
-    if (ok) {
-      requestAnimationFrame(() => {
-        poolRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    }
   };
 
   const handleSlotClick = (slotId: SlotId): void => {
-    const existing = session.assignments[slotId];
-    if (existing) {
+    if (isSlotFilled(session, slotId)) {
       clearSlot(slotId);
       setSelectedEntityId(null);
       return;
@@ -191,7 +186,7 @@ export function RollPage(): React.ReactElement {
               : null
           }
           revealed={teamRevealed}
-          rolling={isRolling || (loading && !teamRevealed)}
+          rolling={isRolling || (loading && !session.rolledTeam)}
           slotLabel="Rolled Constructor"
           onReroll={roundActive ? () => void handleRerollTeam() : undefined}
           rerollsLeft={session.rerollsRemaining.team}
@@ -209,7 +204,7 @@ export function RollPage(): React.ReactElement {
               : null
           }
           revealed={decadeRevealed}
-          rolling={isRolling || (loading && !decadeRevealed)}
+          rolling={isRolling || (loading && !session.rolledDecade)}
           slotLabel="Rolled Era"
           onReroll={roundActive ? () => void handleRerollDecade() : undefined}
           rerollsLeft={session.rerollsRemaining.decade}

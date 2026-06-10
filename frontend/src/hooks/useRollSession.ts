@@ -101,10 +101,10 @@ export function useRollSession(): {
 
   const recoveryAttempted = useRef(false);
   useEffect(() => {
-    if (recoveryAttempted.current || !needsRosterRecovery(session)) return;
+    if (recoveryAttempted.current || !needsRosterRecovery(session, loading)) return;
     recoveryAttempted.current = true;
     void refetchCurrentRoster();
-  }, [session, refetchCurrentRoster]);
+  }, [session, loading, refetchCurrentRoster]);
 
   const rollRound = useCallback(async (): Promise<boolean> => {
     setLoading(true);

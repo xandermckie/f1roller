@@ -177,6 +177,7 @@ describe("rollSession", () => {
     session.rolledTeam = { slug: "mclaren", display_name: "McLaren" };
     session.rolledDecade = "1980s";
     expect(needsRosterRecovery(session)).toBe(true);
+    expect(needsRosterRecovery(session, true)).toBe(false);
     expect(hasActiveRound(session)).toBe(false);
     session.rosterPool = [mockRosterEntity("senna", ["driver_1"])];
     expect(needsRosterRecovery(session)).toBe(false);

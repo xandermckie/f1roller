@@ -82,8 +82,9 @@ export function syncCurrentSlotIndex(session: RollSession): RollSession {
   return { ...session, currentSlotIndex: next };
 }
 
-export function needsRosterRecovery(session: RollSession): boolean {
+export function needsRosterRecovery(session: RollSession, isLoading = false): boolean {
   return (
+    !isLoading &&
     isRoundRolled(session) &&
     session.rosterPool.length === 0 &&
     !isAssignmentComplete(session)

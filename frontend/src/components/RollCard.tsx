@@ -130,8 +130,8 @@ export function RollCard({
       )}
       <style>{`
         @keyframes reveal {
-          from { opacity: 0; transform: rotateY(90deg) translateY(12px); }
-          to { opacity: 1; transform: rotateY(0) translateY(0); }
+          from { opacity: 0.85; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         @keyframes rollPulse {
           0%, 100% { opacity: 0.6; transform: scale(0.98); }
