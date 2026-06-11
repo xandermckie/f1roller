@@ -6,11 +6,13 @@ import { AssignPage } from "@/pages/AssignPage";
 import { LandingPage } from "@/pages/LandingPage";
 import { PlayPage } from "@/pages/PlayPage";
 import { RaceDetailPage } from "@/pages/RaceDetailPage";
+import { RatingsPage } from "@/pages/RatingsPage";
 import { ResultsPage } from "@/pages/ResultsPage";
 import { RollPage } from "@/pages/RollPage";
 import { SeasonPage } from "@/pages/SeasonPage";
 import { SourcesPage } from "@/pages/SourcesPage";
 import { TeamPage } from "@/pages/TeamPage";
+import { TransferPage } from "@/pages/TransferPage";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ export function App(): React.ReactElement {
             <Route path="/season/race/:round" element={<RaceDetailPage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/sources" element={<SourcesPage />} />
+            <Route path="/ratings" element={<RatingsPage />} />
+            <Route path="/transfer" element={<TransferPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

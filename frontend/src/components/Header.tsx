@@ -33,7 +33,12 @@ export function Header(): React.ReactElement {
           F1 Roller
         </Link>
         <nav style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-          <span style={{ color: "var(--color-text-muted)", fontSize: "0.875rem" }}>2026 Season</span>
+          <Link
+            to="/ratings"
+            style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", textDecoration: "none" }}
+          >
+            Ratings
+          </Link>
           <button
             type="button"
             className="btn btn-secondary"

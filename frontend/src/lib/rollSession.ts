@@ -1,8 +1,10 @@
 import type {
+  CareerStats,
   DrawResponse,
   GameMode,
   RollSession,
   RosterEntity,
+  SeasonSummary,
   SimResult,
   SlotId,
   TeamPayload,
@@ -311,6 +313,112 @@ export function mergeSimResult(session: RollSession, result: SimResult): RollSes
     },
     phase: "complete",
   };
+}
+
+// ── Career helpers ────────────────────────────────────────────────────────────
+
+export function defaultCareer(): CareerStats {
+  return {
+    seasons: 0,
+    totalWins: 0,
+    bestWdcPosition: null,
+    bestWccPosition: null,
+    totalWdcPoints: 0,
+    totalWccPoints: 0,
+    seasonHistory: [],
+  };
+}
+
+export function recordSeasonIntoCareer(
+  career: CareerStats,
+  result: SimResult,
+  seasonNumber: number,
+): CareerStats {
+  const summary = result.user_summary;
+  const wdcPoints = result.final_wdc.find((e) => e.is_user)?.points ?? 0;
+  const wccPoints = result.final_wcc.find((e) => e.is_user)?.points ?? 0;
+
+  const seasonSummary: SeasonSummary = {
+    season: seasonNumber,
+    wins: summary.wins,
+    wdcPosition: summary.wdc_position,
+    wccPosition: summary.wcc_position,
+    wdcPoints,
+    wccPoints,
+    teamEfficiencyPct: summary.team_efficiency_pct ?? null,
+  };
+
+  return {
+    seasons: career.seasons + 1,
+    totalWins: career.totalWins + summary.wins,
+    bestWdcPosition:
+      career.bestWdcPosition === null
+        ? summary.wdc_position
+        : Math.min(career.bestWdcPosition, summary.wdc_position),
+    bestWccPosition:
+      career.bestWccPosition === null
+        ? summary.wcc_position
+        : Math.min(career.bestWccPosition, summary.wcc_position),
+    totalWdcPoints: career.totalWdcPoints + wdcPoints,
+    totalWccPoints: career.totalWccPoints + wccPoints,
+    seasonHistory: [...career.seasonHistory, seasonSummary],
+  };
+}
+
+/**
+ * Advance to the next season: preserve team + career, reset sim state.
+ * Called after the user clicks "Continue to Season N+1".
+ */
+export function advanceToNextSeason(session: RollSession): RollSession {
+  if (!session.simResult) return session;
+
+  const prevCareer = session.career ?? defaultCareer();
+  const currentSeasonNumber = prevCareer.seasons + 1;
+  const updatedCareer = recordSeasonIntoCareer(prevCareer, session.simResult, currentSeasonNumber);
+
+  return {
+    ...session,
+    sessionSeed: crypto.randomUUID(), // fresh seed so races differ
+    phase: "simulating", // team stays built — skip straight to simulation phase
+    simResult: undefined,
+    simProgress: createDefaultSimProgress(),
+    career: updatedCareer,
+    tradesUsed: 0,
+    // Keep: assignments, assignedEntities, teamPayload, gameMode
+    // Clear draw packet (not relevant between seasons)
+    rolledTeam: undefined,
+    rolledDecade: undefined,
+    drawPacket: [],
+    rosterPool: [],
+    poolWarnings: undefined,
+  };
+}
+
+export function applyTransfer(
+  session: RollSession,
+  slotId: SlotId,
+  incomingEntity: RosterEntity,
+): RollSession {
+  const outgoingId = session.assignments[slotId];
+  const assignedEntities = { ...session.assignedEntities };
+
+  // Remove outgoing entity from the entity map
+  if (outgoingId) {
+    delete assignedEntities[outgoingId];
+  }
+
+  // Register the incoming entity
+  assignedEntities[incomingEntity.id] = incomingEntity;
+
+  const updated: RollSession = {
+    ...session,
+    assignments: { ...session.assignments, [slotId]: incomingEntity.id },
+    assignedEntities,
+    teamPayload: undefined, // will be rebuilt on next simulate
+    tradesUsed: (session.tradesUsed ?? 0) + 1,
+  };
+
+  return syncCurrentSlotIndex(updated);
 }
 
 export function appendRaceResult(session: RollSession, race: SimResult["races"][number]): RollSession {

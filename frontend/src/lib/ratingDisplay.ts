@@ -1,7 +1,7 @@
 import type { RosterEntity } from "@/types";
 
-const RATING_FLOOR = 0.5;
-const RATING_CEILING = 3.0;
+const RATING_FLOOR = 0.0;
+const RATING_CEILING = 0.90;
 
 export function toDisplayRating(internal: number | undefined): number {
   if (internal === undefined || Number.isNaN(internal)) {

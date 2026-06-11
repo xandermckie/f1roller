@@ -3,6 +3,8 @@ import type {
   CalendarEvent,
   DrawResponse,
   GameMode,
+  RatingsResponse,
+  RosterEntity,
   RosterResponse,
   RolledEntity,
   RoundSimResult,
@@ -233,4 +235,26 @@ export interface EntityDetail {
 
 export function getEntityDetail(entityId: string): Promise<EntityDetail> {
   return request(`/entities/${entityId}`);
+}
+
+export function getTransferCandidates(
+  slotId: SlotId,
+  currentRating: number,
+  excludeIds: string[],
+): Promise<RosterEntity[]> {
+  const params = new URLSearchParams({
+    slot_id: slotId,
+    current_rating: String(currentRating),
+    limit: "12",
+  });
+  for (const id of excludeIds) {
+    params.append("exclude_ids", id);
+  }
+  return request(`/transfer/candidates?${params.toString()}`);
+}
+
+export function getRatings(search = ""): Promise<RatingsResponse> {
+  const params = new URLSearchParams();
+  if (search) params.set("search", search);
+  return request(`/ratings?${params.toString()}`);
 }

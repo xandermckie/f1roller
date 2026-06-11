@@ -82,6 +82,9 @@ export interface RollSession {
   teamPayload?: TeamPayload;
   simProgress: SimProgress;
   simResult?: SimResult;
+  // Career / multi-season
+  career?: CareerStats;
+  tradesUsed?: number; // trades used this off-season
 }
 
 export interface DrawResponse {
@@ -161,6 +164,66 @@ export interface CalendarEvent {
   is_cancelled: boolean;
   circuit_map_path: string | null;
   openf1_circuit_image_url: string | null;
+}
+
+// ── Career / multi-season ────────────────────────────────────────────────────
+
+export interface SeasonSummary {
+  season: number;
+  wins: number;
+  wdcPosition: number;
+  wccPosition: number;
+  wdcPoints: number;
+  wccPoints: number;
+  teamEfficiencyPct: number | null;
+}
+
+export interface CareerStats {
+  seasons: number;
+  totalWins: number;
+  bestWdcPosition: number | null;
+  bestWccPosition: number | null;
+  totalWdcPoints: number;
+  totalWccPoints: number;
+  seasonHistory: SeasonSummary[];
+}
+
+// ── Transfer window ──────────────────────────────────────────────────────────
+
+export const TRANSFERS_PER_OFFSEASON = 2;
+export const TRANSFER_RATING_WINDOW = 25; // max display-rating gap allowed
+
+export interface TradeRecord {
+  slotId: SlotId;
+  outgoingEntityId: string;
+  incomingEntityId: string;
+  outgoingDisplayRating: number;
+  incomingDisplayRating: number;
+}
+
+// ── Ratings ──────────────────────────────────────────────────────────────────
+
+export interface RatedEntity {
+  id: string;
+  slug: string;
+  display_name: string;
+  entity_type: string;
+  sub_type?: string | null;
+  nationality?: string | null;
+  peak_year?: number | null;
+  display_rating: number;
+  wins: number;
+  poles: number;
+  championships: number;
+  avg_finish?: number | null;
+  portrait_path?: string | null;
+}
+
+export interface RatingsResponse {
+  drivers: RatedEntity[];
+  constructors: RatedEntity[];
+  engines: RatedEntity[];
+  personnel: RatedEntity[];
 }
 
 export interface BenchmarkResponse {
